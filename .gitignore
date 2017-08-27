@@ -11,6 +11,7 @@ media
 db.sqlite3
 .DS_Store
 sql*
+static/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
