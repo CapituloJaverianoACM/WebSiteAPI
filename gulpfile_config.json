@@ -1,0 +1,40 @@
+{
+	"pug": {
+		"src": "./WebSite/pug/pages/**/*.pug",
+		"dest": "./WebSite/templates",
+		"watch": "./WebSite/pug/**/*.pug",
+		"plugin": {
+			"pretty": "\t",
+			"locals": {}
+		},
+		"rename": {
+			"dirname": "",
+			"//basename": "",
+			"prefix": "",
+			"suffix": "",
+			"extname": ".html"
+		}
+	},
+	"sass": {
+		"src": "./WebSite/scss/styles.scss",
+		"dest": "./WebSite/static/css",
+		"watch": "./WebSite/scss/**/*.scss",
+		"plugin": {
+			"outputStyle": "compressed",
+			"sourceComments": false
+		},
+		"autoprefixer": {
+			"browsers": "last 2 versions",
+			"cascade": false
+		}
+	},
+	"todo": {
+		"src": ["./WebSite/pug/**/*.pug", "./WebSite/scss/**/*.scss", "./WebSite/js/**/*.js"],
+		"dest": "./",
+		"plugin": {
+			"fileName": "todo.json",
+			"reporter": "json",
+			"skipUnsupported": true
+		}
+	}
+}

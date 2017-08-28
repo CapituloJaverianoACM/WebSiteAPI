@@ -111,3 +111,6 @@ myvenv/
 /site
 
 # End of https://www.gitignore.io/api/django,python
+
+# Node modules
+/node_modules
