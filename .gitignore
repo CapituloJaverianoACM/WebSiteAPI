@@ -11,6 +11,7 @@ media
 db.sqlite3
 .DS_Store
 sql*
+/static
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -113,3 +114,13 @@ myvenv/
 
 # Node modules
 /node_modules
+
+
+# Created by https://www.gitignore.io/api/sass
+
+### Sass ###
+.sass-cache/
+*.css.map
+
+# End of https://www.gitignore.io/api/sass
+
