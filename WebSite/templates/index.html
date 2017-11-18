@@ -10,8 +10,8 @@
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	</head>
 	<body>
-		<div class="maincontent">
-			<h1>Hello ACM</h1>
+		<div class="maincontent"><img class="acm-logo" src="{% static 'images/icon.png' %}">
+			<h1><span class="acm acm-cog"></span>    En desarrollo... Proximamente  <span class="acm acm-cog"></span></h1>
 		</div>
 		<footer class="footer">
 			<div class="copyright">Capitulo ACM | Copyright © 2017 - Todos los derechos reservados a sus respectivos dueños</div>
@@ -19,8 +19,8 @@
 		</footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!--script(src="js/jquery-3.2.1.min.js")-->
-		<script src="js/push.min.js"></script>
-		<script src="js/viewport-size.js"></script>
-		<script src="js/scripts.js"></script>
+		<script src="{% static 'js/push.min.js' %}"></script>
+		<script src="{% static 'js/viewport-size.js' %}"></script>
+		<script src="{% static 'js/scripts.js' %}"></script>
 	</body>
 </html>
