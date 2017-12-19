@@ -1,7 +1,13 @@
-.hello {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+.acm-logo {
+	width: 200px;
+}
+
+.acm-cog {
+	animation: rot 1s linear infinite;
+}
+
+@keyframes rot {
+	to {
+		transform: rotate(1turn);
+	}
 }
