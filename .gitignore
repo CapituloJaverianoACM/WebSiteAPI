@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/django,python
 
+ACMWebSite/private_settings.py
+
 ### Django ###
 *.log
 *.pot
@@ -123,4 +125,3 @@ myvenv/
 *.css.map
 
 # End of https://www.gitignore.io/api/sass
-
