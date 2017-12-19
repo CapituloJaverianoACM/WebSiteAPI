@@ -1,9 +1,14 @@
+.proximamente {
+	display: flex;
+}
+
 .acm-logo {
 	width: 200px;
 }
 
 .acm-cog {
 	animation: rot 1s linear infinite;
+	margin: 0 $margin;
 }
 
 @keyframes rot {
