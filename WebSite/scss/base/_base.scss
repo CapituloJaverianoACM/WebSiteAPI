@@ -3,13 +3,13 @@
 }
 
 ::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
+	width: 7px;
+	height: 7px;
 	opacity: 0;
+	background: $white;
 }
 
 ::-webkit-scrollbar-thumb {
-	border: 1px solid $scroll-border;
 	background: $scroll-background;
 	border-radius: 5px;
 	opacity: 0;
@@ -23,9 +23,7 @@ body {
 	font-size : $font-size;
 	font-family : $main-font;
 
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+	height: 100vh;
 }
 
 h1 {
@@ -53,36 +51,20 @@ h6 {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: $gutter 0;
+	margin: $margin 0;
 	font-family: $title-font;
-	font-weight: bold;
+	font-weight: $title-weight;
 }
 
 p {
-	margin: $gutter 0;
+	margin: $margin 0;
+}
+
+p, li, a {
+	line-height: $line-height;
 }
 
 a {
 	text-decoration: none;
 	color: inherit;
-}
-
-footer {
-	display: flex;
-	width: 100%;
-	font-size: 0.8em;
-	padding: $gutter / 2 $gutter;
-	justify-content: space-between;
-	background: $footer-background;
-	color: $footer-color;
-	flex-shrink: 0;
-
-	.ilm-github {
-		display: flex;
-		align-items: center;
-	}
-
-	.ilm-github::before {
-		font-size: 1.2em;
-	}
 }

@@ -4,8 +4,7 @@
 	<head>
 		<title>Capitulo ACM</title>
 		<meta charset="utf-8">
-		<meta X-Frame-Options="deny">
-		<link rel="icon" type="image/png" href="resources/images/icon.png">
+		<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 	</head>
@@ -14,13 +13,12 @@
 			<h1><span class="acm acm-cog"></span>    En desarrollo... Proximamente  <span class="acm acm-cog"></span></h1>
 		</div>
 		<footer class="footer">
-			<div class="copyright">Capitulo ACM | Copyright © 2017 - Todos los derechos reservados a sus respectivos dueños</div>
-			<div class="github-link"><a class="icon icon-github" href="">View Source</a></div>
+			<section class="copyright_section">
+				<div class="copyright">Capitulo ACM | Copyright © 2017 - Todos los derechos reservados a sus respectivos dueños</div>
+				<div class="github-link"><a href="https://github.com/" target="_blank"><span class="icon icon-github"></span> View Source</a></div>
+			</section>
 		</footer>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!--script(src="js/jquery-3.2.1.min.js")-->
-		<script src="{% static 'js/push.min.js' %}"></script>
-		<script src="{% static 'js/viewport-size.js' %}"></script>
 		<script src="{% static 'js/scripts.js' %}"></script>
 	</body>
 </html>

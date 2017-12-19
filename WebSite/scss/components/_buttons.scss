@@ -1,0 +1,22 @@
+.btn {
+	padding: $padding;
+	background: $white;
+	border: 1px solid;
+	outline: 0;
+	border-radius: $border-radius;
+	box-shadow: 0 1px 5px;
+
+	&:active {
+		box-shadow: 0 0 0;
+	}
+}
+
+@each $state, $color in $color-states {
+	.btn_#{$state} {
+		@extend .btn;
+		color: $color;
+		@if ($state == 'disabled') {
+			box-shadow: 0 0 0;
+		}
+	}
+}
