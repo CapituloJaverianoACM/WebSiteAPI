@@ -11,13 +11,13 @@
 	<body>
 		<navbar class="acm-navbar"><img class="acm-navbar_logo" src="{% static 'images/icon_blue.svg'%}">
 			<ul class="acm-navbar_menu">
-				<li class="acm-navbar_menuitem acm-navbar__current"><a class="acm-navbar_link" href="">Home</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">Staff</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">Maratones</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">Actividades</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">Proyectos</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">Tutoriales</a></li>
-				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="">¡Únete!</a></li>
+				<li class="acm-navbar_menuitem acm-navbar__current"><a class="acm-navbar_link" href="/">Home</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/staff">Staff</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/maratones">Maratones</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/actividades">Actividades</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/proyectos">Proyectos</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/tutoriales">Tutoriales</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/unete">¡Únete!</a></li>
 			</ul>
 		</navbar>
 		<section class="acm-maincover"><img class="acm-maincover_logo" src="{% static 'images/icon_white.svg'%}">
@@ -129,6 +129,7 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script src="https://cdn.rawgit.com/lukehaas/Scrollify/a6557d52/jquery.scrollify.js"></script>
 		<script src="https://cdn.rawgit.com/mburakerman/prognroll/master/src/prognroll.js"></script>
+		<script>var scrollPage = true;</script>
 		<script src="{% static 'js/scripts.js' %}"></script>
 	</body>
 </html>

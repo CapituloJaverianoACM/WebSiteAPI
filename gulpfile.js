@@ -32,8 +32,10 @@ gulp.task('todo', () => {
 	.pipe(gulp.dest(config.todo.dest));
 });
 
+gulp.task('build', ['pug', 'styles']);
+
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', () => {
+gulp.task('default', ['build'], () => {
 	gulp.watch(config.pug.watch, ['pug']);
 	gulp.watch(config.sass.watch, ['styles']);
 });
