@@ -2,8 +2,13 @@
 	margin-top: auto;
 	display: flex;
 	flex-direction: column;
-	background: $gray-3;
-	color: $gray-9;
+	background: $footer-background;
+	color: $footer-color;
+	font-size: 0.8rem;
+
+	h6 {
+		font-size: 1rem;
+	}
 
 	.footer_section {
 		margin: 0 $margin * 3;
@@ -14,13 +19,21 @@
 		}
 	}
 
+	.align-center {
+		align-self: center;
+	}
+
 	.footer_section_title {
-		color: $white;
+		color: $footer-title;
 	}
 
 	.footer_logo {
-		width: 100px;
+		width: 120px;
 		margin: $margin;
+	}
+
+	.footer_icon {
+		margin-right: $margin;
 	}
 
 	.footer_content {
@@ -50,8 +63,34 @@
 	.copyright_section {
 		display: flex;
 		justify-content: space-between;
-		font-size: 0.8em;
+		font-size: 0.7rem;
 		padding: $padding;
-		background: $gray-1;
+		background: $footer-copyright;
+	}
+}
+
+.contact-form {
+
+	.contact-form_message {
+		width: 100%;
+		padding: $padding;
+		border-radius: $border-radius;
+		resize: none;
+		border: 0;
+	}
+	.contact-form_section {
+		display: flex;
+		align-items: center;
+		margin-top: $margin;
+	}
+	.contact-form_email {
+		flex-grow: 1;
+		padding: $padding;
+		border-radius: $border-radius;
+		border: 0;
+	}
+
+	.contact-form_submit {
+		margin-left: $margin;
 	}
 }

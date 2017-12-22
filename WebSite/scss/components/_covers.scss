@@ -1,0 +1,14 @@
+.acm-maincover {
+	height: 100vh;
+	background: $maincover-background;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: $maincover-color;
+
+	.acm-maincover_logo {
+		width: 400px;
+	}
+}

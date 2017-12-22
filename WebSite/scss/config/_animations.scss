@@ -1,0 +1,10 @@
+@keyframes intro {
+	from {
+		transform: translatey(-20px);
+		opacity: 0;
+	}
+	to {
+		transform: translatey(0);
+		opacity: 1;
+	}
+}

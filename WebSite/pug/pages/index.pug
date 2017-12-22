@@ -1,11 +1,64 @@
 extends ../templates/base
 
-block footer
-	include ../components/footer
+append config
+	-currentPage = 1
 
-block maincontent
-	img(src="{% static 'images/icon.png' %}").acm-logo
-	h1.proximamente
-		span.acm.acm-cog
-		|     En desarrollo... Proximamente  
-		span.acm.acm-cog
+block main
+	section.acm-maincover
+		img(src="{% static 'images/icon_white.svg'%}").acm-maincover_logo
+		h1.title Capítulo Javeriano ACM
+	section.acm-section.acm-aboutus
+		section.acm-aboutus_content
+			article.acm-aboutus_section
+				img(src="{% static 'images/acm_icon.png' %}").acm-aboutus_picturesection
+				h2.sub_title.acm-aboutus_titlesection ¿Qué es ACM?
+				p.acm-aboutus_textsection Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+			article.acm-aboutus_section
+				img(src="{% static 'images/icon_blue.svg'%}").acm-aboutus_picturesection
+				h2.sub_title.acm-aboutus_titlesection ¿Qué es el capítulo?
+				p.acm-aboutus_textsection Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+	section.acm-section
+		h1.sub_title.acm-section_title ¿Qué hemos ganado?
+		section.acm-awards
+			article.acm-awards_award
+				img(src="{% static 'images/award_2013.jpg' %}").acm-awards_awardpicture
+				h4.acm-awards_awardtitle Actividades destacadas
+				p.acm-awards_awardyear 2013
+				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
+			article.acm-awards_award
+				img(src="{% static 'images/award_2015.jpg' %}").acm-awards_awardpicture
+				h4.acm-awards_awardtitle Pagina Web destacada
+				p.acm-awards_awardyear 2015
+				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
+			article.acm-awards_award
+				img(src="{% static 'images/award_2016.jpeg' %}").acm-awards_awardpicture
+				h4.acm-awards_awardtitle Actividades destacadas
+				p.acm-awards_awardyear 2016
+				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
+	section.acm-section
+		h1.sub_title.acm-section_title Actividades del capítulo
+		section.acm-activities
+			article.acm-activities_activity
+				section.acm-activities_activitytext
+					h3 Actividad
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+				section.acm-activities_activityimage
+					img(src="http://via.placeholder.com/500x500")
+	section.acm-section
+		h1.sub_title.acm-section_title Nuestros proyectos
+		section.acm-projects
+			article.acm-projects_project
+				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+				h5.acm-projects_projecttitle Web design
+			article.acm-projects_project
+				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+				h5.acm-projects_projecttitle Digital
+			article.acm-projects_project
+				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+				h5.acm-projects_projecttitle Identity
+			article.acm-projects_project
+				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+				h5.acm-projects_projecttitle Web design
+			article.acm-projects_project
+				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+				h5.acm-projects_projecttitle Strategy

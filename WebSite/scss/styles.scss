@@ -5,6 +5,7 @@
 @import "config/colors";
 @import "config/functions";
 @import "config/mixins";
+@import "config/animations";
 
 // Themes
 @import "themes/main";
@@ -21,11 +22,14 @@
 
 // Components
 @import "components/buttons";
+@import "components/covers";
+@import "components/sections";
 @import "components/titles";
 
 // Modules
 @import "modules/footer";
 @import "modules/maincontent";
+@import "modules/navbar";
 
 // Pages
 @import "pages/index";

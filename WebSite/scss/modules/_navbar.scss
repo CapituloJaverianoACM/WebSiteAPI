@@ -1,0 +1,43 @@
+.acm-navbar {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid $navbar-border;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: $navbar-background;
+	z-index: z-index(navbar);
+
+	.acm-navbar_logo {
+		width: 35px;
+		margin: $margin;
+	}
+
+	.acm-navbar_menu {
+		flex-grow: 1;
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.acm-navbar_menuitem {
+		text-align: center;
+		transition: all 0.3s ease;
+
+		&:last-child {
+			margin-left: auto;
+		}
+
+		&:hover, &.acm-navbar__current {
+			background: $navbar-item-hover;
+		}
+	}
+
+	.acm-navbar_link {
+		display: block;
+		padding: $padding * 2 $padding * 3;
+	}
+
+}

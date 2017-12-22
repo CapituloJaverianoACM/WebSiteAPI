@@ -1,18 +1,17 @@
-@import 'https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Poiret+One|Poiret+One';
+@import 'https://fonts.googleapis.com/css?family=Lato|Ubuntu	';
 
-$main-font: 'Josefin Sans', sans-serif;
-$title-font: 'Poiret One', cursive;
-$title-weight: bold;
+$main-font: 'Ubuntu', sans-serif;
+$title-font: 'Lato', sans-serif;
+$title-weight: normal;
 
 $gutter: 10px;
+
 $padding: 10px;
 $margin: 10px;
 $border-radius: 3px;
 
 $font-size: 16px;
-$line-height: inherit;
-
-$color_saturation: 70; // 0 - 100
+$line-height: 1.5;
 
 $h1: 2.2 * $font-size;
 $h2: 2.0 * $font-size;
@@ -21,7 +20,9 @@ $h4: 1.6 * $font-size;
 $h5: 1.4 * $font-size;
 $h6: 1.2 * $font-size;
 
-$icon-prefix: icon;
+$color_saturation: 70; // 0 - 100
+
+$icon-prefix: acm;
 
 $z-index: (
 	back: -100,
