@@ -20,46 +20,59 @@ block main
 				p.acm-aboutus_textsection Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
 	section.acm-section
 		h1.sub_title.acm-section_title ¿Qué hemos ganado?
-		section.acm-awards
-			article.acm-awards_award
+		section.acm-awards.owl-carousel.owl-theme
+			article.acm-awards_award.item
 				img(src="{% static 'images/award_2013.jpg' %}").acm-awards_awardpicture
 				h4.acm-awards_awardtitle Actividades destacadas
 				p.acm-awards_awardyear 2013
 				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
-			article.acm-awards_award
+			article.acm-awards_award.item
 				img(src="{% static 'images/award_2015.jpg' %}").acm-awards_awardpicture
 				h4.acm-awards_awardtitle Pagina Web destacada
 				p.acm-awards_awardyear 2015
 				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
-			article.acm-awards_award
+			article.acm-awards_award.item
 				img(src="{% static 'images/award_2016.jpeg' %}").acm-awards_awardpicture
 				h4.acm-awards_awardtitle Actividades destacadas
 				p.acm-awards_awardyear 2016
 				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
 	section.acm-section
 		h1.sub_title.acm-section_title Actividades del capítulo
-		section.acm-activities
-			article.acm-activities_activity
+		section.acm-activities.owl-carousel.owl-theme
+			article.acm-activities_activity.item
 				section.acm-activities_activitytext
-					h3 Actividad
+					h3 Actividad 1
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+				section.acm-activities_activityimage
+					img(src="http://via.placeholder.com/500x500")
+			article.acm-activities_activity.item
+				section.acm-activities_activitytext
+					h3 Actividad 2
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+				section.acm-activities_activityimage
+					img(src="http://via.placeholder.com/500x500")
+			article.acm-activities_activity.item
+				section.acm-activities_activitytext
+					h3 Actividad 3
 					p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
 				section.acm-activities_activityimage
 					img(src="http://via.placeholder.com/500x500")
 	section.acm-section
 		h1.sub_title.acm-section_title Nuestros proyectos
 		section.acm-projects
-			article.acm-projects_project
-				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
-				h5.acm-projects_projecttitle Web design
-			article.acm-projects_project
-				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
-				h5.acm-projects_projecttitle Digital
-			article.acm-projects_project
-				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
-				h5.acm-projects_projecttitle Identity
-			article.acm-projects_project
-				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
-				h5.acm-projects_projecttitle Web design
-			article.acm-projects_project
-				img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
-				h5.acm-projects_projecttitle Strategy
+			section.acm-projectscontent
+				article.acm-projects_project
+					img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+					h5.acm-projects_projecttitle Web design
+				article.acm-projects_project
+					img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+					h5.acm-projects_projecttitle Digital
+				article.acm-projects_project
+					img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+					h5.acm-projects_projecttitle Identity
+				article.acm-projects_project
+					img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+					h5.acm-projects_projecttitle Web design
+				article.acm-projects_project
+					img(src="http://via.placeholder.com/500x400").acm-projects_projectpicture
+					h5.acm-projects_projecttitle Strategy

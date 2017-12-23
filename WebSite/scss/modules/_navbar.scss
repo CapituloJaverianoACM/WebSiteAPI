@@ -1,5 +1,6 @@
 .acm-navbar {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid $navbar-border;
 	position: fixed;
@@ -9,17 +10,41 @@
 	background: $navbar-background;
 	z-index: z-index(navbar);
 
+	@include from(950px) {
+		justify-content: flex-start;
+	}
+
 	.acm-navbar_logo {
 		width: 35px;
 		margin: $margin;
 	}
 
+	.acm-navbar_trigger {
+		margin: $margin;
+		font-size: 1.4rem;
+
+		@include from(950px) {
+			display: none;
+		}
+	}
+
 	.acm-navbar_menu {
 		flex-grow: 1;
-		display: flex;
+		display: none;
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		background: $navbar-background;
+		border-top: 1px solid $navbar-border;
+
+		@include from(950px) {
+			position: static;
+			display: flex !important;
+			border-top: 0;
+		}
 	}
 
 	.acm-navbar_menuitem {

@@ -15,3 +15,30 @@ if(scrollPage) {
 		touchScroll:false
 	});
 }
+
+$('.acm-awards').owlCarousel({
+	loop:false,
+	responsive:{
+		0: {
+			items: 1
+		},
+		900: {
+			items: 2
+		},
+		1200: {
+			items: 3
+		}
+	}
+})
+
+$('.acm-activities').owlCarousel({
+	loop: true,
+	items: 1,
+	autoplay: true,
+	autoplayHoverPause: true
+})
+
+$('#navbarTrigger').on('click', function() {
+	var nav = $(this).attr('target');
+	$(nav).slideToggle();
+});

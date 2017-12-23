@@ -1,6 +1,6 @@
 navbar.acm-navbar
 	img(src="{% static 'images/icon_blue.svg'%}").acm-navbar_logo
-	ul.acm-navbar_menu
+	ul.acm-navbar_menu#acm-navbar
 		li.acm-navbar_menuitem(class= currentPage==1 ? "acm-navbar__current" : "")
 			a(href="/").acm-navbar_link Home
 		li.acm-navbar_menuitem(class= currentPage==2 ? "acm-navbar__current" : "")
@@ -15,4 +15,4 @@ navbar.acm-navbar
 			a(href="/tutoriales").acm-navbar_link Tutoriales
 		li.acm-navbar_menuitem(class= currentPage==7 ? "acm-navbar__current" : "")
 			a(href="/unete").acm-navbar_link ¡Únete!
-		
+	span.acm-navbar_trigger.acm.acm-bars#navbarTrigger(target="#acm-navbar")

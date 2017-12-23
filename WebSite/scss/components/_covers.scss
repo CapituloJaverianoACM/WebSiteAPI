@@ -9,6 +9,30 @@
 	color: $maincover-color;
 
 	.acm-maincover_logo {
-		width: 400px;
+		width: 250px;
+
+		@include from(tablet) {
+			width: 400px;
+		}
+	}
+}
+
+.acm-cover {
+	background: $maincover-background;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: $maincover-color;
+	padding: $padding * 3;
+	padding-top: $padding * 9;
+
+	@include from(tablet) {
+		padding: $padding * 15;
+
+		.title {
+			transform: translatey(25%);
+		}
 	}
 }

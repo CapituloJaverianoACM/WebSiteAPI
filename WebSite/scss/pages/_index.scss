@@ -1,12 +1,9 @@
 .acm-aboutus {
 	background: $gray-3;
 	color: $white;
-	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: center;
 	align-items: center;
-	padding: $padding * 10;
 
 	.acm-aboutus_content {
 		flex-grow: 1;
@@ -17,14 +14,22 @@
 	}
 
 	.acm-aboutus_section {
-		width: 450px;
-		margin: $margin * 3;
+		margin: $margin;
+
+		@include from(tablet) {
+			width: 450px;
+			margin: $margin * 3;
+		}
 	}
 
 	.acm-aboutus_picturesection {
 		width: 250px;
 		margin: 0 auto;
-		display: block;
+		display: none;
+
+		@include from(tablet) {
+			display: block;
+		}
 	}
 
 	.acm-aboutus_titlesection {
@@ -32,7 +37,11 @@
 	}
 
 	.acm-aboutus_textsection {
-		text-align: center;
+		text-align: justify;
+
+		@include from(tablet) {
+			text-align: center;
+		}
 	}
 }
 
@@ -43,8 +52,12 @@
 	flex-wrap: wrap;
 
 	.acm-awards_award {
-		width: 350px;
-		margin: $margin * 3 $margin * 5;
+		margin: 0 $margin;
+
+		@include from(tablet) {
+			width: 350px;
+			margin: $margin * 3 $margin * 5;
+		}
 	}
 
 	.acm-awards_awardpicture {
@@ -68,26 +81,50 @@
 .acm-activities {
 	display: flex;
 	justify-content: center;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
 
 	.acm-activities_activity {
-		margin: $margin * 3 $margin * 5;
-		display: flex;
+		position: relative;
+		padding: $padding;
+
+		@include from(laptop) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas:
+				'a b';
+		}
 	}
 
 	.acm-activities_activitytext {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: $padding;
-		padding-right: $padding * 8;
-		width: 500px;
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		padding: $padding * 3;
+
+		p {
+			display: none;
+
+			@include from(400px) {
+				display: block;
+			}
+		}
+
+		@include from(laptop) {
+			position: static;
+			grid-area: a;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: $padding * 10;
+		}
 	}
 
 	.acm-activities_activityimage {
-		width: 500px;
-		height: 500px;
+		grid-area: b;
 		box-shadow: 0 15px 5px -10px #888;
-		overflow: hidden;
 
 		img {
 			width: 100%;
@@ -95,31 +132,42 @@
 			object-fit: cover;
 		}
 	}
-
-	.acm-activities_activitytext, .acm-activities_activityimage {
-		animation: intro 1s ease-out;
-	}
 }
 
 .acm-projects {
-	display: grid;
-	width: 1200px;
-	height: 600px;
-	grid-gap: 1px;
+	flex-grow: 1;
+	display: flex;
+	width: 100%;
+	max-width: 1200px;
 	margin: 0 auto;
-	grid-template-areas:
-		'a a a a b b b c c c'
-		'a a a a b b b c c c'
-		'a a a a b b b c c c'
-		'a a a a e e e e e e'
-		'd d d d e e e e e e'
-		'd d d d e e e e e e'
-		'd d d d e e e e e e';
+
+	.acm-projectscontent {
+		display: grid;
+		flex-grow: 1;
+		grid-gap: 1px;
+		grid-template-rows: repeat(5, 200px);
+		grid-template-areas:
+			'a'
+			'b'
+			'c'
+			'd'
+			'e';
+
+		@include from(laptop) {
+			grid-template-rows: repeat(7, 1fr);
+			grid-template-areas:
+				'a a a a b b b c c c'
+				'a a a a b b b c c c'
+				'a a a a b b b c c c'
+				'a a a a e e e e e e'
+				'd d d d e e e e e e'
+				'd d d d e e e e e e'
+				'd d d d e e e e e e';
+		}
+	}
 
 	.acm-projects_project {
 		position: relative;
-		width: 100%;
-		height: 100%;
 		transition: all 0.3s ease;
 		border: 0;
 
@@ -143,10 +191,12 @@
 			grid-area: e;
 		}
 
-		&:hover {
-			z-index: 10;
-			transform: scale(1.02);
-			border: 1px solid $gray-9;
+		@include from(tablet) {
+			&:hover {
+				z-index: 10;
+				transform: scale(1.02);
+				border: 1px solid $gray-9;
+			}
 		}
 	}
 
