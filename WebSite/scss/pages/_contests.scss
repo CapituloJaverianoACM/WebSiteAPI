@@ -1,0 +1,126 @@
+.acm-about {
+	align-items: center;
+
+	@include from(laptop) {
+		flex-direction: row;
+	}
+
+	.acm-about_article {
+		padding: $padding;
+
+		@include from(tablet) {
+			padding: $padding * 3;
+		}
+
+		@include from(laptop) {
+			width: 450px;
+			padding: $padding * 3 $padding * 5;
+		}
+
+		@include from(pc) {
+			width: 650px;
+		}
+	}
+
+	.acm-about_title {
+		text-align: center;
+	}
+
+	.acm-about_text {
+		text-align: justify;
+
+		@include from(tablet) {
+			text-align: center;
+		}
+	}
+}
+
+.acm-trains {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	@include from(tablet) {
+		flex-direction: row;
+	}
+
+	.acm-trains_train {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: $padding * 3 $padding * 2;
+
+		@include from(tablet) {
+			padding: $padding * 3  $padding * 5;
+			outline: 1px solid $gray-9;
+		}
+
+		@include from(laptop) {
+			padding: $padding * 5  $padding * 10;
+		}
+	}
+
+	.acm-trains_traintitle {
+		text-align: center;
+	}
+
+	.acm-trains_trainfinfo {
+		text-align: center;
+		color: $gray-8;
+		margin: $margin * 2 0;
+
+		@include from(laptop) {
+			margin: $margin * 4 0;
+		}
+	}
+}
+
+.acm-teams {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	flex-wrap: wrap;
+
+	.acm-teams_team {
+		margin: 0 $margin;
+
+		@include from(tablet) {
+			width: 350px;
+			margin: $margin * 3 $margin * 5;
+		}
+	}
+
+	.acm-teams_teampicture {
+		width: 80%;
+		height: 0;
+		padding-bottom: 80%;
+		position: relative;
+		margin: 0 auto;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		@include from(tablet) {
+			width: 65%;
+			padding-bottom: 65%;
+
+			img {
+				border-radius: 50%;
+			}
+		}
+	}
+
+	.acm-teams_teamtitle {
+		text-align: center;
+	}
+
+	.acm-teams_teammember {
+		text-align: center;
+	}
+}

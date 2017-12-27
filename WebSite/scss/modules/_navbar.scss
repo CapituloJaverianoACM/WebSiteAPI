@@ -39,11 +39,13 @@
 		width: 100%;
 		background: $navbar-background;
 		border-top: 1px solid $navbar-border;
+		border-bottom: 1px solid $navbar-border;
 
 		@include from(950px) {
 			position: static;
 			display: flex !important;
 			border-top: 0;
+			border-bottom: 0;
 		}
 	}
 

@@ -5,7 +5,7 @@ $("body").prognroll({
 
 if(scrollPage) {
 	$.scrollify({
-		section : ".acm-section, .acm-maincover",
+		section : ".acm-full-section, .acm-maincover",
 		interstitialSection : ".footer",
 		easing: "easeOutExpo",
 		scrollSpeed: 600,
@@ -16,7 +16,7 @@ if(scrollPage) {
 	});
 }
 
-$('.acm-awards').owlCarousel({
+$('.acm-awards, .acm-teams').owlCarousel({
 	loop:false,
 	responsive:{
 		0: {

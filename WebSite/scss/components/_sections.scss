@@ -1,10 +1,8 @@
-.acm-section {
-	min-height: 100vh;
+.acm-full-section, .acm-section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding: $padding * 2;
-	padding-top: $padding * 10;
 
 	@include from(tablet) {
 		padding: $padding * 10;
@@ -14,4 +12,9 @@
 		text-align: center;
 		margin-bottom: $margin * 5;
 	}
+}
+
+.acm-full-section {
+	min-height: 100vh;
+	padding-top: $padding * 10;
 }
