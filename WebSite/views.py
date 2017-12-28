@@ -4,7 +4,7 @@ from datetime import datetime, date
 from django.core.mail import EmailMultiAlternatives
 
 def index(request):
-	awards = Award.objects.all()
+	awards = Award.objects.order_by('-date')
 	recentActivities = []
 	orderToFuture = Activity.objects.exclude(date__lt = date.today()).order_by('date')
 	for activity in orderToFuture:
@@ -23,11 +23,11 @@ def index(request):
 			break;
 		ourProjects.append(project)
 	context = {
-			'awards' : awards,
-			'recentActivities' : recentActivities,
-			'ourProjects' : ourProjects
+		'awards' : awards,
+		'recentActivities' : recentActivities,
+		'ourProjects' : ourProjects
 	}
-	return render(request, 'index.html')
+	return render(request, 'index.html', context)
 
 def staff(request):
 	return render(request, 'staff.html')

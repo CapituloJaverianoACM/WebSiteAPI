@@ -1,4 +1,8 @@
 from django.db import models
+from django.contrib import admin
+from django import forms
+from django.core.files.storage import FileSystemStorage
+from .forms import *
 
 class File(models.Model):
     EXT_CHOICES = (
@@ -8,12 +12,28 @@ class File(models.Model):
         ('json', 'JSON'),
         ('ot','Other'),
     )
-    path = models.FilePathField(path="/home")
+    #TODO: Basename is the directory of the file ex: awards/
+    basename = models.CharField(max_length=200, default='')
+    path = models.CharField(max_length=200)
     ext = models.CharField(max_length=10, choices=EXT_CHOICES)
+    def __str__(self):
+        return '%s' % (self.path)
+
+class FileAdmin(admin.ModelAdmin):
+    form = FileAdminForm
+    def save_model(self, request, obj, form, change):
+        fileForm = request.FILES['path']
+        fs = FileSystemStorage()
+        filename = fs.save(obj.basename + fileForm.name, fileForm)
+        uploaded_file_url = fs.url(filename)
+        obj.path = uploaded_file_url
+        super().save_model(request, obj, form, change)
 
 class Award(models.Model):
     date = models.DateField()
     idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+    def __str__(self):
+        return '%s' % (self.idFile.path)
 
 class Contest(models.Model):
     CATEGORY_CHOICES = (

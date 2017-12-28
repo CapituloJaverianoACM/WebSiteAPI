@@ -38,21 +38,13 @@
 		<section class="acm-full-section">
 			<h1 class="sub_title acm-section_title">¿Qué hemos ganado?</h1>
 			<section class="acm-awards owl-carousel owl-theme">
-				<article class="acm-awards_award item"><img class="acm-awards_awardpicture" src="{% static 'images/award_2013.jpg' %}">
+				{% static "" as staticUrl %}
+				{% for award in awards %}
+				<article class="acm-awards_award item"><img class="acm-awards_awardpicture" src="{{staticUrl}}{{award}}">
 					<h4 class="acm-awards_awardtitle">Actividades destacadas</h4>
-					<p class="acm-awards_awardyear">2013</p>
+					<p class="acm-awards_awardyear">{{award.date|date:"Y"}}</p>
 					<p class="acm-awards_awarddescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.</p>
-				</article>
-				<article class="acm-awards_award item"><img class="acm-awards_awardpicture" src="{% static 'images/award_2015.jpg' %}">
-					<h4 class="acm-awards_awardtitle">Pagina Web destacada</h4>
-					<p class="acm-awards_awardyear">2015</p>
-					<p class="acm-awards_awarddescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.</p>
-				</article>
-				<article class="acm-awards_award item"><img class="acm-awards_awardpicture" src="{% static 'images/award_2016.jpeg' %}">
-					<h4 class="acm-awards_awardtitle">Actividades destacadas</h4>
-					<p class="acm-awards_awardyear">2016</p>
-					<p class="acm-awards_awarddescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.</p>
-				</article>
+				</article>{% endfor %}
 			</section>
 		</section>
 		<section class="acm-full-section">

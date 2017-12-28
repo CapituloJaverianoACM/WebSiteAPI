@@ -124,6 +124,10 @@ STATIC_URL = '/static/'
 #Adding DigitalOcean
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
+#Archivos multimedia.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'WebSite/static/media')
+MEDIA_URL = '/media/'
+
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
