@@ -1,8 +1,8 @@
 {
 	"pug": {
-		"src": "./WebSite/pug/pages/**/*.pug",
+		"src": "./WebSite/dev/pug/pages/**/*.pug",
 		"dest": "./WebSite/templates",
-		"watch": "./WebSite/pug/**/*.pug",
+		"watch": "./WebSite/dev/pug/**/*.pug",
 		"plugin": {
 			"pretty": "\t",
 			"locals": {}
@@ -16,9 +16,9 @@
 		}
 	},
 	"sass": {
-		"src": "./WebSite/scss/styles.scss",
+		"src": "./WebSite/dev/scss/styles.scss",
 		"dest": "./WebSite/static/css",
-		"watch": "./WebSite/scss/**/*.scss",
+		"watch": "./WebSite/dev/scss/**/*.scss",
 		"plugin": {
 			"outputStyle": "compressed",
 			"sourceComments": false
@@ -29,7 +29,7 @@
 		}
 	},
 	"todo": {
-		"src": ["./WebSite/pug/**/*.pug", "./WebSite/scss/**/*.scss", "./WebSite/js/**/*.js"],
+		"src": ["./WebSite/dev/**/*.*"],
 		"dest": "./",
 		"plugin": {
 			"fileName": "todo.json",

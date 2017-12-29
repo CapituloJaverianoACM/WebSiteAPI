@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var pug = require('gulp-pug');
 var rename = require("gulp-rename");

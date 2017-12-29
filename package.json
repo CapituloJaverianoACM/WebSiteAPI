@@ -2,14 +2,11 @@
   "name": "acmwebsite",
   "version": "1.0.0",
   "description": "Website for Javeriana's ACM chapter",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "gulp"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git"
-  },
+  "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [
     "pyhton",
     "django",
@@ -34,5 +31,6 @@
     "gulp-sourcemaps": "^2.6.1",
     "gulp-todo": "^5.4.0",
     "gulp-util": "^3.0.8"
-  }
+  },
+  "private": false
 }
