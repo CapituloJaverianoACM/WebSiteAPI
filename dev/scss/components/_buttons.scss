@@ -4,11 +4,16 @@
 	border: 1px solid;
 	outline: 0;
 	border-radius: $border-radius;
-	box-shadow: 0 1px 5px;
+	box-shadow: 0 1px 0;
 
 	&:active {
 		box-shadow: 0 0 0;
+		transform: translatey(1px);
 	}
+}
+
+.thin {
+	padding: $padding / 2 $padding;
 }
 
 @each $state, $color in $color-states {

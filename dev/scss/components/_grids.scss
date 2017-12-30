@@ -1,0 +1,18 @@
+.acm-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-gap: $gutter * 5;
+	padding: $padding * 5;
+
+	@include from(tablet) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include from(pc) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include from(large) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
