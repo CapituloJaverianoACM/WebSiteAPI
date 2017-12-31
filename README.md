@@ -10,6 +10,8 @@ WebSite 2.0 for ACM develop by the Javerian Chapter
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
+
+#### Python
 You must have installed python3 on your pc, to install it on Windows you can download python from their [webpage](https://www.python.org/downloads/), or, if you are in Linux, probably you have it already.
 
 ```shell
@@ -22,6 +24,8 @@ If you haven't python installed you can install it
 ```shell
 $ sudo apt install python3.6
 ```
+
+#### Node (npm)
 
 Furthermore you must have node.js on your computer, you can download it from their [webpage](https://nodejs.org/en/download/), and you can install it in [different architectures](https://nodejs.org/es/download/package-manager/).
 
