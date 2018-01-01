@@ -7,7 +7,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var todo = require('gulp-todo');
-var notify = require("gulp-notify");
+var browserSync = require('browser-sync');
 var config = require('./gulpfile_config.json');
 
 gulp.task('pug', () => {
@@ -15,7 +15,6 @@ gulp.task('pug', () => {
 	.pipe(pug(config.pug.plugin))
 	.pipe(rename(config.pug.rename))
 	.pipe(gulp.dest(config.pug.dest))
-	.pipe(notify("PUG: <%= file.relative %>!"));
 });
 
 gulp.task('styles', () => {
@@ -23,7 +22,6 @@ gulp.task('styles', () => {
 	.pipe(sourcemaps.init())
 		.pipe(sass(config.sass.plugin).on('error', sass.logError))
 		.pipe(autoprefixer(config.sass.autoprefixer))
-		.pipe(notify("SASS: <%= file.relative %>"))
 	.pipe(sourcemaps.write(''))
 	.pipe(gulp.dest(config.sass.dest));
 });
@@ -36,8 +34,14 @@ gulp.task('todo', () => {
 
 gulp.task('build', ['pug', 'styles']);
 
+gulp.task('reload', (done) => {
+	browserSync.reload();
+	done();
+});
+
 // The default task (called when you run `gulp` from cli)
 gulp.task('default', ['build'], () => {
-	gulp.watch(config.pug.watch, ['pug']);
-	gulp.watch(config.sass.watch, ['styles']);
+	browserSync.init(config.server);
+	gulp.watch(config.pug.watch, ['pug', 'reload']);
+	gulp.watch(config.sass.watch, ['styles', 'reload']);
 });

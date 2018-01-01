@@ -47,7 +47,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -56,7 +56,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -65,7 +65,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -74,7 +74,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -83,7 +83,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -92,7 +92,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -101,7 +101,7 @@
 					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</section>
 				<section class="acm-card_bottom">
-					<h5 class="acm-card_title">Taller de pensamiento algorítmico</h5>
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
 					<button class="btn btn_active thin">Abrir</button>
 				</section>
 			</article>
@@ -132,10 +132,10 @@
 				</section>
 				<section class="footer_section">
 					<h6 class="footer_section_title">¿Preguntas o comentarios? ¡Contactanos!</h6>
-					<form class="contact-form">
-						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia"></textarea>
+					<form class="contact-form" method="post" action="contactUs/">{% csrf_token %}
+						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required></textarea>
 						<section class="contact-form_section">
-							<input class="contact-form_email" type="email" placeholder="Correo">
+							<input class="contact-form_email" type="email" placeholder="Correo" name="email" required>
 							<button class="btn btn_active contact-form_submit">Enviar</button>
 						</section>
 					</form>

@@ -37,11 +37,12 @@ footer.footer
 				span Juan Manuel Sánchez Lozano
 		section.footer_section
 			h6.footer_section_title ¿Preguntas o comentarios? ¡Contactanos!
-			form.contact-form
-				textarea(rows="3" placeholder="Tu mensaje, comentario ó sugerencia").contact-form_message
+			form(method='post' action='contactUs/').contact-form
+				| {% csrf_token %}
+				textarea(rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required).contact-form_message
 				section.contact-form_section
-					input(type="email" placeholder="Correo").contact-form_email
+					input(type="email" placeholder="Correo" name="email" required).contact-form_email
 					button.btn.btn_active.contact-form_submit Enviar
-		
+
 	section.copyright_section
 		.copyright= name + ' | Copyright © ' + year + ' - Todos los derechos reservados a sus respectivos dueños'

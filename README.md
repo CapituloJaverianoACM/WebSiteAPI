@@ -55,7 +55,7 @@ $ npm --version
 	On windows
 	
 	```shell
-	$ "./myvenv/Scripts/activate"
+	$ .\myvenv\Scripts\activate
 	```
 
 	On Linux or Mac

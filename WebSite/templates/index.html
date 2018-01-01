@@ -34,7 +34,7 @@
 					<p class="acm-aboutus_textsection">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
 				</article>
 			</section>
-		</section>
+		</section>{% if awards.count != 0 %}
 		<section class="acm-full-section">
 			<h1 class="sub_title acm-section_title">¿Qué hemos ganado?</h1>
 			<section class="acm-awards owl-carousel owl-theme">
@@ -46,7 +46,7 @@
 					<p class="acm-awards_awarddescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.</p>
 				</article>{% endfor %}
 			</section>
-		</section>
+		</section>{% endif %}
 		<section class="acm-full-section">
 			<h1 class="sub_title acm-section_title">Actividades del capítulo</h1>
 			<section class="acm-activities owl-carousel owl-theme">
@@ -121,10 +121,10 @@
 				</section>
 				<section class="footer_section">
 					<h6 class="footer_section_title">¿Preguntas o comentarios? ¡Contactanos!</h6>
-					<form class="contact-form">
-						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia"></textarea>
+					<form class="contact-form" method="post" action="contactUs/">{% csrf_token %}
+						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required></textarea>
 						<section class="contact-form_section">
-							<input class="contact-form_email" type="email" placeholder="Correo">
+							<input class="contact-form_email" type="email" placeholder="Correo" name="email" required>
 							<button class="btn btn_active contact-form_submit">Enviar</button>
 						</section>
 					</form>

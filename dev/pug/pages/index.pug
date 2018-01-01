@@ -18,6 +18,7 @@ block main
 				img(src="{% static 'images/icon_blue.svg'%}").acm-aboutus_picturesection
 				h2.sub_title.acm-aboutus_titlesection ¿Qué es el capítulo?
 				p.acm-aboutus_textsection Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+	| {% if awards.count != 0 %}
 	section.acm-full-section
 		h1.sub_title.acm-section_title ¿Qué hemos ganado?
 		section.acm-awards.owl-carousel.owl-theme
@@ -29,6 +30,7 @@ block main
 				p.acm-awards_awardyear {{award.date|date:"Y"}}
 				p.acm-awards_awarddescription Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit.
 			| {% endfor %}
+	| {% endif %}
 	section.acm-full-section
 		h1.sub_title.acm-section_title Actividades del capítulo
 		section.acm-activities.owl-carousel.owl-theme

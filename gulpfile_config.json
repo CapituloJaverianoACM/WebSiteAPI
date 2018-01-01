@@ -1,4 +1,7 @@
 {
+	"server": {
+		"proxy": "http://localhost:8000/"
+	},
 	"pug": {
 		"src": "./dev/pug/pages/**/*.pug",
 		"dest": "./WebSite/templates",

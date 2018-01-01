@@ -115,10 +115,10 @@
 				</section>
 				<section class="footer_section">
 					<h6 class="footer_section_title">¿Preguntas o comentarios? ¡Contactanos!</h6>
-					<form class="contact-form">
-						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia"></textarea>
+					<form class="contact-form" method="post" action="contactUs/">{% csrf_token %}
+						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required></textarea>
 						<section class="contact-form_section">
-							<input class="contact-form_email" type="email" placeholder="Correo">
+							<input class="contact-form_email" type="email" placeholder="Correo" name="email" required>
 							<button class="btn btn_active contact-form_submit">Enviar</button>
 						</section>
 					</form>
