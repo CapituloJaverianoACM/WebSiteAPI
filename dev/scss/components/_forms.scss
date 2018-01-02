@@ -2,12 +2,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
+	flex-wrap: wrap;
 	padding: $padding * 3 $padding;
 	padding-bottom: $padding;
 
 	@include from(laptop) {
-		flex-direction: row;
+		flex-wrap: nowrap;
 	}
 
 	input[type='text'] {
@@ -23,7 +23,12 @@
 		display: grid;
 		grid-gap: $margin;
 		grid-auto-flow: column;
-		padding: 0 $padding;
+		padding: $padding;
+		margin: $margin 0;
+
+		@include from(laptop) {
+			margin: 0;
+		}
 	}
 
 	.acm-form_choise {

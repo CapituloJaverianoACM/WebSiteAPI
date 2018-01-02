@@ -1,0 +1,66 @@
+.acm-staff {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.acm-staff_member {
+		display: flex;
+		align-items: center;
+		margin: 0 $margin * 10;
+
+		&::after {
+			content: '\f111';
+			font-family: 'fontawesome';
+			margin: 0 $margin * 4;
+			align-self: stretch;
+			display: flex;
+			align-items: center;
+			font-size: 1.4rem;
+			$bar: 10%;
+			background: linear-gradient(90deg, transparent 50% - $bar, $primary-color 50% - $bar, $primary-color 50% + $bar, transparent 50% + $bar);
+			color: $primary-color;
+		}
+	}
+
+	.acm-staff_imagesection {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: $padding * 3 0;
+		width: 200px;
+	}
+
+	.acm-staff_image {
+		display: block;
+		width: 180px;
+		height: 180px;
+		object-fit: cover;
+		border-radius: 50%;
+		border: 5px solid $primary-color;
+	}
+
+	.acm-staff_name {
+		text-align: center;
+	}
+
+	.acm-staff_infosection {
+		display: none;
+		border: 4px solid $primary-color;
+		order: 1;
+		padding: $padding * 2;
+		border-radius: $border-radius;
+		max-width: 800px;
+
+		@include from(tablet) {
+			display: block;
+		}
+	}
+
+	.acm-staff_rol {
+
+	}
+
+	.acm-staff_description {
+
+	}
+}

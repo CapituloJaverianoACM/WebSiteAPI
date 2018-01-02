@@ -23,7 +23,9 @@
 	}
 
 	.acm-about_title {
-		text-align: center;
+		@include from(500px) {
+			text-align: center;
+		}
 	}
 
 	.acm-about_text {
@@ -57,6 +59,14 @@
 
 		@include from(laptop) {
 			padding: $padding * 5  $padding * 10;
+		}
+
+		&:first-child {
+			border-bottom: 1px solid $gray-9;
+
+			@include from(tablet) {
+				border-bottom: 0;
+			}
 		}
 	}
 

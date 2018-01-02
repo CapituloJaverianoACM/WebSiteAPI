@@ -31,6 +31,11 @@
 			"cascade": false
 		}
 	},
+	"scripts": {
+		"src": "./dev/js/**/*.js",
+		"dest": "./WebSite/static/js",
+		"watch": "./dev/js/**/*.js"
+	},
 	"todo": {
 		"src": ["./dev/**/*.*"],
 		"dest": "./",

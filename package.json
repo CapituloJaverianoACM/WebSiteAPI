@@ -4,7 +4,10 @@
   "description": "Website for Javeriana's ACM chapter",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "gulp"
+    "start": "python manage.py runserver",
+    "dev": "gulp",
+    "requirements": "pip install -U -r ./requirements.txt && yarn",
+    "migrate": "python manage.py migrate"
   },
   "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [
@@ -25,6 +28,7 @@
     "browser-sync": "^2.23.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",

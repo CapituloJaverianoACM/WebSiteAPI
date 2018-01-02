@@ -8,6 +8,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var todo = require('gulp-todo');
 var browserSync = require('browser-sync');
+var concat = require('gulp-concat');
 var config = require('./gulpfile_config.json');
 
 gulp.task('pug', () => {
@@ -26,13 +27,19 @@ gulp.task('styles', () => {
 	.pipe(gulp.dest(config.sass.dest));
 });
 
+gulp.task('scripts', () => {
+	return gulp.src(config.scripts.src)
+	.pipe(concat('scripts.js'))
+	.pipe(gulp.dest(config.scripts.dest));
+});
+
 gulp.task('todo', () => {
 	gulp.src(config.todo.src)
 	.pipe(todo(config.todo.plugin))
 	.pipe(gulp.dest(config.todo.dest));
 });
 
-gulp.task('build', ['pug', 'styles']);
+gulp.task('build', ['pug', 'styles', 'scripts']);
 
 gulp.task('reload', (done) => {
 	browserSync.reload();
@@ -44,4 +51,5 @@ gulp.task('default', ['build'], () => {
 	browserSync.init(config.server);
 	gulp.watch(config.pug.watch, ['pug', 'reload']);
 	gulp.watch(config.sass.watch, ['styles', 'reload']);
+	gulp.watch(config.scripts.watch, ['scripts', 'reload']);
 });
