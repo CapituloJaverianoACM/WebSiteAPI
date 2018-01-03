@@ -35,7 +35,7 @@ $ npm --version
 3.10.10
 ```
 
-When you have installed `npm`, install gulp and yarn
+When you have installed `npm`, install `gulp` and `yarn`
 ```shell
 $ npm install -g gulp yarn
 ```
