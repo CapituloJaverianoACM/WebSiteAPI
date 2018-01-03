@@ -106,5 +106,13 @@ $ yarn -version
 	
 	After starting your local server you can test the webpage on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
+1. Compile frontend frameworks to generate the static content
+	
+	To generate the `static`, and `templates` folders you only need tu start `gulp`, it render the pages and open the page in a browser
+	
+	```shell
+	$ gulp
+	```
+
 ## Licence
 This project is licensed under the GNU License - see the [LICENSE.md](https://github.com/CapituloJaverianoACM/ACMWebSite/blob/master/LICENSE) file for details
