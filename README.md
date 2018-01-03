@@ -35,6 +35,20 @@ $ npm --version
 3.10.10
 ```
 
+When you have installed `npm`, install gulp and yarn
+```shell
+$ npm install -g gulp yarn
+```
+
+After install the packagues, check it in your system
+```shell
+$ gulp -version
+CLI version 3.9.1
+
+$ yarn -version
+1.3.2
+```
+
 ### Installing
 1. Clone this repository, or download the zip project to your pc
 
@@ -72,41 +86,22 @@ $ npm --version
 
 1. Install the requirements
 
-	Install the python packages described in the `requirements.txt`
+	Install the python packages described in the `requirements.txt`, and node packages described in the `package.json`
 	
 	```shell
-	$ pip install -U -r ./requirements.txt
-	```
-
-1. Install the node packages described in the `package.json`
-
-	```shell
-	$ npm install
-	```
-	
-	or
-	
-	```shell
-	$ yarn install
+	$ npm run requirements
 	```
 
 1. Migrate the database
 
 	```shell
-	$ python ./manage.py migrate
+	$ npm run migrate
 	```
 
 1. Running the server
 	
 	```shell
-	$ python ./manage.py runserver
-	Performing system checks...
-
-	System check identified no issues (0 silenced).
-	December 31, 2017 - 13:56:07
-	Django version 1.11, using settings 'ACMWebSite.settings'
-	Starting development server at http://127.0.0.1:8000/
-	Quit the server with CTRL-BREAK.
+	$ npm start
 	```
 	
 	After starting your local server you can test the webpage on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
