@@ -108,10 +108,10 @@ $ yarn -version
 
 1. Compile frontend frameworks to generate the static content
 	
-	To generate the `static`, and `templates` folders you only need tu start `gulp`, it render the pages and open the page in a browser
+	To generate the `static`, and `templates` folders you only need to start the development mode of project, it render the pages and open the page in a browser
 	
 	```shell
-	$ gulp
+	$ npm run dev
 	```
 
 ## Licence
