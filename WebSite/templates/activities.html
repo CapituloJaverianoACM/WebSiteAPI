@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Capítulo Javeriano ACM</title>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<navbar class="acm-navbar"><img class="acm-navbar_logo" src="{% static 'images/icon_blue.svg'%}">
+			<ul class="acm-navbar_menu" id="acm-navbar">
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/">Home</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/staff">Staff</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/maratones">Maratones</a></li>
+				<li class="acm-navbar_menuitem acm-navbar__current"><a class="acm-navbar_link" href="/actividades">Actividades</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/proyectos">Proyectos</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/tutoriales">Tutoriales</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/unete">¡Únete!</a></li>
+			</ul><span class="acm-navbar_trigger acm acm-bars" id="navbarTrigger" target="#acm-navbar"></span>
+		</navbar>
+		<section class="acm-cover">
+			<h1 class="title">Actividades y eventos</h1>
+		</section>
+		<form class="acm-inlineform">
+			<input type="text" name="activity" id="activity">
+			<section class="acm-form_inlineChoices">
+				<article class="acm-form_choise">
+					<input type="radio" name="type" value="all" checked id="all">
+					<label for="all">Todos</label>
+				</article>
+				<article class="acm-form_choise">
+					<input type="radio" name="type" value="unfinished" id="unfinished">
+					<label for="unfinished">Sin finalizar</label>
+				</article>
+				<article class="acm-form_choise">
+					<input type="radio" name="type" value="finisehd" id="finisehd">
+					<label for="finisehd">Finalizados</label>
+				</article>
+			</section>
+			<button class="btn btn_active">Buscar</button>
+		</form>
+		<section class="acm-grid">
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+			<article class="acm-card">
+				<section class="acm-card_top"><img class="acm-card_image" src="http://placehold.it/350x250">
+					<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+				</section>
+				<section class="acm-card_bottom">
+					<h6 class="acm-card_title">Taller de pensamiento algorítmico</h6>
+					<button class="btn btn_active thin">Abrir</button>
+				</section>
+			</article>
+		</section>
+		<footer class="footer">
+			<div class="footer_content">
+				<section class="footer_section footer_subcontent align-center"><img class="footer_logo" src="{% static 'images/javeriana_icon.png' %}">
+					<section>
+						<p>Pontificia Universidad Javeriana</p>
+						<p>Bogotá D.C - Colombia</p>
+						<p>Carrera 7 No. 40 - 62</p>
+						<p>(57 1) 3208320</p>
+					</section>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">Redes sociales</h6>
+					<p><a href="https://www.facebook.com/acmjaveriana/" target="_blank"><span class="acm acm-facebook footer_icon"></span><span>ACMJaveriana</span></a></p>
+					<p><a href="https://twitter.com/ACMJaveriana" target="_blank"><span class="acm acm-twitter footer_icon"></span><span>ACMJaveriana</span></a></p>
+					<p><a href="https://www.youtube.com/channel/UC3PymX73H7qF6-VJS-wuyJA" target="_blank"><span class="acm acm-youtube footer_icon"></span><span>Capítulo Javeriano ACM</span></a></p>
+					<p><a href="https://github.com/CapituloJaverianoACM" target="_blank"><span class="acm acm-github footer_icon"></span><span>CapituloJaverianoACM</span></a></p>
+					<p><a mailto="acm@javeriana.edu.co" target="_blank"><span class="acm acm-envelope footer_icon"></span><span>acm@javeriana.edu.co</span></a></p>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">Desarrolladores encargados</h6>
+					<p><a href="https://github.com/johan-smc" target="_blank"><span class="acm acm-user footer_icon"></span><span>Johan Sebastian Murillo Castillo</span></a></p>
+					<p><a href="https://github.com/JuanPabloRN30" target="_blank"><span class="acm acm-user footer_icon"></span><span>Juan Pablo Rodriguez Navarro</span></a></p>
+					<p><a href="https://github.com/juanmsl" target="_blank"><span class="acm acm-user footer_icon"></span><span>Juan Manuel Sánchez Lozano</span></a></p>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">¿Preguntas o comentarios? ¡Contactanos!</h6>
+					<form class="contact-form" method="post" action="contactUs/">{% csrf_token %}
+						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required></textarea>
+						<section class="contact-form_section">
+							<input class="contact-form_email" type="email" placeholder="Correo" name="email" required>
+							<button class="btn btn_active contact-form_submit">Enviar</button>
+						</section>
+					</form>
+				</section>
+			</div>
+			<section class="copyright_section">
+				<div class="copyright">ACM Website | Copyright © 2018 - Todos los derechos reservados a sus respectivos dueños</div>
+			</section>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="https://cdn.rawgit.com/lukehaas/Scrollify/a6557d52/jquery.scrollify.js"></script>
+		<script src="https://cdn.rawgit.com/mburakerman/prognroll/master/src/prognroll.js"></script>
+		<script>var scrollPage = false;</script>
+		<script src="{% static 'js/scripts.js' %}"></script>
+	</body>
+</html>

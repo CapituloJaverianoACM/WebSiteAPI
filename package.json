@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python manage.py runserver",
     "dev": "gulp",
-    "requirements": "pip install -U -r ./requirements.txt && yarn",
+    "requirements": "pip install -U -r ./requirements.txt && yarn --prod=false",
     "migrate": "python manage.py migrate"
   },
   "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
