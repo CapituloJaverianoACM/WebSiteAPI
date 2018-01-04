@@ -13,6 +13,7 @@
 	input[type='text'] {
 		padding: $padding;
 		transition: all 0.3s ease-out;
+		margin-right: $margin;
 
 		&:focus {
 			flex-grow: 0.5;
@@ -24,6 +25,7 @@
 		grid-gap: $margin;
 		grid-auto-flow: column;
 		padding: $padding;
+		padding-left: 0;
 		margin: $margin 0;
 
 		@include from(laptop) {
@@ -45,6 +47,7 @@
 			width: 100%;
 			height: 100%;
 			opacity: 0;
+			cursor: pointer;
 
 			&:checked ~ label {
 				background: $form-choise-checked-background;
