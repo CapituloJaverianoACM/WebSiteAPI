@@ -27,8 +27,8 @@ $icon-prefix: acm;
 $z-index: (
 	back: -100,
 	tooltip: 100,
-	modal: 200,
-	navbar: 500
+	navbar: 500,
+	modal: 1000
 );
 
 $breakpoints: (

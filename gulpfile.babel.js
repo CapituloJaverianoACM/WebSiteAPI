@@ -91,6 +91,6 @@ gulp.task('watch',() => {
 	gulp.watch(path.join(DEV_DIR, scripts.watch), ['build:scripts', 'reload']).on('change', onChange );
 });
 
-gulp.task('default', ['build', 'watch'], () => {
+gulp.task('default', ['clean:build', 'watch'], () => {
 	server.init(config.server);
 });

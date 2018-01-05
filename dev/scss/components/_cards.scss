@@ -4,6 +4,8 @@
 	height: 0;
 	padding-bottom: 80%;
 	box-shadow: 0 2px 5px $card-border;
+	flex-grow: 1;
+	margin: $margin * 2;
 
 	.acm-card_title {
 		background: $primary-color;
@@ -61,12 +63,16 @@
 		padding: $padding * 2;
 		padding-top: $padding * 8;
 		padding-bottom: $padding * 6;
-		display: flex;
 		align-items: center;
 		opacity: 0;
 		transition: all 0.5s ease;
 		margin: 0;
 		text-align: justify;
+		display: none;
+
+		@include from(tablet) {
+			display: flex;
+		}
 	}
 
 	&:hover {

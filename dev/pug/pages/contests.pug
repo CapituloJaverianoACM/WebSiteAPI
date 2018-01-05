@@ -22,14 +22,14 @@ block main
 					p Sabados
 					p 9:00 am  - 1:00 pm
 					p Sala bases de datos
-				button.btn.btn_active Ver temas
+				button(target="#modal-juniors").btn.btn_active.acm-modal_trigger Ver temas
 			article.acm-trains_train
 				h4.acm-trains_traintitle Seniors
 				section.acm-trains_trainfinfo
 					p Sabados
 					p 1:00 pm  - 6:00 pm
 					p Sala bases de datos
-				button.btn.btn_active Ver temas
+				button(target="#modal-seniors").btn.btn_active.acm-modal_trigger Ver temas
 	section.acm-section
 		h1.sub_title.acm-section_title Equipos maratonistas
 		section.acm-teams.owl-carousel.owl-theme
@@ -61,3 +61,19 @@ block main
 				p.acm-teams_teammember Miembro 1
 				p.acm-teams_teammember Miembro 2
 				p.acm-teams_teammember Miembro 3
+	section.acm-modal.acm-modal_carousel#modal-juniors
+		span(target="#modal-juniors").acm.acm-times.acm-modal_close
+		section.acm-modal_content.owl-carousel.owl-theme
+			-for(var i=0; i < 10; i++)
+				section.acm-card
+					h6.acm-card_title Juniors
+					img(src="http://placehold.it/350x250").acm-card_image
+					p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+	section.acm-modal.acm-modal_carousel#modal-seniors
+		span(target="#modal-seniors").acm.acm-times.acm-modal_close
+		section.acm-modal_content.owl-carousel.owl-theme
+			-for(var i=0; i < 10; i++)
+				section.acm-card
+					h6.acm-card_title Seniors
+					img(src="http://placehold.it/350x250").acm-card_image
+					p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.

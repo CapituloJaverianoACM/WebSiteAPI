@@ -27,17 +27,35 @@ $('#navbarTrigger').on('click', function() {
 	$(nav).slideToggle();
 });
 
-$('.acm-awards, .acm-teams').owlCarousel({
-	loop:false,
+$('.acm-modal').hide();
+
+$('.acm-modal_close').on('click', function() {
+	var target = $(this).attr('target');
+	$(target).fadeOut();
+});
+
+$('.acm-modal_trigger').on('click', function() {
+	var target = $(this).attr('target');
+	$(target).fadeIn();
+});
+
+$('.acm-awards, .acm-teams, .acm-modal_carousel .acm-modal_content').owlCarousel({
+	loop: true,
 	responsive:{
 		0: {
 			items: 1
 		},
-		900: {
+		600: {
 			items: 2
 		},
-		1200: {
+		1000: {
 			items: 3
+		},
+		1200: {
+			items: 4
+		},
+		1500: {
+			items: 5
 		}
 	}
 })
