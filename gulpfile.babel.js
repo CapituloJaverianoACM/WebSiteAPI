@@ -12,6 +12,11 @@ import autoprefixer from 'gulp-autoprefixer';
 import pug from 'gulp-pug';
 import browserSync from 'browser-sync';
 import todo from 'gulp-todo';
+import babelify from 'babelify';
+import browserify from 'browserify';
+import buffer from 'vinyl-buffer';
+import source from 'vinyl-source-stream';
+import uglify from 'gulp-uglify';
 
 import {config, onChange} from './gulpfile.config';
 
@@ -42,8 +47,17 @@ gulp.task('build:html', () => {
 });
 
 gulp.task('build:scripts', () => {
-	gulp.src(path.join(DEV_DIR, scripts.src))
-	.pipe(concat('scripts.js'))
+	browserify({
+		entries: path.join(DEV_DIR, scripts.index),
+		debug: true
+	})
+	.transform(babelify)
+	.bundle().on('error', (err) => { console.error(err) })
+	.pipe(source('scripts.js'))
+	.pipe(buffer())
+	.pipe(sourcemaps.init({ loadMaps: true }))
+	//.pipe(uglify()) // Use any gulp plugins you want now
+	.pipe(sourcemaps.write(''))
 	.pipe(gulp.dest(path.join(BUILD_DIR, scripts.dest)));
 });
 

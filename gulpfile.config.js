@@ -32,7 +32,8 @@ const config = {
 	"scripts": {
 		"src": "js/**/*.js",
 		"dest": "js",
-		"watch": "js/**/*.js"
+		"watch": "js/**/*.js",
+		"index": "js/index.js"
 	},
 	"fonts": {
 		"src": "fonts/**/*",
