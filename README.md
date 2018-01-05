@@ -1,29 +1,35 @@
 # ACMWebSite
 WebSite 2.0 for ACM develop by the Javerian Chapter
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [ACMWebSite](#acmwebsite)
-	- [Contributors](#contributors)
-	- [Getting Started](#getting-started)
-		- [Prerequisites](#prerequisites)
-			- [Python](#python)
-			- [Node (npm)](#node-npm)
-		- [Installing](#installing)
-	- [Licence](#licence)
+- [Contributors](#contributors)
+- [Prerequisites](#prerequisites)
+	- [Python](#python)
+	- [Node (npm)](#node-npm)
+- [Installing](#installing)
+	- [Clone the repository](#clone-the-repository)
+	- [Create a virtual environment (This step is optional)](#create-a-virtual-environment-this-step-is-optional)
+		- [Creating the virtual environment](#creating-the-virtual-environment)
+		- [Activating the virtual environment](#activating-the-virtual-environment)
+	- [Install the requirements](#install-the-requirements)
+	- [Migrate the database](#migrate-the-database)
+- [Running the project](#running-the-project)
+	- [1. Running django server](#1-running-django-server)
+	- [2. Compile frontend frameworks to generate the static content](#2-compile-frontend-frameworks-to-generate-the-static-content)
+- [Licence](#licence)
 
-<!-- /TOC -->
 ## Contributors
-- Backend - [Johan Sebastian Murillo Castillo](https://github.com/johan-smc)
-- Backend - [Juan Pablo Rodriguez Navarro](https://github.com/JuanPabloRN30)
-- Frontend - [Juan Manuel Sánchez Lozano](https://github.com/juanmsl)
+| Name                             | GitHub                                            | Rol                |
+| -------------------------------- | ------------------------------------------------- | ------------------ |
+| Johan Sebastian Murillo Castillo | [johan-smc](https://github.com/johan-smc)         | Backend developer  |
+| Juan Pablo Rodriguez Navarro     | [JuanPabloRN30](https://github.com/JuanPabloRN30) | Backend developer  |
+| Juan Manuel Sánchez Lozano       | [juanmsl](https://github.com/juanmsl)             | Frontend developer |
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+## Prerequisites
 
-#### Python
+### Python
 You must have installed python3 on your pc, to install it on Windows you can download python from their [webpage](https://www.python.org/downloads/), or, if you are in Linux, probably you have it already.
+
 
 ```shell
 $ python3 --version
@@ -36,11 +42,11 @@ If you haven't python installed you can install it
 $ sudo apt install python3.6
 ```
 
-#### Node (npm)
+### Node (npm)
 
 Furthermore you must have node.js on your computer, you can download it from their [webpage](https://nodejs.org/en/download/), and you can install it in [different architectures](https://nodejs.org/es/download/package-manager/).
 
-When you have installed node you can check your version
+> When you have installed node you can check your version
 ```shell
 $ npm --version
 3.10.10
@@ -51,79 +57,79 @@ When you have installed `npm`, install `gulp` and `yarn`
 $ npm install -g gulp yarn
 ```
 
-After install the packagues, check it in your system
+> After install the packages, check it in your system
 ```shell
 $ gulp -version
 CLI version 3.9.1
-
 $ yarn -version
 1.3.2
 ```
 
-### Installing
-1. Clone this repository, or download the zip project to your pc
+## Installing
+### Clone the repository
 
-	```shell
-	$ git clone https://github.com/CapituloJaverianoACM/ACMWebSite.git
-	```
-1. Create a virtual environment if you want
+```shell
+$ git clone https://github.com/CapituloJaverianoACM/ACMWebSite.git
+```
 
-	#### Creating the virtual environment
-	We gonna use `myvenv` as the name of the virtual environment, but you can use the name that you prefer.
-	
-	```shell
-	$ python3 -m venv myvenv
-	```
-	
-	#### Activating the virtual environment
-	
-	On windows
-	
-	```shell
-	$ .\myvenv\Scripts\activate
-	```
+### Create a virtual environment (This step is optional)
 
-	On Linux or Mac
-	
-	```shell
-	$ source ./myvenv/bin/activate
-	```
+#### Creating the virtual environment
 
-	After activate your virtual environment your command line prompt should look like this
-	
-	```shell
-	(myvenv) $
-	```
+We gonna use `myvenv` as the name of the virtual environment, but you can use the name that you prefer.
 
-1. Install the requirements
+```shell
+$ python3 -m venv myvenv
+```
 
-	Install the python packages described in the `requirements.txt`, and node packages described in the `package.json`
-	
-	```shell
-	$ npm run requirements
-	```
+#### Activating the virtual environment
 
-1. Migrate the database
+```shell
+# On windows
+$ .\myvenv\Scripts\activate
 
-	```shell
-	$ npm run migrate
-	```
+# On Linux or Mac
+$ source ./myvenv/bin/activate
+```
 
-1. Running the server
-	
-	```shell
-	$ npm start
-	```
-	
-	After starting your local server you can test the webpage on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+> After activate your virtual environment your command line prompt should look like this
 
-1. Compile frontend frameworks to generate the static content
+```shell
+(myvenv) $
+```
+
+### Install the requirements
+
+Install the python packages described in the `requirements.txt`, and node packages described in the `package.json`
+
+```shell
+$ npm run requirements
+```
+
+### Migrate the database
+
+```shell
+$ npm run migrate
+```
+
+## Running the project
+### 1. Running django server
+
+```shell
+$ npm start
+```
+
+> After starting your local server you can test the webpage on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+### 2. Compile frontend frameworks to generate the static content
 	
-	To generate the `static`, and `templates` folders you only need to start the development mode of project, it render the pages and open the page in a browser
-	
-	```shell
-	$ npm run dev
-	```
+To generate the `static`, and `templates` folders you only need to start the development mode of project, it render the pages and open the page in a browser
+
+```shell
+$ npm run dev
+```
+
+> It generate a proxy to django server, to enable the live reload, and open the project on [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
 
 ## Licence
 This project is licensed under the GNU License - see the [LICENSE.md](https://github.com/CapituloJaverianoACM/ACMWebSite/blob/master/LICENSE) file for details
