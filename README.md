@@ -8,8 +8,6 @@ WebSite 2.0 for ACM develop by the Javerian Chapter
 - [Installing](#installing)
 	- [Clone the repository](#clone-the-repository)
 	- [Create a virtual environment (This step is optional)](#create-a-virtual-environment-this-step-is-optional)
-		- [Creating the virtual environment](#creating-the-virtual-environment)
-		- [Activating the virtual environment](#activating-the-virtual-environment)
 	- [Install the requirements](#install-the-requirements)
 	- [Migrate the database](#migrate-the-database)
 - [Running the project](#running-the-project)
