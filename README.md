@@ -1,7 +1,18 @@
 # ACMWebSite
 WebSite 2.0 for ACM develop by the Javerian Chapter
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-## Developers
+- [ACMWebSite](#acmwebsite)
+	- [Contributors](#contributors)
+	- [Getting Started](#getting-started)
+		- [Prerequisites](#prerequisites)
+			- [Python](#python)
+			- [Node (npm)](#node-npm)
+		- [Installing](#installing)
+	- [Licence](#licence)
+
+<!-- /TOC -->
+## Contributors
 - Backend - [Johan Sebastian Murillo Castillo](https://github.com/johan-smc)
 - Backend - [Juan Pablo Rodriguez Navarro](https://github.com/JuanPabloRN30)
 - Frontend - [Juan Manuel Sánchez Lozano](https://github.com/juanmsl)
