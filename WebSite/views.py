@@ -53,9 +53,6 @@ def tutorials(request):
 def tutorialDetail(request, idTutorial):
 	return render(request, 'index.html')
 
-def joinus(request):
-	return render(request, 'joinus.html')
-
 def contactUs(request):
 	if request.method == 'POST':
 		message = request.POST['message']

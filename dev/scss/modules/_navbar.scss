@@ -52,6 +52,7 @@
 	.acm-navbar_menuitem {
 		text-align: center;
 		transition: all 0.3s ease;
+		cursor: pointer;
 
 		&:last-child {
 			margin-left: auto;

@@ -11,6 +11,5 @@ urlpatterns = [
     url(r'^proyecto/(?P<idProject>[0-9]+)$', views.projectDetail, name ='projectDetail'),
     url(r'^tutoriales/$', views.tutorials, name ='tutorials'),
     url(r'^tutorial/(?P<idTutorial>[0-9]+)$', views.tutorialDetail, name ='tutorialDetail'),
-    url(r'^unete/$', views.joinus, name ='join'),
     url(r'^contactUs/$', views.contactUs, name ='contactUs'),
 ]

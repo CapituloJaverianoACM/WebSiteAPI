@@ -27,19 +27,26 @@ $('#navbarTrigger').on('click', function() {
 	$(nav).slideToggle();
 });
 
-$('.acm-modal').hide();
-
 $('.acm-modal_close').on('click', function() {
 	var target = $(this).attr('target');
 	$(target).fadeOut();
+	$('body').css('overflow', 'auto');
+});
+
+$('.acm-modal, .acm-modal-full').on('click', function(e) {
+	if($(e.target).is('.acm-modal, .acm-modal-full')) {
+		var trigger = $(this).children('.acm-modal_close');
+		trigger.click();
+	}
 });
 
 $('.acm-modal_trigger').on('click', function() {
 	var target = $(this).attr('target');
 	$(target).fadeIn();
+	$('body').css('overflow', 'hidden');
 });
 
-$('.acm-awards, .acm-teams, .acm-modal_carousel .acm-modal_content').owlCarousel({
+$('.acm-awards, .acm-teams, .modal_carousel').owlCarousel({
 	loop: true,
 	responsive:{
 		0: {

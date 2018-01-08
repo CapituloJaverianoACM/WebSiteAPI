@@ -37,7 +37,8 @@ gulp.task('build:styles', () => {
 	.pipe(sass(styles.sass).on('error', sass.logError))
 	.pipe(autoprefixer())
 	.pipe(sourcemaps.write(''))
-	.pipe(gulp.dest(path.join(BUILD_DIR, styles.dest)));
+	.pipe(gulp.dest(path.join(BUILD_DIR, styles.dest)))
+	.pipe(server.stream({match: '**/*.css'}));
 });
 
 gulp.task('build:html', () => {
@@ -56,7 +57,7 @@ gulp.task('build:scripts', () => {
 	.pipe(source('scripts.js'))
 	.pipe(buffer())
 	.pipe(sourcemaps.init({ loadMaps: true }))
-	//.pipe(uglify()) // Use any gulp plugins you want now
+	.pipe(uglify())
 	.pipe(sourcemaps.write(''))
 	.pipe(gulp.dest(path.join(BUILD_DIR, scripts.dest)));
 });
@@ -86,7 +87,7 @@ gulp.task('build', ['build:styles', 'build:html', 'build:scripts', 'build:fonts'
 gulp.task('clean:build', ['clean', 'build']);
 
 gulp.task('watch',() => {
-	gulp.watch(path.join(DEV_DIR, styles.watch), ['build:styles', 'reload']).on('change', onChange );
+	gulp.watch(path.join(DEV_DIR, styles.watch), ['build:styles']).on('change', onChange );
 	gulp.watch(path.join(DEV_DIR, html.watch), ['build:html', 'reload']).on('change', onChange );
 	gulp.watch(path.join(DEV_DIR, scripts.watch), ['build:scripts', 'reload']).on('change', onChange );
 });

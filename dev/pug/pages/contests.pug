@@ -61,19 +61,21 @@ block main
 				p.acm-teams_teammember Miembro 1
 				p.acm-teams_teammember Miembro 2
 				p.acm-teams_teammember Miembro 3
-	section.acm-modal.acm-modal_carousel#modal-juniors
-		span(target="#modal-juniors").acm.acm-times.acm-modal_close
-		section.acm-modal_content.owl-carousel.owl-theme
-			-for(var i=0; i < 10; i++)
-				section.acm-card
-					h6.acm-card_title Juniors
-					img(src="http://placehold.it/350x250").acm-card_image
-					p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
-	section.acm-modal.acm-modal_carousel#modal-seniors
-		span(target="#modal-seniors").acm.acm-times.acm-modal_close
-		section.acm-modal_content.owl-carousel.owl-theme
-			-for(var i=0; i < 10; i++)
-				section.acm-card
-					h6.acm-card_title Seniors
-					img(src="http://placehold.it/350x250").acm-card_image
-					p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+	section.acm-modal_frame.acm-modal_carousel#modal-juniors
+		section.acm-modal-full
+			span(target="#modal-juniors").acm.acm-times.acm-modal_close
+			section.acm-modal_content.modal_carousel.owl-carousel.owl-theme
+				-for(var i=0; i < 10; i++)
+					section.acm-card
+						h6.acm-card_title Juniors
+						img(src="http://placehold.it/350x250").acm-card_image
+						p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.
+	section.acm-modal_frame.acm-modal_carousel#modal-seniors
+		section.acm-modal-full
+			span(target="#modal-seniors").acm.acm-times.acm-modal_close
+			section.acm-modal_content.modal_carousel.owl-carousel.owl-theme
+				-for(var i=0; i < 10; i++)
+					section.acm-card
+						h6.acm-card_title Seniors
+						img(src="http://placehold.it/350x250").acm-card_image
+						p.acm-card_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.

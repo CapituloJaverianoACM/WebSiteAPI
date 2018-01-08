@@ -56,3 +56,71 @@
 		}
 	}
 }
+
+.acm-form {
+	max-width: 600px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: $padding * 2 0;
+
+	.acm-form_title {
+		text-align: center;
+		padding-bottom: $padding * 3;
+		border-bottom: 1px solid $primary-color;
+		margin-bottom: $margin * 3;
+	}
+
+	.acm-form_item {
+		position: relative;
+		margin-bottom: $margin * 3;
+
+		input, select, textarea {
+			width: 100%;
+			padding: $padding * 1.5 $padding * 3;
+			border: 1px solid $gray-9;
+			border-radius: 25px;
+			outline: 0;
+
+			&:valid ~ label, &:focus ~ label {
+				background: $white;
+				padding: 0 $padding * 0.5;
+				font-size: 0.9rem;
+				transform: translate($padding * 2.5, -50%);
+			}
+
+			&:focus {
+				color: $active;
+				border-color: $active;
+
+				& ~ label {
+					color: $active;
+				}
+			}
+
+			&:valid {
+				color: $success;
+				border-color: $success;
+
+				& ~ label {
+					color: $success;
+				}
+			}
+		}
+
+		input, select {
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		label {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: $padding * 1.5 $padding * 3;
+			transition: all 0.1s ease;
+		}
+	}
+}
