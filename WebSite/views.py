@@ -1,7 +1,7 @@
-from WebSite.models import *
 from django.shortcuts import render, redirect
 from datetime import datetime, date
 from django.core.mail import EmailMultiAlternatives
+from .models import *
 
 def index(request):
 	awards = Award.objects.order_by('-date')
@@ -39,7 +39,7 @@ def activities(request):
 	return render(request, 'activities.html')
 
 def activityDetail(request, idActivity):
-	return render(request, 'index.html')
+	return render(request, 'activity.html')
 
 def projects(request):
 	return render(request, 'projects.html')

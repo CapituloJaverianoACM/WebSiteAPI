@@ -4,7 +4,7 @@ import path from 'path';
 
 const config = {
 	"dev_dir": "dev",
-	"build_dir": "WebSite/static",
+	"build_dir": "static",
 	"server": {
 		"proxy": "http://localhost:8000/"
 	},

@@ -2,12 +2,11 @@
   "name": "acmwebsite",
   "version": "1.0.0",
   "description": "Website for Javeriana's ACM chapter",
-  "main": "gulpfile.js",
+  "main": "gulpfile.babel.js",
   "scripts": {
     "start": "python manage.py runserver",
     "dev": "gulp",
-    "requirements": "pip install -U -r ./requirements.txt && yarn --prod=false",
-    "migrate": "python manage.py migrate"
+    "requirements": "pip install -U -r ./requirements.txt"
   },
   "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [
@@ -55,5 +54,9 @@
       "es2015"
     ]
   },
-  "private": true
+  "private": true,
+  "os": [
+    "linux",
+    "win64"
+  ]
 }
