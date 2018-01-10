@@ -33,8 +33,8 @@ $('.acm-modal_close').on('click', function() {
 	$('body').css('overflow', 'auto');
 });
 
-$('.acm-modal, .acm-modal-full').on('click', function(e) {
-	if($(e.target).is('.acm-modal, .acm-modal-full')) {
+$('.acm-modal').on('click', function(e) {
+	if($(e.target).is('.acm-modal')) {
 		var trigger = $(this).children('.acm-modal_close');
 		trigger.click();
 	}

@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Capítulo Javeriano ACM</title>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/png" href="{% static 'images/icon.png' %}">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css">
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<navbar class="acm-navbar"><img class="acm-navbar_logo" src="{% static 'images/icon_blue.svg'%}">
+			<ul class="acm-navbar_menu" id="acm-navbar">
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/">Home</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/staff">Staff</a></li>
+				<li class="acm-navbar_menuitem acm-navbar__current"><a class="acm-navbar_link" href="/maratones">Maratones</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/actividades">Actividades</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/proyectos">Proyectos</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-navbar_link" href="/tutoriales">Tutoriales</a></li>
+				<li class="acm-navbar_menuitem"><a class="acm-modal_trigger acm-navbar_link" target="#modal-join">¡Únete!</a></li>
+			</ul><span class="acm-navbar_trigger acm acm-bars" id="navbarTrigger" target="#acm-navbar"></span>
+		</navbar>
+		<section class="acm-cover">
+			<h1 class="title">Maratones de programación</h1>
+		</section>
+		<section class="acm-section acm-about">
+			<article class="acm-about_article">
+				<h5 class="sub_title acm-about_title">¿Qué son los entrenos de programación?</h5>
+				<!-- TODO ¿Qué son los entrenos de programación? 50 Palabras aprox-->
+				<p class="acm-about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+			</article>
+			<article class="acm-about_article">
+				<h5 class="sub_title acm-about_title">¿Qué son las maratones de programación?</h5>
+				<!-- TODO ¿Qué son las maratones de programación?-->
+				<p class="acm-about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+			</article>
+		</section>
+		<section class="acm-section">
+			<h1 class="sub_title acm-section_title">Nuestros entrenos</h1>
+			<section class="acm-trains">
+				<article class="acm-trains_train">
+					<h4 class="acm-trains_traintitle">Juniors</h4>
+					<section class="acm-trains_trainfinfo">
+						<p>Sabados</p>
+						<p>9:00 am  - 1:00 pm</p>
+						<p>Sala bases de datos</p>
+					</section>
+					<button class="btn btn_active acm-modal_trigger" target="#modal-juniors">Ver temas</button>
+				</article>
+				<article class="acm-trains_train">
+					<h4 class="acm-trains_traintitle">Seniors</h4>
+					<section class="acm-trains_trainfinfo">
+						<p>Sabados</p>
+						<p>1:00 pm  - 6:00 pm</p>
+						<p>Sala bases de datos</p>
+					</section>
+					<button class="btn btn_active acm-modal_trigger" target="#modal-seniors">Ver temas</button>
+				</article>
+			</section>
+		</section>
+		<section class="acm-section">
+			<h1 class="sub_title acm-section_title">Equipos maratonistas</h1>
+			<section class="acm-teams owl-carousel owl-theme">
+				<article class="acm-teams_team item">
+					<section class="acm-teams_teampicture"><img src="https://www.dsaa.org/get/files/image/galleries/memberIcon-0001.png"></section>
+					<h4 class="acm-teams_teamtitle">Equipo 1</h4>
+					<p class="acm-teams_teammember">Miembro 1</p>
+					<p class="acm-teams_teammember">Miembro 2</p>
+					<p class="acm-teams_teammember">Miembro 3</p>
+				</article>
+				<article class="acm-teams_team item">
+					<section class="acm-teams_teampicture"><img src="https://www.dsaa.org/get/files/image/galleries/memberIcon-0001.png"></section>
+					<h4 class="acm-teams_teamtitle">Equipo 2</h4>
+					<p class="acm-teams_teammember">Miembro 1</p>
+					<p class="acm-teams_teammember">Miembro 2</p>
+					<p class="acm-teams_teammember">Miembro 3</p>
+				</article>
+				<article class="acm-teams_team item">
+					<section class="acm-teams_teampicture"><img src="https://www.dsaa.org/get/files/image/galleries/memberIcon-0001.png"></section>
+					<h4 class="acm-teams_teamtitle">Equipo 3</h4>
+					<p class="acm-teams_teammember">Miembro 1</p>
+					<p class="acm-teams_teammember">Miembro 2</p>
+					<p class="acm-teams_teammember">Miembro 3</p>
+				</article>
+				<article class="acm-teams_team item">
+					<section class="acm-teams_teampicture"><img src="https://www.dsaa.org/get/files/image/galleries/memberIcon-0001.png"></section>
+					<h4 class="acm-teams_teamtitle">Equipo 4</h4>
+					<p class="acm-teams_teammember">Miembro 1</p>
+					<p class="acm-teams_teammember">Miembro 2</p>
+					<p class="acm-teams_teammember">Miembro 3</p>
+				</article>
+			</section>
+		</section>
+		<section class="acm-modal_frame acm-modal_carousel" id="modal-juniors">
+			<section class="acm-modal"><span class="acm acm-times acm-modal_close" target="#modal-juniors"></span>
+				<section class="acm-modal_content modal_carousel owl-carousel owl-theme">
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Juniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section class="acm-modal_frame acm-modal_carousel" id="modal-seniors">
+			<section class="acm-modal"><span class="acm acm-times acm-modal_close" target="#modal-seniors"></span>
+				<section class="acm-modal_content modal_carousel owl-carousel owl-theme">
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+					<section class="acm-card">
+						<h6 class="acm-card_title">Seniors</h6><img class="acm-card_image" src="http://placehold.it/350x250">
+						<p class="acm-card_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sodales ex ut blandit. Nulla interdum viverra erat, vel convallis nisi interdum ac. Donec eros justo, laoreet ac leo ac, molestie eleifend turpis. Pellentesque sagittis mi rhoncus, laoreet erat quis, condimentum leo. Nullam non eros finibus, luctus nibh in, lobortis.</p>
+					</section>
+				</section>
+			</section>
+		</section>
+		<section class="acm-modal_frame acm-modal_carousel" id="modal-join">
+			<section class="acm-modal full-modal"><span class="acm acm-times acm-modal_close" target="#modal-join"></span>
+				<section class="acm-modal_content">
+					<form class="acm-form" method="post">{% csrf_token %}
+						<h2 class="sub_title acm-form_title">¿Quieres participar en maratones?</h2>
+						<article class="acm-form_item">
+							<input required type="text" name="names" id="join-names">
+							<label for="join-names">Nombres</label>
+						</article>
+						<article class="acm-form_item">
+							<input required type="text" name="surnames" id="join-surnames">
+							<label for="join-surnames">Apellidos</label>
+						</article>
+						<article class="acm-form_item">
+							<input required type="email" name="email" id="join-email">
+							<label for="join-email">Correo</label>
+						</article>
+						<article class="acm-form_item">
+							<select required name="major" id="join-major">
+								<option></option>
+								<option>Ingeniería de sistemas</option>
+								<option>Ingeniería electronica</option>
+								<option>Ingeniería industrial</option>
+								<option>Ingeniería civil</option>
+								<option>Otra carrera</option>
+							</select>
+							<label for="join-major">Tu carrera</label>
+						</article>
+						<article class="acm-form_item">
+							<textarea required rows="5" name="reason" id="join-reason"></textarea>
+							<label for="join-reason">¿ Cómo te enteraste de ACM ?</label>
+						</article>
+						<button class="btn btn_active">Enviar</button>
+					</form>
+				</section>
+			</section>
+		</section>
+		<footer class="footer">
+			<div class="footer_content">
+				<section class="footer_section footer_subcontent align-center"><img class="footer_logo" src="{% static 'images/javeriana_icon.png' %}">
+					<section>
+						<p>Pontificia Universidad Javeriana</p>
+						<p>Bogotá D.C - Colombia</p>
+						<p>Carrera 7 No. 40 - 62</p>
+						<p>(57 1) 3208320</p>
+					</section>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">Redes sociales</h6>
+					<p><a href="https://www.facebook.com/acmjaveriana/" target="_blank"><span class="acm acm-facebook footer_icon"></span><span>ACMJaveriana</span></a></p>
+					<p><a href="https://twitter.com/ACMJaveriana" target="_blank"><span class="acm acm-twitter footer_icon"></span><span>ACMJaveriana</span></a></p>
+					<p><a href="https://www.youtube.com/channel/UC3PymX73H7qF6-VJS-wuyJA" target="_blank"><span class="acm acm-youtube footer_icon"></span><span>Capítulo Javeriano ACM</span></a></p>
+					<p><a href="https://github.com/CapituloJaverianoACM" target="_blank"><span class="acm acm-github footer_icon"></span><span>CapituloJaverianoACM</span></a></p>
+					<p><a mailto="acm@javeriana.edu.co" target="_blank"><span class="acm acm-envelope footer_icon"></span><span>acm@javeriana.edu.co</span></a></p>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">Desarrolladores encargados</h6>
+					<p><a href="https://github.com/johan-smc" target="_blank"><span class="acm acm-user footer_icon"></span><span>Johan Sebastian Murillo Castillo</span></a></p>
+					<p><a href="https://github.com/JuanPabloRN30" target="_blank"><span class="acm acm-user footer_icon"></span><span>Juan Pablo Rodriguez Navarro</span></a></p>
+					<p><a href="https://github.com/juanmsl" target="_blank"><span class="acm acm-user footer_icon"></span><span>Juan Manuel Sánchez Lozano</span></a></p>
+				</section>
+				<section class="footer_section">
+					<h6 class="footer_section_title">¿Preguntas o comentarios? ¡Contactanos!</h6>
+					<form class="contact-form" method="post" action="contactUs/">{% csrf_token %}
+						<textarea class="contact-form_message" rows="3" placeholder="Tu mensaje, comentario ó sugerencia" name="message" required></textarea>
+						<section class="contact-form_section">
+							<input class="contact-form_email" type="email" placeholder="Correo" name="email" required>
+							<button class="btn btn_active contact-form_submit">Enviar</button>
+						</section>
+					</form>
+				</section>
+			</div>
+			<section class="copyright_section">
+				<div class="copyright">ACM Website | Copyright © 2018 - Todos los derechos reservados a sus respectivos dueños</div>
+			</section>
+		</footer>
+		<script>var scrollPage = false;</script>
+		<script src="{% static 'js/scripts.js' %}"></script>
+	</body>
+</html>

@@ -2,8 +2,11 @@ extends ../templates/base
 
 append config
 	-currentPage = 4
+	| {% load markdown_deux_tags %}
 
 block main
 	section.acm-article-cover
 		img(src="https://placehold.it/1200x400")
 		h1.title Taller de pensamiento algoritmico
+	section.markdown-body
+		| {{ "# **Hola**" | markdown }}

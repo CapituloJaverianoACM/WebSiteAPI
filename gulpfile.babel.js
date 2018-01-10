@@ -73,12 +73,12 @@ gulp.task('build:images', () => {
 });
 
 gulp.task('generate:todolist', () => {
-	gulp.src(path.join(DEV_DIR, todolist.src))
+	gulp.src([path.join(DEV_DIR, todolist.src), 'WebSite/*.py', 'ACMWebSite/*.py'])
 	.pipe(todo(todolist.todo))
 	.pipe(gulpIf((file) => {
 		console.log(`Founded ${file.todos.length}`);
 		return file.todos && Boolean(file.todos.length);
-	}, gulp.dest(DEV_DIR), vinylPaths(del)));
+	}, gulp.dest(''), vinylPaths(del)));
 });
 
 gulp.task('reload', () => { server.reload() });

@@ -77,7 +77,7 @@ $ git clone https://github.com/CapituloJaverianoACM/ACMWebSite.git
 We gonna use `myvenv` as the name of the virtual environment, but you can use the name that you prefer.
 
 ```shell
-$ python3 -m venv myvenv
+$ python3 -m virtualenv myvenv
 ```
 
 #### Activating the virtual environment

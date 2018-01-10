@@ -32,6 +32,7 @@ class FileAdmin(admin.ModelAdmin):
 class Award(models.Model):
 	date = models.DateField()
 	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+	# TODO Add award description, max_length = 100
 	def __str__(self):
 		return '%s' % (self.idFile.path)
 
