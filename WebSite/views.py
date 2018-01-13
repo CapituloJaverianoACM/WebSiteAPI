@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from datetime import datetime, date
 from django.core.mail import EmailMultiAlternatives
+import json
+from django.http import JsonResponse
 from .models import *
 
 def index(request):
@@ -53,6 +55,12 @@ def tutorials(request):
 def tutorialDetail(request, idTutorial):
 	return render(request, 'index.html')
 
+def sendQuestionEmail(request):
+	data = {
+		'state': 'Ok'
+	}
+	return JsonResponse(data);
+
 def contactUs(request):
 	if request.method == 'POST':
 		message = request.POST['message']
@@ -71,3 +79,6 @@ def contactUs(request):
 		return redirect('index')
 	else:
 		return render(request, 'index.html')
+
+def notFound(request):
+	return render(request, '404.html');

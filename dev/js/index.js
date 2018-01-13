@@ -3,6 +3,8 @@ import $ from 'jquery';
 import './libs/prognroll';
 import scrollify from 'jquery-scrollify';
 import './libs/owl.carousel.min.js';
+import alertify from 'alertifyjs';
+import getFormData from 'get-form-data';
 
 $("body").prognroll({
 	height: 2,
@@ -73,3 +75,21 @@ $('.acm-activities').owlCarousel({
 	autoplay: true,
 	autoplayHoverPause: true
 })
+
+document.sendQuestionEmail = () => {
+	console.log("yeah");
+	const form = document.getElementById("questionform");
+	const data = getFormData(form);
+	$.ajax({
+		type: "POST",
+		url: "/sendQuestionEmail/",
+		data: data,
+		success: function(response) {
+			console.log(response);
+			alertify.success(response.state);
+		}
+	});
+}
+
+alertify.defaults.notifier.position = "bottom-left";
+alertify.success("Browser dialogs made easy!");

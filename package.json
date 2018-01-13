@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/CapituloJaverianoACM/ACMWebSite#readme",
   "dependencies": {
+    "alertifyjs": "^1.11.0",
+    "get-form-data": "^2.0.0",
     "jquery": "^3.2.1",
     "jquery-scrollify": "^1.0.19",
     "owl.carousel": "^2.2.0"

@@ -63,7 +63,6 @@ window.$ = window.jQuery = jQuery;
 			/* Get scroll position on on page load */
 			$(window).on('hashchange', function(e) {
 				e.preventDefault();
-				console.log($(window).scrollTop());
 			});
 			$(window).trigger('hashchange');
 
