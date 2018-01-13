@@ -42,7 +42,12 @@ $ sudo apt install python3.6
 
 ### Node (npm)
 
-Furthermore you must have node.js on your computer, you can download it from their [webpage](https://nodejs.org/en/download/), and you can install it in [different architectures](https://nodejs.org/es/download/package-manager/).
+Furthermore you must have node.js on your computer, you can download it from their [webpage](https://nodejs.org/en/download/), or just run the following command
+
+```shell
+$ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+```
 
 > When you have installed node you can check your version
 ```shell
@@ -107,7 +112,7 @@ $ npm run requirements
 ### Migrate the database
 
 ```shell
-$ npm run migrate
+$ python3 manage.py migrate
 ```
 
 ## Running the project
