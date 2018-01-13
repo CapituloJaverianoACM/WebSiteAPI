@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python manage.py runserver",
     "dev": "gulp",
-    "requirements": "pip install -U -r ./requirements.txt"
+    "requirements": "sudo pip3 install -U -r ./requirements.txt"
   },
   "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [
