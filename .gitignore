@@ -14,6 +14,7 @@ db.sqlite3
 .DS_Store
 sql*
 static/
+templates/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

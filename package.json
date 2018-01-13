@@ -4,9 +4,10 @@
   "description": "Website for Javeriana's ACM chapter",
   "main": "gulpfile.babel.js",
   "scripts": {
+    "requirements": "pip install -U -r ./requirements.txt",
+    "build": "gulp clean:build",
     "start": "python manage.py runserver",
-    "dev": "gulp",
-    "requirements": "sudo pip3 install -U -r ./requirements.txt"
+    "dev": "gulp"
   },
   "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [

@@ -82,7 +82,7 @@ gulp.task('generate:todolist', () => {
 });
 
 gulp.task('reload', () => { server.reload() });
-gulp.task('clean', () => { del.sync([BUILD_DIR, path.join(BUILD_DIR, '../templates')]) });
+gulp.task('clean', () => { del.sync([BUILD_DIR, path.join(BUILD_DIR, '../templates'), 'todo.md']) });
 gulp.task('build', ['build:styles', 'build:html', 'build:scripts', 'build:fonts', 'build:images', 'generate:todolist']);
 gulp.task('clean:build', ['clean', 'build']);
 
