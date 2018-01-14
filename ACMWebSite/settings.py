@@ -67,16 +67,21 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
 	{
-		'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+		'NAME':
+			'django.contrib.auth.password_validation'
+			'.UserAttributeSimilarityValidator',
 	},
 	{
-		'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+		'NAME':
+			'django.contrib.auth.password_validation.MinimumLengthValidator',
 	},
 	{
-		'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+		'NAME':
+			'django.contrib.auth.password_validation.CommonPasswordValidator',
 	},
 	{
-		'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+		'NAME':
+			'django.contrib.auth.password_validation.NumericPasswordValidator',
 	},
 ]
 
@@ -93,7 +98,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -102,7 +106,7 @@ STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, "static")
 ]
 
-#Archivos multimedia.
+# Archivos multimedia.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'WebSite/static/media')
 MEDIA_URL = '/media/'
 
