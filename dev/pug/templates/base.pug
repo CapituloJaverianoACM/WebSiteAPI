@@ -18,8 +18,8 @@ html(lang="es")
 		link(rel="stylesheet" href="{% static 'css/styles.css' %}")
 		block styles
 	body(class=bodyClass)
-		block header
 		include ../components/navbar
+		block header
 		block main
 			.maincontent
 				block maincontent

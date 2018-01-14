@@ -1,0 +1,21 @@
+block config
+	include ../config/config
+	include ../config/mixins
+
+| {% load static %}
+|
+doctype html
+html(lang="es")
+	head
+		title= title
+		meta(charset="utf-8")
+		meta(name="theme-color" content="#0D91CF")
+		link(rel="icon" type="image/png" href="{% static 'images/icon.png' %}")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1")
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
+		link(rel="stylesheet" href="{% static 'css/styles.css' %}")
+		block styles
+	body(class=bodyClass)
+		block main
+
+		block proscripts

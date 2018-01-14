@@ -10,9 +10,10 @@ urlpatterns = [
 	path('tutoriales/', views.tutorials, name ='tutorials'),
 	path('contactUs/', views.contactUs, name ='contactUs'),
 	path('sendQuestionEmail/', views.sendQuestionEmail),
+	path('sendJoinForm/', views.sendJoinForm),
 
 	re_path('actividad/(?P<idActivity>[0-9]+)/', views.activityDetail, name ='activityDetail'),
 	re_path('proyecto/(?P<idProject>[0-9]+)/', views.projectDetail, name ='projectDetail'),
 	re_path('tutorial/(?P<idTutorial>[0-9]+)/', views.tutorialDetail, name ='tutorialDetail'),
-	#re_path(r'', views.notFound),
+	re_path(r'', views.notFound),
 ]

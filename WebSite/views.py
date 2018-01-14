@@ -47,17 +47,23 @@ def projects(request):
 	return render(request, 'projects.html')
 
 def projectDetail(request, idProject):
-	return render(request, 'index.html')
+	return render(request, 'project.html')
 
 def tutorials(request):
 	return render(request, 'tutorials.html')
 
 def tutorialDetail(request, idTutorial):
-	return render(request, 'index.html')
+	return render(request, 'tutorial.html')
 
 def sendQuestionEmail(request):
 	data = {
-		'state': 'Ok'
+		'state': request.POST['message'] + "<br>" + request.POST['email']
+	}
+	return JsonResponse(data);
+
+def sendJoinForm(request):
+	data = {
+		'state': request.POST['names'] + "<br>" + request.POST['surnames'] + "<br>" + request.POST['email'] + "<br>" + request.POST['major'] + "<br>" + request.POST['reason']
 	}
 	return JsonResponse(data);
 

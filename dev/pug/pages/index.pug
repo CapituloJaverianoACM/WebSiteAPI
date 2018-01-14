@@ -4,10 +4,12 @@ append config
 	-currentPage = 1
 	-scroll = true
 
-block main
+block header
 	section.acm-maincover
 		img(src="{% static 'images/icon_white.svg'%}").acm-maincover_logo
 		h1.title Capítulo Javeriano ACM
+
+block main
 	section.acm-full-section.acm-aboutus
 		section.acm-aboutus_content
 			article.acm-aboutus_section
