@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from django import forms
 from django.core.files.storage import FileSystemStorage
 from .forms import *
 
@@ -12,9 +13,7 @@ class File(models.Model):
 		('json', 'JSON'),
 		('ot', 'Other'),
 	)
-	"""
-		TODO: Basename is the directory of the file ex: awards
-	"""
+	# TODO: Basename is the directory of the file ex: awards/
 	basename = models.CharField(max_length=200, default='')
 	path = models.CharField(max_length=200)
 	ext = models.CharField(max_length=10, choices=EXT_CHOICES)
@@ -38,10 +37,38 @@ class FileAdmin(admin.ModelAdmin):
 class Award(models.Model):
 	date = models.DateField()
 	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+	description = models.CharField(max_length=100)
 
-	# TODO Add award description, max_length = 100
 	def __str__(self):
 		return '%s' % (self.idFile.path)
+
+
+class Member(models.Model):
+	POSITION_CHOICES = (
+		('PRE', 'Presidente'),
+		('VIC', 'Vice-Presidente'),
+		('SEC', 'Secretario'),
+		('TES', 'Tesorero'),
+		('CM', 'Comunity Manager'),
+	)
+	name = models.CharField(max_length=200)
+	surname = models.CharField(max_length=200)
+	email = models.EmailField()
+	major = models.CharField(max_length=200)
+	identification = models.CharField(max_length=50)
+	dateMajor = models.DateField()
+	dateChapter = models.DateField()
+	dateBirth = models.DateField()
+	cellphone = models.CharField(max_length=20)
+	idPhoto = models.OneToOneField(File, on_delete=models.CASCADE)
+	is_staff = models.BooleanField(default=False)
+	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
+
+
+class Team(models.Model):
+	name = models.CharField(max_length=200)
+	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+	members = models.ManyToManyField(Member, related_name='teams', through='TeamMember')
 
 
 class Contest(models.Model):
@@ -53,55 +80,34 @@ class Contest(models.Model):
 	category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
 	date = models.DateField()
 	place = models.IntegerField()
-
-
-class Team(models.Model):
-	name = models.CharField(max_length=200)
-	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
-
-
-class Member(models.Model):
-	name = models.CharField(max_length=200)
-	surname = models.CharField(max_length=200)
-	email = models.EmailField()
-	major = models.CharField(max_length=200)
-	identification = models.CharField(max_length=50)
-	dateMajor = models.DateField()
-	dateChapter = models.DateField()
-	dateBirth = models.DateField()
-	cellphone = models.CharField(max_length=20)
-	idPhoto = models.OneToOneField(File, on_delete=models.CASCADE)
-
-
-class TeamContest(models.Model):
-	idTeam = models.ForeignKey(Team, on_delete=models.CASCADE)
-	idContest = models.ForeignKey(Contest, on_delete=models.CASCADE)
-
-
-class TeamMember(models.Model):
-	idTeam = models.ForeignKey(Team, on_delete=models.CASCADE)
-	idMember = models.ForeignKey(Member, on_delete=models.CASCADE)
-	year = models.DateField()
+	teams = models.ManyToManyField(Team, related_name='constests')
 
 
 class Tutorial(models.Model):
 	name = models.CharField(max_length=500)
-
-
-class TutorialFile(models.Model):
-	idTutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE)
-	idFile = models.ForeignKey(File, on_delete=models.CASCADE)
+	files = models.ManyToManyField(File, related_name='tutorials')
 
 
 class Activity(models.Model):
 	name = models.CharField(max_length=500)
 	date = models.DateTimeField()
 	place = models.CharField(max_length=500)
+	members = models.ManyToManyField(Member, related_name='activities', through='ActivityMember')
+	files = models.ManyToManyField(File, related_name='activities')
 
 
-class ActivityFile(models.Model):
-	idActivity = models.ForeignKey(Activity, on_delete=models.CASCADE)
-	idFile = models.ForeignKey(File, on_delete=models.CASCADE)
+class Project(models.Model):
+	dateStart = models.DateField()
+	dateEnd = models.DateField()
+	name = models.CharField(max_length=200)
+	members = models.ManyToManyField(Member, related_name='projects')
+	files = models.ManyToManyField(File, related_name='projects')
+
+
+class TeamMember(models.Model):
+	team = models.ForeignKey(Team, on_delete=models.CASCADE)
+	member = models.ForeignKey(Member, on_delete=models.CASCADE)
+	year = models.DateField()
 
 
 class ActivityMember(models.Model):
@@ -110,22 +116,6 @@ class ActivityMember(models.Model):
 		('AYU', 'Ayudante'),
 		('PAR', 'Participante'),
 	)
-	idActivity = models.ForeignKey(Activity, on_delete=models.CASCADE)
-	idMember = models.ForeignKey(Member, on_delete=models.CASCADE)
+	activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
+	member = models.ForeignKey(Member, on_delete=models.CASCADE)
 	role = models.CharField(max_length=10, choices=ROLE_CHOICES)
-
-
-class Project(models.Model):
-	dateStart = models.DateField()
-	dateEnd = models.DateField()
-	name = models.CharField(max_length=200)
-
-
-class ProjectFile(models.Model):
-	idProject = models.ForeignKey(Project, on_delete=models.CASCADE)
-	idFile = models.ForeignKey(File, on_delete=models.CASCADE)
-
-
-class ProjectMember(models.Model):
-	idProject = models.ForeignKey(Project, on_delete=models.CASCADE)
-	idMember = models.ForeignKey(Member, on_delete=models.CASCADE)

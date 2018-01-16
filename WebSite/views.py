@@ -4,6 +4,7 @@ from django.core.mail import EmailMultiAlternatives
 import json
 from django.http import JsonResponse
 from .models import *
+from WebSite.api import award_service
 
 
 def index(request):
