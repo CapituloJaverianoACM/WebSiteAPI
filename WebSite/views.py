@@ -3,67 +3,86 @@ from datetime import datetime, date
 from django.core.mail import EmailMultiAlternatives
 from .models import *
 
+
 def index(request):
 	awards = Award.objects.order_by('-date')
-	recentActivities = []
-	orderToFuture = Activity.objects.exclude(date__lt = date.today()).order_by('date')
-	for activity in orderToFuture:
-		recentActivities.append(activity)
-		if len(recentActivities) == 3:
+	recent_activities = []
+	order_to_future = Activity.objects.exclude(
+		date__lt=date.today()
+	).order_by('date')
+	for activity in order_to_future:
+		recent_activities.append(activity)
+		if len(recent_activities) == 3:
 			break
-	orderToPast = Activity.objects.exclude(date__gt = date.today()).order_by('-date')
-	for activity in orderToPast:
-		recentActivities.append(activity)
-		if len(recentActivities) == 6:
+	order_to_past = Activity.objects.exclude(
+		date__gt=date.today()
+	).order_by('-date')
+	for activity in order_to_past:
+		recent_activities.append(activity)
+		if len(recent_activities) == 6:
 			break
-	ourProjects = []
+	our_projects = []
 	projects = Project.objects.order_by('-dateEnd')
 	for project in projects:
-		if len(ourProjects) == 5:
-			break;
-		ourProjects.append(project)
+		if len(our_projects) == 5:
+			break
+		our_projects.append(project)
 	context = {
-		'awards' : awards,
-		'recentActivities' : recentActivities,
-		'ourProjects' : ourProjects
+		'awards': awards,
+		'recentActivities': recent_activities,
+		'our_projects': our_projects
 	}
 	return render(request, 'index.html', context)
+
 
 def staff(request):
 	return render(request, 'staff.html')
 
+
 def contest(request):
 	return render(request, 'contests.html')
+
 
 def activities(request):
 	return render(request, 'activities.html')
 
-def activityDetail(request, idActivity):
+
+def activity_detail(request, idActivity):
 	return render(request, 'activity.html')
+
 
 def projects(request):
 	return render(request, 'projects.html')
 
-def projectDetail(request, idProject):
+
+def project_detail(request, idProject):
 	return render(request, 'index.html')
+
 
 def tutorials(request):
 	return render(request, 'tutorials.html')
 
-def tutorialDetail(request, idTutorial):
+
+def tutorial_detail(request, idTutorial):
 	return render(request, 'index.html')
 
-def contactUs(request):
+
+def contact_us(request):
 	if request.method == 'POST':
 		message = request.POST['message']
 		email = request.POST['email']
-		subject, from_email, to = 'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
-		html_content = '<p>This is an <strong>ultimate2</strong> message.</p>'
+		subject, from_email, to = \
+			'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
+		# TODO: Generate function html from template and pass data
+		html_content = '<p>This is an <strong>ultimate2</strong> ' \
+			'message.</p> {}'.format(message)
 		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
 		msg.content_subtype = "html"
 		msg.send()
 
-		subject, from_email, to = 'Contact Us Form', 'acm@javeriana.edu.co', email
+		subject = 'Contact Us Form'
+		from_email = 'acm@javeriana.edu.co'
+		to = email
 		html_content = '<p>This is an <strong>ultimate3</strong> message.</p>'
 		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
 		msg.content_subtype = "html"
