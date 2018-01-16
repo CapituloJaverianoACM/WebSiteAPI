@@ -1,6 +1,7 @@
 # Created by https://www.gitignore.io/api/django,python
 
 ACMWebSite/private_settings.py
+todo.md
 
 .idea/
 
@@ -16,7 +17,7 @@ db.sqlite3
 .DS_Store
 sql*
 static/
-templates/
+templates/*.html
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

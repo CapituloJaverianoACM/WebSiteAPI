@@ -52,3 +52,25 @@
 		z-index: -1;
 	}
 }
+
+.acm-error-cover {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background:
+		linear-gradient(90deg, $third-color 0%, $primary-color 100%),
+		radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.55) 100%),
+		radial-gradient(at top, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.08) 63%);
+	background-blend-mode: multiply, screen;
+	color: white;
+	text-shadow: 0 0 5px black;
+	text-align: center;
+	padding: $padding * 3;
+
+	.btn {
+		margin-top: $margin * 3;
+		border-radius: 100px;
+	}
+}

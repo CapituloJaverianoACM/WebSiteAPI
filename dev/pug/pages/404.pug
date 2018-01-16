@@ -1,0 +1,11 @@
+extends ../templates/error-base
+
+append config
+	-currentPage = 0
+	-title = 'Error'
+
+block main
+	section.acm-error-cover
+		h1.big_title.animated.zoomIn 404
+		h6.animated.zoomIn Lo sentimos, parece que algo no esta bien!
+		button(onclick="history.back(-1)").animated.zoomIn.btn.btn_active Volver

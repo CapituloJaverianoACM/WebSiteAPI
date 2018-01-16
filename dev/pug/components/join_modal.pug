@@ -2,7 +2,7 @@ section.acm-modal_frame.acm-modal_carousel#modal-join
 	section.acm-modal.full-modal
 		span(target="#modal-join").acm.acm-times.acm-modal_close
 		section.acm-modal_content
-			form(method="post").acm-form
+			form(method="post" action='javascript:document.sendJoinForm()')#joinform.acm-form
 				| {% csrf_token %}
 				h2.sub_title.acm-form_title ¿Quieres participar en maratones?
 				article.acm-form_item

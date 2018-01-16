@@ -3,9 +3,11 @@ extends ../templates/base
 append config
 	-currentPage = 2
 
-block main
+block header
 	section.acm-cover
 		h1.title Staff del capitulo
+
+block main
 	section.acm-staff
 		section.acm-staff_member
 			input(type='radio' name='member' checked).acm-staff_check

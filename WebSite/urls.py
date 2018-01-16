@@ -9,6 +9,8 @@ urlpatterns = [
 	path('proyectos/', views.projects, name='projects'),
 	path('tutoriales/', views.tutorials, name='tutorials'),
 	path('contactUs/', views.contact_us, name='contactUs'),
+	path('sendQuestionEmail/', views.sendQuestionEmail),
+	path('sendJoinForm/', views.sendJoinForm),
 	re_path(
 		'actividad/(?P<idActivity>[0-9]+)/',
 		views.activity_detail,
@@ -23,5 +25,6 @@ urlpatterns = [
 		'tutorial/(?P<idTutorial>[0-9]+)/',
 		views.tutorial_detail,
 		name='tutorialDetail'
-	)
+	),
+	re_path(r'', views.page_not_found),
 ]

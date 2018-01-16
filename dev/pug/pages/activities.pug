@@ -3,9 +3,11 @@ extends ../templates/base
 append config
 	-currentPage = 4
 
-block main
+block header
 	section.acm-cover
 		h1.title Actividades y eventos
+
+block main
 	form.acm-inlineform
 		input(type="text" name="activity")#activity
 		section.acm-form_inlineChoices
