@@ -8,28 +8,16 @@ block header
 		h1.title Staff del capitulo
 
 block main
+	| {% if members.count != 0 %}
 	section.acm-staff
-		section.acm-staff_member
-			input(type='radio' name='member' checked).acm-staff_check
-			article.acm-staff_imagesection
-				img(src="https://cdn4.iconfinder.com/data/icons/smileys-3/24/smiley-smile--512.png").acm-staff_image
-				h6.acm-staff_name Juan Pablo Rodriguez Navaro
-			article.acm-staff_infosection
-				h5.acm-staff_rol Presidente
-				p.acm-staff_description Hic sed coniunctione, id quid mentitum eruditionem, aute pariatur iis concursionibus, de anim laboris expetendis de ex malis malis et nostrud, expetendis enim veniam iudicem magna eu commodo culpa duis ex quem ne ne est veniam expetendis.
+		| {% for member in members %}
 		section.acm-staff_member
 			input(type='radio' name='member').acm-staff_check
 			article.acm-staff_imagesection
 				img(src="https://cdn4.iconfinder.com/data/icons/smileys-3/24/smiley-smile--512.png").acm-staff_image
-				h6.acm-staff_name Johan Sebastian Murillo Castillo
+				h6.acm-staff_name {{member.name}} {{member.surname}}
 			article.acm-staff_infosection
-				h5.acm-staff_rol Presidente
-				p.acm-staff_description Hic sed coniunctione, id quid mentitum eruditionem, aute pariatur iis concursionibus, de anim laboris expetendis de ex malis malis et nostrud, expetendis enim veniam iudicem magna eu commodo culpa duis ex quem ne ne est veniam expetendis.
-		section.acm-staff_member
-			input(type='radio' name='member').acm-staff_check
-			article.acm-staff_imagesection
-				img(src="https://cdn4.iconfinder.com/data/icons/smileys-3/24/smiley-smile--512.png").acm-staff_image
-				h6.acm-staff_name Juan Manuel Sánchez Lozano
-			article.acm-staff_infosection
-				h5.acm-staff_rol Presidente
-				p.acm-staff_description Hic sed coniunctione, id quid mentitum eruditionem, aute pariatur iis concursionibus, de anim laboris expetendis de ex malis malis et nostrud, expetendis enim veniam iudicem magna eu commodo culpa duis ex quem ne ne est veniam expetendis.
+				h5.acm-staff_rol {{member.get_position_display}}
+				p.acm-staff_description {{member.description}}
+		| {% endfor %}
+	| {% endif %}

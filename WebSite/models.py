@@ -45,11 +45,11 @@ class Award(models.Model):
 
 class Member(models.Model):
 	POSITION_CHOICES = (
-		('PRE', 'Presidente'),
-		('VIC', 'Vice-Presidente'),
-		('SEC', 'Secretario'),
-		('TES', 'Tesorero'),
-		('CM', 'Comunity Manager'),
+		('1PRE', 'Presidente'),
+		('2VIC', 'Vice-Presidente'),
+		('3SEC', 'Secretario'),
+		('4TES', 'Tesorero'),
+		('5CM', 'Comunity Manager'),
 	)
 	name = models.CharField(max_length=200)
 	surname = models.CharField(max_length=200)
@@ -63,6 +63,7 @@ class Member(models.Model):
 	idPhoto = models.OneToOneField(File, on_delete=models.CASCADE)
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
+	description = models.CharField(max_length=100, null=True)
 
 
 class Team(models.Model):
