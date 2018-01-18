@@ -4,6 +4,8 @@ from django.core.mail import EmailMultiAlternatives
 import json
 from django.http import JsonResponse
 from .models import *
+from WebSite.api import award_service
+from WebSite.api import member_service
 
 
 def index(request):
@@ -38,7 +40,11 @@ def index(request):
 
 
 def staff(request):
-	return render(request, 'staff.html')
+	staffMembers = member_service.getStaff()
+	context = {
+		'members': staffMembers,
+	}
+	return render(request, 'staff.html', context)
 
 
 def contest(request):
@@ -94,7 +100,7 @@ def contact_us(request):
 			'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
 		# TODO: Generate function html from template and pass data
 		html_content = '<p>This is an <strong>ultimate2</strong> ' \
-			'message.</p> {}'.format(message)
+					   'message.</p> {}'.format(message)
 		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
 		msg.content_subtype = "html"
 		msg.send()
