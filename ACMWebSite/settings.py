@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'WebSite.apps.WebsiteConfig',
 	'markdown_deux',
+	'django_extensions',
 ]
 
 MIDDLEWARE = [

@@ -9,7 +9,7 @@ from WebSite.api import member_service
 
 
 def index(request):
-	awards = Award.objects.order_by('-date')
+	awards = award_service.get_awards().order_by('-date')
 	recent_activities = []
 	order_to_future = Activity.objects.exclude(
 		date__lt=date.today()
@@ -55,7 +55,7 @@ def activities(request):
 	return render(request, 'activities.html')
 
 
-def activity_detail(request, idActivity):
+def activity_detail(request, id_activity):
 	return render(request, 'activity.html')
 
 
@@ -63,7 +63,7 @@ def projects(request):
 	return render(request, 'projects.html')
 
 
-def project_detail(request, idProject):
+def project_detail(request, id_project):
 	return render(request, 'project.html')
 
 
@@ -71,18 +71,18 @@ def tutorials(request):
 	return render(request, 'tutorials.html')
 
 
-def tutorial_detail(request, idTutorial):
+def tutorial_detail(request, id_tutorial):
 	return render(request, 'tutorial.html')
 
 
-def sendQuestionEmail(request):
+def send_question_email(request):
 	data = {
 		'state': request.POST['message'] + "<br>" + request.POST['email']
 	}
 	return JsonResponse(data)
 
 
-def sendJoinForm(request):
+def send_join_form(request):
 	data = {
 		'state':
 			request.POST['names'] + "<br>" + request.POST['surnames'] +
@@ -99,8 +99,9 @@ def contact_us(request):
 		subject, from_email, to = \
 			'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
 		# TODO: Generate function html from template and pass data
-		html_content = '<p>This is an <strong>ultimate2</strong> ' \
-					   'message.</p> {}'.format(message)
+		html_content = \
+			'<p>This is an <strong>ultimate2</strong> message.</p> {}'\
+			.format(message)
 		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
 		msg.content_subtype = "html"
 		msg.send()
