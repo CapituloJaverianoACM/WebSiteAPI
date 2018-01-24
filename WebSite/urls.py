@@ -11,20 +11,21 @@ urlpatterns = [
 	path('contactUs/', views.contact_us, name='contactUs'),
 	path('sendQuestionEmail/', views.send_question_email),
 	path('sendJoinForm/', views.send_join_form),
-	re_path(
-		'actividad/(?P<id_activity>[0-9]+)/',
+	path(
+		'actividad/<str:id_activity>/',
 		views.activity_detail,
 		name='activity_detail'
 	),
-	re_path(
-		'proyecto/(?P<id_project>[0-9]+)/',
+	path(
+		'proyecto/<str:id_project>/',
 		views.project_detail,
 		name='project_detail'
 	),
-	re_path(
-		'tutorial/(?P<id_tutorial>[0-9]+)/',
+	path(
+		'tutorial/<str:id_tutorial>/',
 		views.tutorial_detail,
 		name='tutorial_detail'
 	),
-	re_path(r'$', views.page_not_found),
 ]
+
+handler404='WebSite.views.page_not_found'
