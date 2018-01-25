@@ -1,6 +1,9 @@
 from django.urls import path, re_path
 from . import views
 
+
+handler404 = 'views.page_not_found'
+
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('staff/', views.staff, name='staff'),
@@ -25,7 +28,5 @@ urlpatterns = [
 		'tutorial/<str:id_tutorial>/',
 		views.tutorial_detail,
 		name='tutorial_detail'
-	),
+	)
 ]
-
-handler404='WebSite.views.page_not_found'

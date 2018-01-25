@@ -119,4 +119,4 @@ def contact_us(request):
 
 
 def page_not_found(request):
-	return render(request, '404.html')
+	return render(request=request, template_name='404.html', status=400)
