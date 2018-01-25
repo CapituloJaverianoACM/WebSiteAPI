@@ -1,5 +1,5 @@
 import os
-from . import private_settings
+from os import environ
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -61,8 +61,12 @@ WSGI_APPLICATION = 'ACMWebSite.wsgi.application'
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': environ.get('DATABASE_NAME', 'mydatabase'),
+		'USER': environ.get('DATABASE_USER', 'mydatabaseuser'),
+		'PASSWORD': environ.get('DATABASE_PASSWORD', 'mypassword'),
+		'HOST': environ.get('DATABASE_HOST', '127.0.0.1'),
+		'PORT': environ.get('DATABASE_PORT', '5432'),
 	}
 }
 
@@ -114,3 +118,4 @@ MEDIA_URL = '/media/'
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+#TODO: Add EMAIL USERNAME AND PASSWORD
