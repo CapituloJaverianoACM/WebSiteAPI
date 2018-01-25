@@ -19,7 +19,7 @@ class File(models.Model):
 	ext = models.CharField(max_length=10, choices=EXT_CHOICES)
 
 	def __str__(self):
-		return '%s' % (self.path)
+		return '%s' % self.path
 
 
 class FileAdmin(admin.ModelAdmin):
@@ -69,7 +69,11 @@ class Member(models.Model):
 class Team(models.Model):
 	name = models.CharField(max_length=200)
 	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
-	members = models.ManyToManyField(Member, related_name='teams', through='TeamMember')
+	members = models.ManyToManyField(
+		Member,
+		related_name='teams',
+		through='TeamMember'
+	)
 
 
 class Contest(models.Model):
@@ -93,7 +97,11 @@ class Activity(models.Model):
 	name = models.CharField(max_length=500)
 	date = models.DateTimeField()
 	place = models.CharField(max_length=500)
-	members = models.ManyToManyField(Member, related_name='activities', through='ActivityMember')
+	members = models.ManyToManyField(
+		Member,
+		related_name='activities',
+		through='ActivityMember'
+	)
 	files = models.ManyToManyField(File, related_name='activities')
 
 

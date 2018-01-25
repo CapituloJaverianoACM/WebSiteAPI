@@ -1,2 +1,5 @@
-def HelloWord():
-	print('hefds')
+from WebSite.models import Award
+
+
+def get_awards():
+	return Award.objects.all()
