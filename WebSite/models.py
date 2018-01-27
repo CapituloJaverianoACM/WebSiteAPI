@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib import admin
 from django.core.files.storage import FileSystemStorage
 from .forms import *
+from datetime import datetime
 
 
 class File(models.Model):
@@ -52,13 +53,13 @@ class Member(models.Model):
 	)
 	name = models.CharField(max_length=200)
 	surname = models.CharField(max_length=200)
-	email = models.EmailField()
+	email = models.EmailField(unique=True)
 	major = models.CharField(max_length=200)
-	identification = models.CharField(max_length=50)
-	dateMajor = models.DateField()
-	dateChapter = models.DateField()
-	dateBirth = models.DateField()
-	cellphone = models.CharField(max_length=20)
+	identification = models.CharField(max_length=50, null=True)
+	dateMajor = models.DateField(null=True)
+	dateChapter = models.DateField(null=True)
+	dateBirth = models.DateField(null=True)
+	cellphone = models.CharField(max_length=20, null=True)
 	idPhoto = models.OneToOneField(File, on_delete=models.CASCADE)
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
