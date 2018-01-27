@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from datetime import datetime, date
 from django.http import JsonResponse
 from .models import *
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 from WebSite.api import award_service
 from WebSite.api import member_service
 from WebSite.api import email_service
@@ -74,6 +79,15 @@ def tutorial_detail(request, id_tutorial):
 	return render(request, 'tutorial.html')
 
 
+@api_view(['POST'])
+def test(request):
+	response = {
+		'msg' : 'Estamos conectados'
+	}
+	return Response(response)
+
+
+@api_view(['POST'])
 def send_question_email(request):
 	message = request.POST['message']
 	email = request.POST['email']
@@ -98,7 +112,7 @@ def send_question_email(request):
 		'state': 'Se ha enviado el mensaje.'
 	}
 	# TODO Clear the form
-	return JsonResponse(response)
+	return Response(response)
 
 
 def send_join_form(request):

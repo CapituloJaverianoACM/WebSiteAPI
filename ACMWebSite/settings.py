@@ -24,6 +24,7 @@ INSTALLED_APPS = [
 	'WebSite.apps.WebsiteConfig',
 	'markdown_deux',
 	'django_extensions',
+	'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -115,8 +116,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'WebSite/static/media')
 MEDIA_URL = '/media/'
 
-EMAIL_HOST = 'smtp.office365.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = environ.get('EMAIL_HOST', 'email_host')
+EMAIL_PORT = environ.get('EMAIL_PORT', 'email_port')
+EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'email_use_tls')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
