@@ -104,11 +104,15 @@ def send_question_email(request):
 def send_join_form(request):
 	# TODO See if add another table for this people
 	# TODO Clear the form
+	# TODO Handle spam form
+	# https://www.industrialmarketer.com/how-to-handle-web-form-spam/
+	"""
 	name = request.POST['names']
 	last_name = request.POST['surnames']
 	email = request.POST['email']
 	major = request.POST['major']
 	reason = request.POST['reason']
+	"""
 	data = {
 		'state': '¡Nos alegra que quieras hacer parte del capitulo!'
 	}
