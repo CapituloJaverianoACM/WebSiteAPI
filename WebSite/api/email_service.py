@@ -14,7 +14,6 @@ class EmailThread(threading.Thread):
 		threading.Thread.__init__(self)
 
 	def run(self):
-		print ('Empece el hilo')
 		message = EmailMessage(
 			subject=self.subject,
 			body=self.content,
@@ -22,8 +21,6 @@ class EmailThread(threading.Thread):
 			to=self.receivers
 		)
 		message.content_subtype = 'html'
-		print (message.send())
-		print ('Termine el hilo')
 
 
 def send_email(subject, content, sender=None, receivers=None):
@@ -34,7 +31,6 @@ def send_email(subject, content, sender=None, receivers=None):
 	:param receivers: list
 	:return:
 	"""
-	print ('Enviando email...')
 	EmailThread(subject, content, receivers, sender).start()
 
 
