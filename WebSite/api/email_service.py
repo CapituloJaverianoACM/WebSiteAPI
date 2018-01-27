@@ -21,6 +21,7 @@ class EmailThread(threading.Thread):
 			to=self.receivers
 		)
 		message.content_subtype = 'html'
+		message.send()
 
 
 def send_email(subject, content, sender=None, receivers=None):
