@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from django.core.mail import EmailMultiAlternatives
-import json
 from django.http import JsonResponse
 from .models import *
 from WebSite.api import award_service
 from WebSite.api import member_service
+from WebSite.api import email_service
 
 
 def index(request):
@@ -76,46 +75,48 @@ def tutorial_detail(request, id_tutorial):
 
 
 def send_question_email(request):
+	message = request.POST['message']
+	email = request.POST['email']
+	subject = 'Contact Us Form'
 	data = {
-		'state': request.POST['message'] + "<br>" + request.POST['email']
+		'body_message': message,
 	}
-	return JsonResponse(data)
+	content = email_service.render_template('contact_us.html', data)
+	email_service.send_email(
+		subject,
+		content,
+		receivers=[email_service.get_sender_email()]
+	)
+
+	content_response = email_service.render_template(
+		'contact_us_response.html',
+		None
+	)
+	email_service.send_email(subject, content_response, receivers=[email])
+
+	response = {
+		'state': 'Se ha enviado el mensaje.'
+	}
+	# TODO Clear the form
+	return JsonResponse(response)
 
 
 def send_join_form(request):
+	# TODO See if add another table for this people
+	# TODO Clear the form
+	# TODO Handle spam form
+	# https://www.industrialmarketer.com/how-to-handle-web-form-spam/
+	"""
+	name = request.POST['names']
+	last_name = request.POST['surnames']
+	email = request.POST['email']
+	major = request.POST['major']
+	reason = request.POST['reason']
+	"""
 	data = {
-		'state':
-			request.POST['names'] + "<br>" + request.POST['surnames'] +
-			"<br>" + request.POST['email'] + "<br>" + request.POST['major'] +
-			"<br>" + request.POST['reason']
+		'state': '¡Nos alegra que quieras hacer parte del capitulo!'
 	}
 	return JsonResponse(data)
-
-
-def contact_us(request):
-	if request.method == 'POST':
-		message = request.POST['message']
-		email = request.POST['email']
-		subject, from_email, to = \
-			'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
-		# TODO: Generate function html from template and pass data
-		html_content = \
-			'<p>This is an <strong>ultimate2</strong> message.</p> {}'\
-			.format(message)
-		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-		msg.content_subtype = "html"
-		msg.send()
-
-		subject = 'Contact Us Form'
-		from_email = 'acm@javeriana.edu.co'
-		to = email
-		html_content = '<p>This is an <strong>ultimate3</strong> message.</p>'
-		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-		msg.content_subtype = "html"
-		msg.send()
-		return redirect('index')
-	else:
-		return render(request, 'index.html')
 
 
 def page_not_found(request):
