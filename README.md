@@ -30,12 +30,52 @@ WebSite 2.0 for ACM develop by the Javerian Chapter
 
 We recommend work on Linux, because it is easier install packages and frameworks; but, if you want to work on Windows you can do it.
 
+### PyEnv
+
+Install:
+
+```
+$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+```
+
+Install dependencies:
+
+```
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev git
+```
+
+add this lines in `.bashrc`:
+
+```
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+```
+
+and then Update:
+
+```
+$ pyenv update
+```
+
 ### Python
-You must have installed python3 on your pc, so check it.
+
+Install on pyenv
 
 ```shell
-$ python3 --version
-Python 3.5.2
+$ pyenv install 3.6.0
+```
+
+Set Python 3.6.0 as global env
+
+```shell
+$ pyenv global 3.6.0
+```
+
+We gonna use `myvenv` as the name of the virtual environment, but you can use the name that you prefer.
+
+```shell
+$ pyenv virtualenv <myvenv>
 ```
 
 If you haven't python installed you can install it with the command below
