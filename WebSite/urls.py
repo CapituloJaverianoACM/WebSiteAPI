@@ -1,5 +1,8 @@
-from django.urls import path, re_path
+from django.urls import path
 from . import views
+
+
+handler404 = 'views.page_not_found'
 
 urlpatterns = [
 	path('', views.index, name='index'),
@@ -8,23 +11,21 @@ urlpatterns = [
 	path('actividades/', views.activities, name='activities'),
 	path('proyectos/', views.projects, name='projects'),
 	path('tutoriales/', views.tutorials, name='tutorials'),
-	path('contactUs/', views.contact_us, name='contactUs'),
-	path('sendQuestionEmail/', views.sendQuestionEmail),
-	path('sendJoinForm/', views.sendJoinForm),
-	re_path(
-		'actividad/(?P<idActivity>[0-9]+)/',
+	path('sendQuestionEmail/', views.send_question_email),
+	path('sendJoinForm/', views.send_join_form),
+	path(
+		'actividad/<str:id_activity>/',
 		views.activity_detail,
-		name='activityDetail'
+		name='activity_detail'
 	),
-	re_path(
-		'proyecto/(?P<idProject>[0-9]+)/',
+	path(
+		'proyecto/<str:id_project>/',
 		views.project_detail,
-		name='projectDetail'
+		name='project_detail'
 	),
-	re_path(
-		'tutorial/(?P<idTutorial>[0-9]+)/',
+	path(
+		'tutorial/<str:id_tutorial>/',
 		views.tutorial_detail,
-		name='tutorialDetail'
-	),
-	re_path(r'', views.page_not_found),
+		name='tutorial_detail'
+	)
 ]

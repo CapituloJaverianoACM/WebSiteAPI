@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from datetime import datetime, date
-from django.core.mail import EmailMultiAlternatives
-import json
 from django.http import JsonResponse
 from .models import *
+from WebSite.api import award_service
+from WebSite.api import member_service
+from WebSite.api import email_service
 
 
 def index(request):
-	awards = Award.objects.order_by('-date')
+	awards = award_service.get_awards().order_by('-date')
 	recent_activities = []
 	order_to_future = Activity.objects.exclude(
 		date__lt=date.today()
@@ -38,7 +39,11 @@ def index(request):
 
 
 def staff(request):
-	return render(request, 'staff.html')
+	staffMembers = member_service.getStaff()
+	context = {
+		'members': staffMembers,
+	}
+	return render(request, 'staff.html', context)
 
 
 def contest(request):
@@ -49,7 +54,7 @@ def activities(request):
 	return render(request, 'activities.html')
 
 
-def activity_detail(request, idActivity):
+def activity_detail(request, id_activity):
 	return render(request, 'activity.html')
 
 
@@ -57,7 +62,7 @@ def projects(request):
 	return render(request, 'projects.html')
 
 
-def project_detail(request, idProject):
+def project_detail(request, id_project):
 	return render(request, 'project.html')
 
 
@@ -65,51 +70,54 @@ def tutorials(request):
 	return render(request, 'tutorials.html')
 
 
-def tutorial_detail(request, idTutorial):
+def tutorial_detail(request, id_tutorial):
 	return render(request, 'tutorial.html')
 
 
-def sendQuestionEmail(request):
+def send_question_email(request):
+	message = request.POST['message']
+	email = request.POST['email']
+	subject = 'Contact Us Form'
 	data = {
-		'state': request.POST['message'] + "<br>" + request.POST['email']
+		'body_message': message,
+	}
+	content = email_service.render_template('contact_us.html', data)
+	email_service.send_email(
+		subject,
+		content,
+		receivers=[email_service.get_sender_email()]
+	)
+
+	content_response = email_service.render_template(
+		'contact_us_response.html',
+		None
+	)
+	email_service.send_email(subject, content_response, receivers=[email])
+
+	response = {
+		'state': 'Se ha enviado el mensaje.'
+	}
+	# TODO Clear the form
+	return JsonResponse(response)
+
+
+def send_join_form(request):
+	# TODO See if add another table for this people
+	# TODO Clear the form
+	# TODO Handle spam form
+	# https://www.industrialmarketer.com/how-to-handle-web-form-spam/
+	"""
+	name = request.POST['names']
+	last_name = request.POST['surnames']
+	email = request.POST['email']
+	major = request.POST['major']
+	reason = request.POST['reason']
+	"""
+	data = {
+		'state': '¡Nos alegra que quieras hacer parte del capitulo!'
 	}
 	return JsonResponse(data)
-
-
-def sendJoinForm(request):
-	data = {
-		'state':
-			request.POST['names'] + "<br>" + request.POST['surnames'] +
-			"<br>" + request.POST['email'] + "<br>" + request.POST['major'] +
-			"<br>" + request.POST['reason']
-	}
-	return JsonResponse(data)
-
-
-def contact_us(request):
-	if request.method == 'POST':
-		message = request.POST['message']
-		email = request.POST['email']
-		subject, from_email, to = \
-			'Contact Us Form', 'acm@javeriana.edu.co', 'acm@javeriana.edu.co'
-		# TODO: Generate function html from template and pass data
-		html_content = '<p>This is an <strong>ultimate2</strong> ' \
-			'message.</p> {}'.format(message)
-		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-		msg.content_subtype = "html"
-		msg.send()
-
-		subject = 'Contact Us Form'
-		from_email = 'acm@javeriana.edu.co'
-		to = email
-		html_content = '<p>This is an <strong>ultimate3</strong> message.</p>'
-		msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-		msg.content_subtype = "html"
-		msg.send()
-		return redirect('index')
-	else:
-		return render(request, 'index.html')
 
 
 def page_not_found(request):
-	return render(request, '404.html')
+	return render(request=request, template_name='404.html', status=400)

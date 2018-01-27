@@ -1,5 +1,5 @@
 import os
-from . import private_settings
+from os import environ
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,6 +23,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'WebSite.apps.WebsiteConfig',
 	'markdown_deux',
+	'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -60,8 +61,12 @@ WSGI_APPLICATION = 'ACMWebSite.wsgi.application'
 
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': environ.get('DATABASE_NAME', 'namedb'),
+		'USER': environ.get('DATABASE_USER', 'userdb'),
+		'PASSWORD': environ.get('DATABASE_PASSWORD', 'passworddb'),
+		'HOST': environ.get('DATABASE_HOST', '127.0.0.1'),
+		'PORT': environ.get('DATABASE_PORT', 'port')
 	}
 }
 
@@ -113,3 +118,5 @@ MEDIA_URL = '/media/'
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')

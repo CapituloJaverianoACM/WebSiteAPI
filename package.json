@@ -29,7 +29,8 @@
     "get-form-data": "^2.0.0",
     "jquery": "^3.2.1",
     "jquery-scrollify": "^1.0.19",
-    "owl.carousel": "^2.2.0"
+    "owl.carousel": "^2.2.0",
+    "yarn": "^1.3.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
