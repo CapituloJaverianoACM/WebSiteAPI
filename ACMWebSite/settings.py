@@ -62,11 +62,11 @@ WSGI_APPLICATION = 'ACMWebSite.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': environ.get('DATABASE_NAME', 'mydatabase'),
-		'USER': environ.get('DATABASE_USER', 'mydatabaseuser'),
-		'PASSWORD': environ.get('DATABASE_PASSWORD', 'mypassword'),
+		'NAME': environ.get('DATABASE_NAME', 'namedb'),
+		'USER': environ.get('DATABASE_USER', 'userdb'),
+		'PASSWORD': environ.get('DATABASE_PASSWORD', 'passworddb'),
 		'HOST': environ.get('DATABASE_HOST', '127.0.0.1'),
-		'PORT': environ.get('DATABASE_PORT', '5432'),
+		'PORT': environ.get('DATABASE_PORT', 'port')
 	}
 }
 
@@ -118,4 +118,5 @@ MEDIA_URL = '/media/'
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# TODO: Add EMAIL USERNAME AND PASSWORD
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')

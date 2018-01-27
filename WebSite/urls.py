@@ -1,4 +1,4 @@
-from django.urls import path, re_path
+from django.urls import path
 from . import views
 
 
@@ -11,7 +11,6 @@ urlpatterns = [
 	path('actividades/', views.activities, name='activities'),
 	path('proyectos/', views.projects, name='projects'),
 	path('tutoriales/', views.tutorials, name='tutorials'),
-	path('contactUs/', views.contact_us, name='contactUs'),
 	path('sendQuestionEmail/', views.send_question_email),
 	path('sendJoinForm/', views.send_join_form),
 	path(
