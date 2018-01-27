@@ -1,66 +1,30 @@
 {
   "name": "acmwebsite",
-  "version": "1.0.0",
-  "description": "Website for Javeriana's ACM chapter",
-  "main": "gulpfile.babel.js",
+  "version": "2.0.0",
+  "description": "Website API for Javeriana's ACM chapter",
   "scripts": {
     "requirements": "pip install -U -r ./requirements.txt",
-    "build": "gulp clean:build",
-    "start": "python manage.py runserver",
-    "dev": "gulp"
+    "start": "python manage.py runserver"
   },
-  "repository": "git+https://github.com/CapituloJaverianoACM/ACMWebSite.git",
   "keywords": [
     "pyhton",
     "django",
-    "sass",
     "web",
-    "pug",
-    "javascript"
+    "django-rest"
   ],
   "author": "Javeriana's ACM web developers",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CapituloJaverianoACM/ACMWebSite/issues"
-  },
-  "homepage": "https://github.com/CapituloJaverianoACM/ACMWebSite#readme",
-  "dependencies": {
-    "alertifyjs": "^1.11.0",
-    "get-form-data": "^2.0.0",
-    "jquery": "^3.2.1",
-    "jquery-scrollify": "^1.0.19",
-    "owl.carousel": "^2.2.0",
-    "yarn": "^1.3.2"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babelify": "^8.0.0",
-    "browser-sync": "^2.23.2",
-    "browserify": "^15.0.0",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.1.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-if": "^2.0.2",
-    "gulp-pug": "^3.3.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.3",
-    "gulp-todo": "^5.4.0",
-    "gulp-uglify": "^3.0.0",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-paths": "^2.1.0",
-    "vinyl-source-stream": "^2.0.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
+  "license": "GPL-3.0",
   "private": true,
   "os": [
-    "linux",
-    "win64"
-  ]
+    "linux"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CapituloJaverianoACM/WebSiteAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CapituloJaverianoACM/WebSiteAPI/issues"
+  },
+  "homepage": "https://github.com/CapituloJaverianoACM/WebSiteAPI#readme"
 }
