@@ -26,9 +26,9 @@ class FileAdmin(admin.ModelAdmin):
 	form = FileAdminForm
 
 	def save_model(self, request, obj, form, change):
-		fileForm = request.FILES['path']
+		file_form = request.FILES['path']
 		fs = FileSystemStorage()
-		filename = fs.save(obj.basename + fileForm.name, fileForm)
+		filename = fs.save(obj.basename + file_form.name, file_form)
 		uploaded_file_url = fs.url(filename)
 		obj.path = uploaded_file_url
 		super().save_model(request, obj, form, change)
@@ -36,11 +36,11 @@ class FileAdmin(admin.ModelAdmin):
 
 class Award(models.Model):
 	date = models.DateField()
-	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+	id_file = models.OneToOneField(File, on_delete=models.CASCADE)
 	description = models.CharField(max_length=100)
 
 	def __str__(self):
-		return '%s' % (self.idFile.path)
+		return '%s' % (self.id_file.path)
 
 
 class Member(models.Model):
@@ -56,11 +56,11 @@ class Member(models.Model):
 	email = models.EmailField(unique=True)
 	major = models.CharField(max_length=200)
 	identification = models.CharField(max_length=50, null=True)
-	dateMajor = models.DateField(null=True)
-	dateChapter = models.DateField(null=True)
-	dateBirth = models.DateField(null=True)
+	date_major = models.DateField(null=True)
+	date_chapter = models.DateField(null=True)
+	date_birth = models.DateField(null=True)
 	cellphone = models.CharField(max_length=20, null=True)
-	idPhoto = models.OneToOneField(File, on_delete=models.CASCADE)
+	id_photo = models.OneToOneField(File, on_delete=models.CASCADE)
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
 	description = models.CharField(max_length=100, null=True)
@@ -68,7 +68,7 @@ class Member(models.Model):
 
 class Team(models.Model):
 	name = models.CharField(max_length=200)
-	idFile = models.OneToOneField(File, on_delete=models.CASCADE)
+	id_file = models.OneToOneField(File, on_delete=models.CASCADE)
 	members = models.ManyToManyField(
 		Member,
 		related_name='teams',
@@ -106,8 +106,8 @@ class Activity(models.Model):
 
 
 class Project(models.Model):
-	dateStart = models.DateField()
-	dateEnd = models.DateField()
+	date_start = models.DateField()
+	date_end = models.DateField()
 	name = models.CharField(max_length=200)
 	members = models.ManyToManyField(Member, related_name='projects')
 	files = models.ManyToManyField(File, related_name='projects')
