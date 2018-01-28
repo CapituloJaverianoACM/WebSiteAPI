@@ -6,10 +6,13 @@ from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import status
 
 from WebSite.api import award_service
 from WebSite.api import member_service
 from WebSite.api import email_service
+
+from WebSite.serializer.member_serializer import MemberSerializer
 
 
 def index(request):
@@ -82,7 +85,7 @@ def tutorial_detail(request, id_tutorial):
 @api_view(['POST'])
 def test(request):
 	response = {
-		'msg' : 'Estamos conectados'
+		'msg': 'Estamos conectados'
 	}
 	return Response(response)
 
@@ -111,15 +114,11 @@ def send_question_email(request):
 	response = {
 		'state': 'Se ha enviado el mensaje.'
 	}
-	# TODO Clear the form
 	return Response(response)
 
 
+@api_view(['POST'])
 def send_join_form(request):
-	# TODO See if add another table for this people
-	# TODO Clear the form
-	# TODO Handle spam form
-	# https://www.industrialmarketer.com/how-to-handle-web-form-spam/
 	"""
 	name = request.POST['names']
 	last_name = request.POST['surnames']
@@ -135,3 +134,21 @@ def send_join_form(request):
 
 def page_not_found(request):
 	return render(request=request, template_name='404.html', status=400)
+
+
+class MemberList(APIView):
+
+	def post(self, request):
+		member_serializer = MemberSerializer(data=request.data)
+		if member_serializer.is_valid():
+			if member_service.check_unique_email(request.data.get('email', '')):
+				member_serializer.save()
+				return Response(
+					member_serializer.data,
+					status=status.HTTP_201_CREATED
+				)
+		errors = dict(email='Ya se encuentra en uso.')
+		return Response(
+			errors,
+			status=status.HTTP_400_BAD_REQUEST
+		)
