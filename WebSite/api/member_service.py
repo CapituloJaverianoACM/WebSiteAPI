@@ -2,7 +2,18 @@ from ..models import Member
 
 
 def getStaff():
-	membersStaff = Member.objects.filter(is_staff=True).order_by('position')
+	# TODO - send the path
+	membersStaff = Member.objects.filter(is_staff=True).order_by('position').\
+		values(
+		'name',
+		'surname',
+		'email',
+		'major',
+		'id_photo_id',
+		'is_staff',
+		'position',
+		'description'
+	)
 	return membersStaff
 
 

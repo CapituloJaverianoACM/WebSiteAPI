@@ -152,3 +152,16 @@ class MemberList(APIView):
 			errors,
 			status=status.HTTP_400_BAD_REQUEST
 		)
+
+
+class StaffList(APIView):
+
+	def get(self, request):
+		member_serializers = MemberSerializer(
+			member_service.getStaff(),
+			many=True
+		)
+		return Response(
+			member_serializers.data,
+			status=status.HTTP_200_OK
+		)
