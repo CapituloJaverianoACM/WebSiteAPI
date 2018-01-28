@@ -34,6 +34,14 @@ ROLE_CHOICES = (
 	('PAR', 'Participante'),
 )
 
+MAJOR_CHOICES = (
+	('IS', 'Ingeniería de Sistemas'),
+	('IE', 'Ingeniería Electrónica'),
+	('II', 'Ingeniería Industrial'),
+	('IC', 'Ingeniería Civil'),
+	('MT', 'Matemáticas'),
+	('OT', 'Otro')
+)
 
 class File(models.Model):
 	# TODO: Basename is the directory of the file ex: awards/
@@ -70,7 +78,7 @@ class Member(models.Model):
 	name = models.CharField(max_length=200)
 	surname = models.CharField(max_length=200)
 	email = models.EmailField(unique=True)
-	major = models.CharField(max_length=200)
+	major = models.CharField(max_length=50, choices=MAJOR_CHOICES)
 	identification = models.CharField(max_length=50, null=True)
 	date_major = models.DateField(null=True)
 	date_chapter = models.DateField(null=True)

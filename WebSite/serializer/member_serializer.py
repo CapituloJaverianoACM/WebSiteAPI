@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from WebSite.models import (
     Member,
-    POSITION_CHOICES
+    POSITION_CHOICES,
+    MAJOR_CHOICES
 )
 
 
@@ -9,7 +10,9 @@ class MemberSerializer(serializers.Serializer):
     name = serializers.CharField()
     surname = serializers.CharField()
     email = serializers.CharField()
-    major = serializers.CharField()
+    major = serializers.ChoiceField(
+        choices=MAJOR_CHOICES
+    )
     identification = serializers.CharField(required=False)
     date_major = serializers.DateField(required=False)
     date_chapter = serializers.DateField(required=False)
