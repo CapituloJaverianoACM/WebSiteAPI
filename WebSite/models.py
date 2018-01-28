@@ -43,6 +43,7 @@ MAJOR_CHOICES = (
 	('OT', 'Otro')
 )
 
+
 class File(models.Model):
 	# TODO: Basename is the directory of the file ex: awards/
 	basename = models.CharField(max_length=200, default='')
