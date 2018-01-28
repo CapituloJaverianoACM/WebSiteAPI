@@ -14,8 +14,10 @@ from rest_framework import status
 from WebSite.api import award_service
 from WebSite.api import member_service
 from WebSite.api import email_service
+from WebSite.api import activity_service
 
 from WebSite.serializer.member_serializer import MemberSerializer
+from WebSite.serializer.activity_serializer import ActivitySerializer
 
 
 def index(request):
@@ -166,5 +168,18 @@ class StaffList(APIView):
 		)
 		return Response(
 			member_serializers.data,
+			status=status.HTTP_200_OK
+		)
+
+
+class ActivityList(APIView):
+
+	def get(self, request):
+		activity_serializer = ActivitySerializer(
+			activity_service.get_all_activities(),
+			many=True
+		)
+		return Response(
+			activity_serializer.data,
 			status=status.HTTP_200_OK
 		)
