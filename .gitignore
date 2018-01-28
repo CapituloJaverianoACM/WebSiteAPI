@@ -1,9 +1,6 @@
 # Created by https://www.gitignore.io/api/django,python
 
-ACMWebSite/private_settings.py
-todo.md
 .envrc
-
 .idea/
 
 ### Django ###
@@ -118,18 +115,6 @@ myvenv/
 /site
 
 # End of https://www.gitignore.io/api/django,python
-
-# Node modules
-/node_modules
-
-
-# Created by https://www.gitignore.io/api/sass
-
-### Sass ###
-.sass-cache/
-*.css.map
-
-# End of https://www.gitignore.io/api/sass
 
 # Created by https://www.gitignore.io/api/macos
 
