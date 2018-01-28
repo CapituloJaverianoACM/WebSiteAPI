@@ -158,7 +158,7 @@ class StaffList(APIView):
 
 	def get(self, request):
 		member_serializers = MemberSerializer(
-			member_service.getStaff(),
+			member_service.get_staff(),
 			many=True
 		)
 		return Response(

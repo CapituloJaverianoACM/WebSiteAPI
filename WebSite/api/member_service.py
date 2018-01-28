@@ -1,7 +1,7 @@
 from ..models import Member
 
 
-def getStaff():
+def get_staff():
 	# TODO - send the path
 	membersStaff = Member.objects.filter(is_staff=True).order_by('position').\
 		values(
@@ -12,7 +12,7 @@ def getStaff():
 		'id_photo_id',
 		'is_staff',
 		'position',
-		'description'
+		'description',
 	)
 	return membersStaff
 
