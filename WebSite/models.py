@@ -1,3 +1,6 @@
+# -- coding: utf-8
+from __future__ import unicode_literals
+
 from django.db import models
 from django.contrib import admin
 from django.core.files.storage import FileSystemStorage
@@ -32,6 +35,15 @@ ROLE_CHOICES = (
 	('ENC', 'Encargado'),
 	('AYU', 'Ayudante'),
 	('PAR', 'Participante'),
+)
+
+MAJOR_CHOICES = (
+	('IS', 'Ingeniería de Sistemas'),
+	('IE', 'Ingeniería Electrónica'),
+	('II', 'Ingeniería Industrial'),
+	('IC', 'Ingeniería Civil'),
+	('MT', 'Matemáticas'),
+	('OT', 'Otro')
 )
 
 
@@ -70,7 +82,7 @@ class Member(models.Model):
 	name = models.CharField(max_length=200)
 	surname = models.CharField(max_length=200)
 	email = models.EmailField(unique=True)
-	major = models.CharField(max_length=200)
+	major = models.CharField(max_length=50, choices=MAJOR_CHOICES)
 	identification = models.CharField(max_length=50, null=True)
 	date_major = models.DateField(null=True)
 	date_chapter = models.DateField(null=True)
@@ -80,6 +92,7 @@ class Member(models.Model):
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
 	description = models.CharField(max_length=100, null=True)
+	reason = models.TextField(null=True)
 
 
 class Team(models.Model):
