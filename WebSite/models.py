@@ -5,14 +5,37 @@ from .forms import *
 from datetime import datetime
 
 
+EXT_CHOICES = (
+	('img', 'Image'),
+	('md', 'Markdown'),
+	('mdf', 'MarkdownForm'),
+	('json', 'JSON'),
+	('ot', 'Other'),
+)
+
+
+POSITION_CHOICES = (
+	('1PRE', 'Presidente'),
+	('2VIC', 'Vice-Presidente'),
+	('3SEC', 'Secretario'),
+	('4TES', 'Tesorero'),
+	('5CM', 'Comunity Manager'),
+)
+
+CATEGORY_CHOICES = (
+	('NAC', 'Maratón Nacional'),
+	('REG', 'Maratón Regional'),
+	('MUN', 'Maratón Mundial'),
+)
+
+ROLE_CHOICES = (
+	('ENC', 'Encargado'),
+	('AYU', 'Ayudante'),
+	('PAR', 'Participante'),
+)
+
+
 class File(models.Model):
-	EXT_CHOICES = (
-		('img', 'Image'),
-		('md', 'Markdown'),
-		('mdf', 'MarkdownForm'),
-		('json', 'JSON'),
-		('ot', 'Other'),
-	)
 	# TODO: Basename is the directory of the file ex: awards/
 	basename = models.CharField(max_length=200, default='')
 	path = models.CharField(max_length=200)
@@ -44,13 +67,6 @@ class Award(models.Model):
 
 
 class Member(models.Model):
-	POSITION_CHOICES = (
-		('1PRE', 'Presidente'),
-		('2VIC', 'Vice-Presidente'),
-		('3SEC', 'Secretario'),
-		('4TES', 'Tesorero'),
-		('5CM', 'Comunity Manager'),
-	)
 	name = models.CharField(max_length=200)
 	surname = models.CharField(max_length=200)
 	email = models.EmailField(unique=True)
@@ -60,7 +76,7 @@ class Member(models.Model):
 	date_chapter = models.DateField(null=True)
 	date_birth = models.DateField(null=True)
 	cellphone = models.CharField(max_length=20, null=True)
-	id_photo = models.OneToOneField(File, on_delete=models.CASCADE)
+	id_photo = models.OneToOneField(File, null=True, on_delete=models.CASCADE)
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
 	description = models.CharField(max_length=100, null=True)
@@ -77,11 +93,6 @@ class Team(models.Model):
 
 
 class Contest(models.Model):
-	CATEGORY_CHOICES = (
-		('NAC', 'Maratón Nacional'),
-		('REG', 'Maratón Regional'),
-		('MUN', 'Maratón Mundial'),
-	)
 	category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
 	date = models.DateField()
 	place = models.IntegerField()
@@ -120,11 +131,6 @@ class TeamMember(models.Model):
 
 
 class ActivityMember(models.Model):
-	ROLE_CHOICES = (
-		('ENC', 'Encargado'),
-		('AYU', 'Ayudante'),
-		('PAR', 'Participante'),
-	)
 	activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
 	member = models.ForeignKey(Member, on_delete=models.CASCADE)
 	role = models.CharField(max_length=10, choices=ROLE_CHOICES)
