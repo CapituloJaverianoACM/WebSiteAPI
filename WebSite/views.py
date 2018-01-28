@@ -1,3 +1,6 @@
+# -- coding: utf-8
+from __future__ import unicode_literals
+
 from django.shortcuts import render, redirect
 from datetime import datetime, date
 from django.http import JsonResponse
