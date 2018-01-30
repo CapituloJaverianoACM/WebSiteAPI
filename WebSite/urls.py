@@ -10,6 +10,7 @@ urlpatterns = [
 	path('staff/', views.StaffList.as_view()),
 	path('activities/', views.ActivityList.as_view()),
 	path('tutorials/', views.TutorialList.as_view()),
+	path('projects/', views.ProjectList.as_view()),
 	path(
 		'tutorial/<str:id_tutorial>/',
 		views.tutorial_detail,
