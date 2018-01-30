@@ -15,9 +15,11 @@ from WebSite.api import award_service
 from WebSite.api import member_service
 from WebSite.api import email_service
 from WebSite.api import activity_service
+from WebSite.api import tutorial_service
 
 from WebSite.serializer.member_serializer import MemberSerializer
 from WebSite.serializer.activity_serializer import ActivitySerializer
+from WebSite.serializer.tutorial_serializer import TutorialSerializer
 
 
 def index(request):
@@ -181,5 +183,18 @@ class ActivityList(APIView):
 		)
 		return Response(
 			activity_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
+class TutorialList(APIView):
+
+	def get(self, request):
+		tutorial_serializer = TutorialSerializer(
+			tutorial_service.get_tutorials(),
+			many=True
+		)
+		return Response(
+			tutorial_serializer.data,
 			status=status.HTTP_200_OK
 		)
