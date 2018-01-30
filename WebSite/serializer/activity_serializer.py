@@ -5,6 +5,7 @@ from rest_framework import serializers
 
 
 class ActivitySerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
     name = serializers.CharField()
     date = serializers.DateTimeField()
     place = serializers.CharField()
