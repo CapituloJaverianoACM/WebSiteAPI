@@ -1,5 +1,5 @@
 from ..models import Project
 
 
-def get_proyects():
+def get_projects():
     return Project.objects.all()

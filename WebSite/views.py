@@ -206,7 +206,7 @@ class ProjectList(APIView):
 
 	def get(self, request):
 		project_serializer = ProjectSerializer(
-			project_service.get_proyects(),
+			project_service.get_projects(),
 			many=True
 		)
 		return Response(
