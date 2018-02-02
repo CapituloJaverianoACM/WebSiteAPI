@@ -20,12 +20,15 @@ from WebSite.api import email_service
 from WebSite.api import activity_service
 from WebSite.api import tutorial_service
 from WebSite.api import project_service
+from WebSite.api import team_service
 
 from WebSite.serializer.member_serializer import MemberSerializer
 from WebSite.serializer.activity_serializer import ActivitySerializer
 from WebSite.serializer.activity_serializer import ConfirmActivitySerializer
 from WebSite.serializer.tutorial_serializer import TutorialSerializer
 from WebSite.serializer.project_serializer import ProjectSerializer
+from WebSite.serializer.award_serializer import AwardSerializer
+from WebSite.serializer.team_serializer import TeamSerializer
 
 
 def index(request):
@@ -149,6 +152,19 @@ def page_not_found(request):
 	return render(request=request, template_name='404.html', status=400)
 
 
+class AwardList(APIView):
+
+	def get(self, request):
+		awards_serializer = AwardSerializer(
+			award_service.get_awards(),
+			many=True
+		)
+		return Response(
+			awards_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
 class MemberList(APIView):
 
 	def get(self, request):
@@ -165,7 +181,8 @@ class MemberList(APIView):
 		member_serializer = MemberSerializer(data=request.data)
 		if member_serializer.is_valid():
 			if member_service.check_unique_email(
-					request.data.get('email', '')):
+				request.data.get('email', '')
+			):
 				member_serializer.save()
 				return Response(
 					member_serializer.data,
@@ -195,15 +212,21 @@ class ActivityDetail(APIView):
 
 	def get(self, request, id):
 		activity = activity_service.get_activity(id)
-		serializer = ActivitySerializer(activity)
-		serializer.is_valid(raise_exception=True)
-		return Response(serializer.data)
+		activity_serializer = ActivitySerializer(activity)
+		if activity_serializer:
+			return Response(activity_serializer.data)
+		else:
+			errors = dict(message='La actividad no se ha encontrado')
+			return Response(
+				errors,
+				status=status.HTTP_404_NOT_FOUND
+			)
 
 	def post(self, request, pk):
 		member_serializer = MemberSerializer(data=request.data)
+		print(member_serializer)
 		# TODO: Handle all info received from form
 		# TODO: Save the many to many relationship in serializer
-
 
 
 class ConfirmActivityView(GenericAPIView):
@@ -242,6 +265,17 @@ class TutorialList(APIView):
 		)
 
 
+class TutorialDetail(APIView):
+
+	def get(self, request, id):
+		tutorial = tutorial_service.get_tutorial(id=id)
+		tutorial_serializer = ProjectSerializer(tutorial)
+		return Response(
+			tutorial_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
 class ProjectList(APIView):
 
 	def get(self, request):
@@ -251,5 +285,29 @@ class ProjectList(APIView):
 		)
 		return Response(
 			project_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
+class ProjectDetail(APIView):
+
+	def get(self, request, id):
+		project = project_service.get_project(id=id)
+		project_serializer = ProjectSerializer(project)
+		return Response(
+			project_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
+class TeamList(APIView):
+
+	def get(self, request):
+		teams_serializer = TeamSerializer(
+			team_service.get_teams(),
+			many=True
+		)
+		return Response(
+			teams_serializer.data,
 			status=status.HTTP_200_OK
 		)

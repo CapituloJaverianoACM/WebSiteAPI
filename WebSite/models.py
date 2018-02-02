@@ -76,6 +76,7 @@ class Award(models.Model):
 	date = models.DateField()
 	id_file = models.OneToOneField(File, on_delete=models.CASCADE)
 	description = models.CharField(max_length=100)
+	title = models.CharField(max_length=100)
 
 	def __str__(self):
 		return '%s' % (self.id_file.path)
@@ -133,6 +134,8 @@ class Activity(models.Model):
 	information = MarkdownxField()
 	files = models.ManyToManyField(File, related_name='activities')
 	capacity = models.SmallIntegerField()
+	poster = models.CharField(max_length=80)
+	description = models.CharField(max_length=500)
 
 
 class Project(models.Model):
@@ -142,6 +145,7 @@ class Project(models.Model):
 	members = models.ManyToManyField(Member, related_name='projects')
 	information = MarkdownxField()
 	files = models.ManyToManyField(File, related_name='projects')
+	description = models.CharField(max_length=500)
 
 
 class TeamMember(models.Model):
