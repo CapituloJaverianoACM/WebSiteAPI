@@ -9,6 +9,7 @@ from WebSite.models import Member
 
 
 class ActivitySerializer(serializers.Serializer):
+    id = serializers.ReadOnlyField()
     name = serializers.CharField()
     date = serializers.DateTimeField()
     place = serializers.CharField()

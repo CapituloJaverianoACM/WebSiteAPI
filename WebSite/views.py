@@ -18,10 +18,14 @@ from WebSite.api import award_service
 from WebSite.api import member_service
 from WebSite.api import email_service
 from WebSite.api import activity_service
+from WebSite.api import tutorial_service
+from WebSite.api import project_service
 
 from WebSite.serializer.member_serializer import MemberSerializer
 from WebSite.serializer.activity_serializer import ActivitySerializer
 from WebSite.serializer.activity_serializer import ConfirmActivitySerializer
+from WebSite.serializer.tutorial_serializer import TutorialSerializer
+from WebSite.serializer.project_serializer import ProjectSerializer
 
 
 def index(request):
@@ -226,3 +230,29 @@ class ConfirmActivityView(GenericAPIView):
 		user.save()
 		"""
 		return Response('OK')
+
+
+class TutorialList(APIView):
+
+	def get(self, request):
+		tutorial_serializer = TutorialSerializer(
+			tutorial_service.get_tutorials(),
+			many=True
+		)
+		return Response(
+			tutorial_serializer.data,
+			status=status.HTTP_200_OK
+		)
+
+
+class ProjectList(APIView):
+
+	def get(self, request):
+		project_serializer = ProjectSerializer(
+			project_service.get_projects(),
+			many=True
+		)
+		return Response(
+			project_serializer.data,
+			status=status.HTTP_200_OK
+		)

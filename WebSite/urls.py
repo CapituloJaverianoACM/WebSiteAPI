@@ -12,5 +12,7 @@ urlpatterns = [
 	path('activities/', views.ActivityList.as_view()),
 	path('activity/<int:id>/', views.ActivityDetail.as_view()),
 	path('tutorial/<str:id_tutorial>/', views.tutorial_detail),
+	path('tutorials/', views.TutorialList.as_view()),
+	path('projects/', views.ProjectList.as_view()),
 	path('test/', views.test)
 ]
