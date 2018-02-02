@@ -22,7 +22,6 @@ WebSite 2.0 for ACM develop by the Javerian Chapter
 | -------------------------------- | ------------------------------------------------- | ------------------ |
 | Johan Sebastian Murillo Castillo | [johan-smc](https://github.com/johan-smc)         | Backend developer  |
 | Juan Pablo Rodriguez Navarro     | [JuanPabloRN30](https://github.com/JuanPabloRN30) | Backend developer  |
-| Juan Manuel Sánchez Lozano       | [juanmsl](https://github.com/juanmsl)             | Frontend developer |
 
 
 ## Prerequisites
