@@ -25,6 +25,7 @@ POSITION_CHOICES = (
 	('3SEC', 'Secretario'),
 	('4TES', 'Tesorero'),
 	('5CM', 'Comunity Manager'),
+	('6ME', 'Miembro'),
 )
 
 CATEGORY_CHOICES = (

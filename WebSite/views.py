@@ -125,7 +125,7 @@ def send_question_email(request):
 	email_service.send_email(subject, content_response, receivers=[email])
 
 	response = {
-		'state': 'Se ha enviado el mensaje.'
+		'message': 'Se ha enviado el mensaje.'
 	}
 	return Response(response)
 
@@ -151,6 +151,16 @@ def page_not_found(request):
 
 class MemberList(APIView):
 
+	def get(self, request):
+		member_serializers = MemberSerializer(
+			member_service.get_staff(),
+			many=True
+		)
+		return Response(
+			member_serializers.data,
+			status=status.HTTP_200_OK
+		)
+
 	def post(self, request):
 		member_serializer = MemberSerializer(data=request.data)
 		if member_serializer.is_valid():
@@ -165,19 +175,6 @@ class MemberList(APIView):
 		return Response(
 			errors,
 			status=status.HTTP_400_BAD_REQUEST
-		)
-
-
-class StaffList(APIView):
-
-	def get(self, request):
-		member_serializers = MemberSerializer(
-			member_service.get_staff(),
-			many=True
-		)
-		return Response(
-			member_serializers.data,
-			status=status.HTTP_200_OK
 		)
 
 
