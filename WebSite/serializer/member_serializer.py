@@ -12,7 +12,7 @@ from WebSite.models import (
 class MemberSerializer(serializers.Serializer):
     name = serializers.CharField()
     surname = serializers.CharField()
-    email = serializers.CharField()
+    email = serializers.EmailField()
     major = serializers.ChoiceField(
         choices=MAJOR_CHOICES
     )

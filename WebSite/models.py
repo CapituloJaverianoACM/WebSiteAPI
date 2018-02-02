@@ -4,8 +4,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib import admin
 from django.core.files.storage import FileSystemStorage
+
+from markdownx.models import MarkdownxField
+
 from .forms import *
-from datetime import datetime
 
 
 EXT_CHOICES = (
@@ -109,11 +111,12 @@ class Contest(models.Model):
 	category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
 	date = models.DateField()
 	place = models.IntegerField()
-	teams = models.ManyToManyField(Team, related_name='constests')
+	teams = models.ManyToManyField(Team, related_name='contests')
 
 
 class Tutorial(models.Model):
 	name = models.CharField(max_length=500)
+	information = MarkdownxField()
 	files = models.ManyToManyField(File, related_name='tutorials')
 
 
@@ -126,7 +129,9 @@ class Activity(models.Model):
 		related_name='activities',
 		through='ActivityMember'
 	)
+	information = MarkdownxField()
 	files = models.ManyToManyField(File, related_name='activities')
+	capacity = models.SmallIntegerField()
 
 
 class Project(models.Model):
@@ -134,6 +139,7 @@ class Project(models.Model):
 	date_end = models.DateField()
 	name = models.CharField(max_length=200)
 	members = models.ManyToManyField(Member, related_name='projects')
+	information = MarkdownxField()
 	files = models.ManyToManyField(File, related_name='projects')
 
 
@@ -147,3 +153,4 @@ class ActivityMember(models.Model):
 	activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
 	member = models.ForeignKey(Member, on_delete=models.CASCADE)
 	role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+	is_confirmed = models.BooleanField(default=False)

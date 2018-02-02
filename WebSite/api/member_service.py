@@ -30,3 +30,23 @@ def get_candidates():
 	:return: QuerySet<Member>
 	"""
 	return Member.objects.filter(date_chapter=None)
+
+
+def get_member_by_id(id):
+	try:
+		member = Member.objects.get(id=id)
+	except:
+		member = None
+	return member
+
+
+def get_member_by_email(email):
+	"""
+	:param email: str
+	:return: Member
+	"""
+	try:
+		member = Member.objects.get(email=email)
+	except:
+		member = None
+	return member

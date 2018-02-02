@@ -1,15 +1,18 @@
 # -- coding: utf-8
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
-from datetime import datetime, date
+from django.shortcuts import render
+from django.utils.http import urlsafe_base64_decode
+from datetime import date
 from django.http import JsonResponse
 from .models import *
 
 from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from rest_framework import viewsets
 
 from WebSite.api import award_service
 from WebSite.api import member_service
@@ -18,6 +21,7 @@ from WebSite.api import activity_service
 
 from WebSite.serializer.member_serializer import MemberSerializer
 from WebSite.serializer.activity_serializer import ActivitySerializer
+from WebSite.serializer.activity_serializer import ConfirmActivitySerializer
 
 
 def index(request):
@@ -146,13 +150,14 @@ class MemberList(APIView):
 	def post(self, request):
 		member_serializer = MemberSerializer(data=request.data)
 		if member_serializer.is_valid():
-			if member_service.check_unique_email(request.data.get('email', '')):
+			if member_service.check_unique_email(
+					request.data.get('email', '')):
 				member_serializer.save()
 				return Response(
 					member_serializer.data,
 					status=status.HTTP_201_CREATED
 				)
-		errors = dict(email='Ya se encuentra en uso.')
+		errors = dict(error='Ya se encuentra en uso.')
 		return Response(
 			errors,
 			status=status.HTTP_400_BAD_REQUEST
@@ -175,11 +180,49 @@ class StaffList(APIView):
 class ActivityList(APIView):
 
 	def get(self, request):
-		activity_serializer = ActivitySerializer(
+		activities_serializer = ActivitySerializer(
 			activity_service.get_all_activities(),
 			many=True
 		)
 		return Response(
-			activity_serializer.data,
+			activities_serializer.data,
 			status=status.HTTP_200_OK
 		)
+
+
+class ActivityDetail(APIView):
+
+	def get(self, request, id):
+		activity = activity_service.get_activity(id)
+		serializer = ActivitySerializer(activity)
+		serializer.is_valid(raise_exception=True)
+		return Response(serializer.data)
+
+	def post(self, request, pk):
+		member_serializer = MemberSerializer(data=request.data)
+		# TODO: Handle all info received from form
+		# TODO: Save the many to many relationship in serializer
+
+
+
+class ConfirmActivityView(GenericAPIView):
+	serializer_class = ConfirmActivitySerializer
+
+	def post(self, request, uidb64=None, token=None):
+		serializer_data = self.request.data
+		serializer_data.update({
+			'uidb64': uidb64,
+			'token': token
+		})
+		serializer = self.get_serializer(data=self.request.data)
+		serializer.is_valid(raise_exception=True)
+
+		# TODO: Add logic to confirm the assistance
+		"""
+		uid = urlsafe_base64_decode(uidb64)
+		user = User.objects.get(pk=uid)
+		password = serializer.data.get('password1')
+		user.set_password(password)
+		user.save()
+		"""
+		return Response('OK')
