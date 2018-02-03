@@ -16,6 +16,6 @@ def get_activity(activity_id):
     :return: Activity obj
     """
     try:
-        return Activity.objects.get(id=activity_id)
-    except Exception:
-        raise Http404
+        return Activity.objects.get(id=id)
+    except Activity.DoesNotExist:
+        return None

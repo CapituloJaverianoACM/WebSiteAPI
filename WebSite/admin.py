@@ -4,7 +4,7 @@ from .models import *
 admin.site.register(Contest)
 admin.site.register(Member)
 admin.site.register(Team)
-admin.site.register(Award)
+admin.site.register(Award, AwardAdmin)
 admin.site.register(File, FileAdmin)
 admin.site.register(Tutorial)
 admin.site.register(Activity)
