@@ -74,12 +74,25 @@ class FileAdmin(admin.ModelAdmin):
 
 class Award(models.Model):
 	date = models.DateField()
-	id_file = models.OneToOneField(File, on_delete=models.CASCADE)
+	picture = models.CharField(max_length=500)
 	description = models.CharField(max_length=100)
 	title = models.CharField(max_length=100)
 
 	def __str__(self):
-		return '%s' % (self.id_file.path)
+		return '%s' % (self.picture)
+
+
+class AwardAdmin(admin.ModelAdmin):
+	form = AwardAdminForm
+
+	def save_model(self, request, obj, form, change):
+		file_form = request.FILES['picture']
+		fs = FileSystemStorage()
+		filename = fs.save(file_form.name, file_form)
+		uploaded_file_url = fs.url(filename)
+		obj.picture = uploaded_file_url
+		super().save_model(request, obj, form, change)
+
 
 
 class Member(models.Model):
