@@ -2,18 +2,12 @@
 from __future__ import unicode_literals
 import base64
 
+from rest_framework import serializers
 from ACMWebSite.settings import MEDIA_ROOT
 
-from rest_framework import serializers
-from WebSite.models import Member
 
-
-class MemberSerializer(serializers.Serializer):
-    picture = serializers.SerializerMethodField(required=False)
-
-    class Meta:
-        model = Member
-        fields = '__all__'
+class GallerySerializer(serializers.Serializer):
+    picture = serializers.SerializerMethodField()
 
     def get_picture(self, obj):
         prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])

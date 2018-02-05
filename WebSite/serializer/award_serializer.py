@@ -4,17 +4,19 @@ import base64
 
 from ACMWebSite.settings import MEDIA_ROOT
 from rest_framework import serializers
+from WebSite.models import Award
 
 
-class AwardSerializer(serializers.Serializer):
-    date = serializers.CharField()
-    description = serializers.CharField()
-    title = serializers.CharField()
+class AwardSerializer(serializers.ModelSerializer):
     picture = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Award
+        fields = '__all__'
 
     def get_picture(self, obj):
         prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])
         complete_path = prefix + obj.picture
-        with open(complete_path, "rb") as imageFile:
-            str = base64.b64encode(imageFile.read())
+        with open(complete_path, "rb") as image_file:
+            str = base64.b64encode(image_file.read())
         return str
