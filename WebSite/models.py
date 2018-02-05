@@ -2,21 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib import admin
-from django.core.files.storage import FileSystemStorage
-
 from markdownx.models import MarkdownxField
-
-from .forms import *
-
-
-EXT_CHOICES = (
-	('img', 'Image'),
-	('md', 'Markdown'),
-	('mdf', 'MarkdownForm'),
-	('json', 'JSON'),
-	('ot', 'Other'),
-)
 
 
 POSITION_CHOICES = (
@@ -50,26 +36,11 @@ MAJOR_CHOICES = (
 )
 
 
-class File(models.Model):
-	# TODO: Basename is the directory of the file ex: awards/
-	basename = models.CharField(max_length=200, default='')
-	path = models.CharField(max_length=200)
-	ext = models.CharField(max_length=10, choices=EXT_CHOICES)
+class Gallery(models.Model):
+	picture = models.CharField(max_length=200)
 
 	def __str__(self):
 		return '%s' % self.path
-
-
-class FileAdmin(admin.ModelAdmin):
-	form = FileAdminForm
-
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['path']
-		fs = FileSystemStorage()
-		filename = fs.save(obj.basename + file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.path = uploaded_file_url
-		super().save_model(request, obj, form, change)
 
 
 class Award(models.Model):
@@ -79,20 +50,7 @@ class Award(models.Model):
 	title = models.CharField(max_length=100)
 
 	def __str__(self):
-		return '%s' % (self.picture)
-
-
-class AwardAdmin(admin.ModelAdmin):
-	form = AwardAdminForm
-
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['picture']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.picture = uploaded_file_url
-		super().save_model(request, obj, form, change)
-
+		return '%s' % self.picture
 
 
 class Member(models.Model):
@@ -105,21 +63,27 @@ class Member(models.Model):
 	date_chapter = models.DateField(null=True)
 	date_birth = models.DateField(null=True)
 	cellphone = models.CharField(max_length=20, null=True)
-	id_photo = models.OneToOneField(File, null=True, on_delete=models.CASCADE)
+	picture = models.CharField(max_length=200)
 	is_staff = models.BooleanField(default=False)
 	position = models.CharField(max_length=5, choices=POSITION_CHOICES, null=True)
 	description = models.CharField(max_length=100, null=True)
 	reason = models.TextField(null=True)
 
+	def __str__(self):
+		return '%s %s' % (self.name, self.surname)
+
 
 class Team(models.Model):
 	name = models.CharField(max_length=200)
-	id_file = models.OneToOneField(File, on_delete=models.CASCADE)
+	picture = models.CharField(max_length=200)
 	members = models.ManyToManyField(
 		Member,
 		related_name='teams',
 		through='TeamMember'
 	)
+
+	def __str__(self):
+		return '%s' % self.name
 
 
 class Contest(models.Model):
@@ -128,11 +92,19 @@ class Contest(models.Model):
 	place = models.IntegerField()
 	teams = models.ManyToManyField(Team, related_name='contests')
 
+	def __str__(self):
+		date_str = self.date.strftime('%Y-%m-%dT%H:%M:%S')
+		return '%s - %s' % (date_str, self.category)
+
 
 class Tutorial(models.Model):
 	name = models.CharField(max_length=500)
 	information = MarkdownxField()
-	files = models.ManyToManyField(File, related_name='tutorials')
+	poster = models.CharField(max_length=200)
+	gallery = models.ManyToManyField(Gallery, related_name='tutorials')
+
+	def __str__(self):
+		return '%s' % self.name
 
 
 class Activity(models.Model):
@@ -142,13 +114,17 @@ class Activity(models.Model):
 	members = models.ManyToManyField(
 		Member,
 		related_name='activities',
-		through='ActivityMember'
+		through='ActivityMember',
 	)
 	information = MarkdownxField()
-	files = models.ManyToManyField(File, related_name='activities')
+	gallery = models.ManyToManyField(Gallery, related_name='activities')
 	capacity = models.SmallIntegerField()
 	poster = models.CharField(max_length=80)
 	description = models.CharField(max_length=500)
+
+	def __str__(self):
+		date_str = self.date.strftime('%Y-%m-%dT%H:%M:%S')
+		return '%s - %s' % (self.name, date_str)
 
 
 class Project(models.Model):
@@ -157,8 +133,12 @@ class Project(models.Model):
 	name = models.CharField(max_length=200)
 	members = models.ManyToManyField(Member, related_name='projects')
 	information = MarkdownxField()
-	files = models.ManyToManyField(File, related_name='projects')
+	gallery = models.ManyToManyField(Gallery, related_name='projects')
+	poster = models.CharField(max_length=200)
 	description = models.CharField(max_length=500)
+
+	def __str__(self):
+		return '%s' % self.name
 
 
 class TeamMember(models.Model):

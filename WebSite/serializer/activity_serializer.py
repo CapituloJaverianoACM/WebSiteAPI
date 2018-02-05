@@ -1,19 +1,29 @@
 # -- coding: utf-8
 from __future__ import unicode_literals
+import base64
 
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
 
+from ACMWebSite.settings import MEDIA_ROOT
 from WebSite.models import Member
+from WebSite.models import Activity
 
 
-class ActivitySerializer(serializers.Serializer):
-    id = serializers.ReadOnlyField()
-    name = serializers.CharField()
-    date = serializers.DateTimeField()
-    place = serializers.CharField()
-    # TODO lack relations many to many
+class ActivitySerializer(serializers.ModelSerializer):
+    poster = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Activity
+        fields = '__all__'
+
+    def get_poster(self, obj):
+        prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])
+        complete_path = prefix + obj.picture
+        with open(complete_path, "rb") as image_file:
+            str = base64.b64encode(image_file.read())
+        return str
 
 
 class ConfirmActivitySerializer(serializers.Serializer):
