@@ -3,13 +3,15 @@ from django.contrib import admin
 from django.core.files.storage import FileSystemStorage
 
 from .models import *
-from .forms import GalleryAdminForm
-from .forms import AwardAdminForm
-from .forms import ActivityAdminForm
-from .forms import MemberAdminForm
-from .forms import ProjectAdminForm
-from .forms import TeamAdminForm
-from .forms import TutorialAdminForm
+from .forms import (
+	GalleryAdminForm,
+	AwardAdminForm,
+	ActivityAdminForm,
+	MemberAdminForm,
+	ProjectAdminForm,
+	TeamAdminForm,
+	TutorialAdminForm
+)
 
 
 class GalleryAdmin(admin.ModelAdmin):

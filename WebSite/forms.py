@@ -1,12 +1,14 @@
 from django import forms
 
-from django.contrib.admin.widgets import AdminDateWidget
 
-from WebSite.models import Activity
-from WebSite.models import Member
-from WebSite.models import Project
-from WebSite.models import Team
-from WebSite.models import Tutorial
+from WebSite.models import (
+    Activity,
+    Award,
+    Member,
+    Project,
+    Team,
+    Tutorial
+)
 
 
 class GalleryAdminForm(forms.ModelForm):
@@ -14,10 +16,11 @@ class GalleryAdminForm(forms.ModelForm):
 
 
 class AwardAdminForm(forms.ModelForm):
-    date = forms.DateField(widget=AdminDateWidget())
     picture = forms.FileField()
-    description = forms.CharField()
-    title = forms.CharField()
+
+    class Meta:
+        model = Award
+        fields = '__all__'
 
 
 class ActivityAdminForm(forms.ModelForm):
