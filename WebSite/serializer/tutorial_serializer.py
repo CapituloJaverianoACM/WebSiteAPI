@@ -17,7 +17,7 @@ class TutorialSerializer(serializers.Serializer):
 
     def get_poster(self, obj):
         prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.picture
+        complete_path = prefix + obj.poster
         with open(complete_path, "rb") as image_file:
             str = base64.b64encode(image_file.read())
         return str
