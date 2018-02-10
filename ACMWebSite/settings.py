@@ -123,3 +123,8 @@ EMAIL_PORT = environ.get('EMAIL_PORT', 'email_port')
 EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'email_use_tls')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+	environ.get('REACT_JS_SERVER_IP', '200.3.154.201')
+)

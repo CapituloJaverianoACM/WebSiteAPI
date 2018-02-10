@@ -40,7 +40,7 @@ class Gallery(models.Model):
 	picture = models.CharField(max_length=200)
 
 	def __str__(self):
-		return '%s' % self.path
+		return '%s' % self.picture
 
 
 class Award(models.Model):
@@ -101,7 +101,11 @@ class Tutorial(models.Model):
 	name = models.CharField(max_length=500)
 	information = MarkdownxField()
 	poster = models.CharField(max_length=200)
-	gallery = models.ManyToManyField(Gallery, related_name='tutorials')
+	gallery = models.ManyToManyField(
+		Gallery,
+		related_name='tutorials',
+		blank=True
+	)
 
 	def __str__(self):
 		return '%s' % self.name
@@ -117,7 +121,11 @@ class Activity(models.Model):
 		through='ActivityMember',
 	)
 	information = MarkdownxField()
-	gallery = models.ManyToManyField(Gallery, related_name='activities')
+	gallery = models.ManyToManyField(
+		Gallery,
+		related_name='activities',
+		blank=True
+	)
 	capacity = models.SmallIntegerField()
 	poster = models.CharField(max_length=80)
 	description = models.CharField(max_length=500)
@@ -133,7 +141,11 @@ class Project(models.Model):
 	name = models.CharField(max_length=200)
 	members = models.ManyToManyField(Member, related_name='projects')
 	information = MarkdownxField()
-	gallery = models.ManyToManyField(Gallery, related_name='projects')
+	gallery = models.ManyToManyField(
+		Gallery,
+		related_name='projects',
+		blank=True
+	)
 	poster = models.CharField(max_length=200)
 	description = models.CharField(max_length=500)
 
