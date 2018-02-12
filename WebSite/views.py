@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.utils.http import urlsafe_base64_decode
 from datetime import date
 from django.http import JsonResponse
 from .models import *
@@ -11,8 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework import status
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 
 from WebSite.api import award_service
 from WebSite.api import member_service
@@ -29,6 +27,8 @@ from WebSite.serializer.tutorial_serializer import TutorialSerializer
 from WebSite.serializer.project_serializer import ProjectSerializer
 from WebSite.serializer.award_serializer import AwardSerializer
 from WebSite.serializer.team_serializer import TeamSerializer
+
+from WebSite.models import Member
 
 
 def index(request):
@@ -60,42 +60,6 @@ def index(request):
 		'our_projects': our_projects
 	}
 	return render(request, 'index.html', context)
-
-
-def staff(request):
-	staffMembers = member_service.getStaff()
-	context = {
-		'members': staffMembers,
-	}
-	return render(request, 'staff.html', context)
-
-
-def contest(request):
-	return render(request, 'contests.html')
-
-
-def activities(request):
-	return render(request, 'activities.html')
-
-
-def activity_detail(request, id_activity):
-	return render(request, 'activity.html')
-
-
-def projects(request):
-	return render(request, 'projects.html')
-
-
-def project_detail(request, id_project):
-	return render(request, 'project.html')
-
-
-def tutorials(request):
-	return render(request, 'tutorials.html')
-
-
-def tutorial_detail(request, id_tutorial):
-	return render(request, 'tutorial.html')
 
 
 @api_view(['POST'])
@@ -133,21 +97,6 @@ def send_question_email(request):
 	return Response(response)
 
 
-@api_view(['POST'])
-def send_join_form(request):
-	"""
-	name = request.POST['names']
-	last_name = request.POST['surnames']
-	email = request.POST['email']
-	major = request.POST['major']
-	reason = request.POST['reason']
-	"""
-	data = {
-		'state': '¡Nos alegra que quieras hacer parte del capitulo!'
-	}
-	return JsonResponse(data)
-
-
 def page_not_found(request):
 	return render(request=request, template_name='404.html', status=400)
 
@@ -165,11 +114,28 @@ class AwardList(APIView):
 		)
 
 
-class MemberList(APIView):
+class MemberViewSet(viewsets.ViewSet):
 
-	def get(self, request):
+	def get_queryset(self, filter=None, exclude=None, order_by=None):
+		members = Member.objects.all()
+		is_staff = self.request.query_params.get('isStaff', None)
+
+		filter = filter or dict()
+
+		if is_staff is not None:
+			filter.update(dict(is_staff=is_staff))
+
+		if exclude is not None and isinstance(exclude, dict):
+			members = members.exclude(**exclude)
+		if filter is not None and isinstance(filter, dict):
+			members = members.filter(**filter)
+		if order_by is not None and isinstance(order_by, list):
+			members = members.order_by(*order_by)
+		return members
+
+	def list(self, request):
 		member_serializers = MemberSerializer(
-			member_service.get_staff(),
+			self.get_queryset(),
 			many=True
 		)
 		return Response(
@@ -177,20 +143,16 @@ class MemberList(APIView):
 			status=status.HTTP_200_OK
 		)
 
-	def post(self, request):
-		member_serializer = MemberSerializer(data=request.data)
+	def create(self, request):
+		member_serializer = MemberSerializer(data=self.request.data)
 		if member_serializer.is_valid():
-			if member_service.check_unique_email(
-				request.data.get('email', '')
-			):
-				member_serializer.save()
-				return Response(
-					member_serializer.data,
-					status=status.HTTP_201_CREATED
-				)
-		errors = dict(error='Ya se encuentra en uso.')
+			member_serializer.create(member_serializer.data)
+			return Response(
+				member_serializer.data,
+				status=status.HTTP_201_CREATED
+			)
 		return Response(
-			errors,
+			member_serializer.errors,
 			status=status.HTTP_400_BAD_REQUEST
 		)
 
@@ -311,3 +273,7 @@ class TeamList(APIView):
 			teams_serializer.data,
 			status=status.HTTP_200_OK
 		)
+
+
+members = MemberViewSet.as_view(dict(get='list'))
+join_us = MemberViewSet.as_view(dict(post='create'))

@@ -1,6 +1,8 @@
 # -- coding: utf-8
 from __future__ import unicode_literals
 import base64
+import pytz
+from datetime import datetime
 
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
@@ -13,6 +15,7 @@ from WebSite.models import Activity
 
 class ActivitySerializer(serializers.ModelSerializer):
     poster = serializers.SerializerMethodField()
+    show_form = serializers.SerializerMethodField()
 
     class Meta:
         model = Activity
@@ -24,6 +27,25 @@ class ActivitySerializer(serializers.ModelSerializer):
         with open(complete_path, "rb") as image_file:
             str = base64.b64encode(image_file.read())
         return str
+
+    def get_show_form(self, obj):
+        show_form = True
+        if isinstance(obj, Activity):
+            date_now = datetime.now()
+            date_now = date_now.replace(
+                hour=1,
+                tzinfo=pytz.timezone("America/Bogota")
+            )
+            date_activity = obj.date
+            date_activity = date_activity.replace(
+                hour=1,
+                tzinfo=pytz.timezone("America/Bogota")
+            )
+            if date_now > date_activity:
+                show_form = False
+            if obj.members.count() >= obj.capacity:
+                show_form = False
+        return show_form
 
 
 class ConfirmActivitySerializer(serializers.Serializer):
