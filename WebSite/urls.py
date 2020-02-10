@@ -5,27 +5,16 @@ from . import views
 handler404 = 'views.page_not_found'
 
 urlpatterns = [
-	path('', views.index, name='index'),
-	path('staff/', views.staff, name='staff'),
-	path('maratones/', views.contest, name='contest'),
-	path('actividades/', views.activities, name='activities'),
-	path('proyectos/', views.projects, name='projects'),
-	path('tutoriales/', views.tutorials, name='tutorials'),
-	path('sendQuestionEmail/', views.send_question_email),
-	path('sendJoinForm/', views.send_join_form),
-	path(
-		'actividad/<str:id_activity>/',
-		views.activity_detail,
-		name='activity_detail'
-	),
-	path(
-		'proyecto/<str:id_project>/',
-		views.project_detail,
-		name='project_detail'
-	),
-	path(
-		'tutorial/<str:id_tutorial>/',
-		views.tutorial_detail,
-		name='tutorial_detail'
-	)
+	path('contactus/', views.send_question_email),
+	path('joinus/', views.join_us),
+	path('awards/', views.AwardList.as_view()),
+	path('activities/', views.ActivityList.as_view()),
+	path('projects/', views.ProjectList.as_view()),
+	path('members', views.members),
+	path('teams/', views.TeamList.as_view()),
+	path('tutorials/', views.TutorialList.as_view()),
+	path('activity/<int:id>/', views.ActivityDetail.as_view()),
+	path('project/<int:id>/', views.ProjectDetail.as_view()),
+	path('tutorial/<int:id>/', views.TutorialDetail.as_view()),
+	# TODO: Create the url for handle reg activity
 ]

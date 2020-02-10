@@ -22,8 +22,10 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'WebSite.apps.WebsiteConfig',
-	'markdown_deux',
+	'markdownx',
 	'django_extensions',
+	'rest_framework',
+	'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -34,6 +36,7 @@ MIDDLEWARE = [
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'ACMWebSite.urls'
@@ -115,8 +118,13 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'WebSite/static/media')
 MEDIA_URL = '/media/'
 
-EMAIL_HOST = 'smtp.office365.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = environ.get('EMAIL_HOST', 'email_host')
+EMAIL_PORT = environ.get('EMAIL_PORT', 'email_port')
+EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'email_use_tls')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+	environ.get('REACT_JS_SERVER_IP', '200.3.154.201')
+)
