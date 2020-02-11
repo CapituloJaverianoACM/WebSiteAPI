@@ -3,16 +3,15 @@ from __future__ import unicode_literals
 import base64
 
 from rest_framework import serializers
+from ACMWebSite.WebSite.models import Project
+from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
 
-from ACMWebSite.settings import MEDIA_ROOT
-from WebSite.models import Tutorial
 
-
-class TutorialSerializer(serializers.Serializer):
+class ProjectSerializer(serializers.ModelSerializer):
     poster = serializers.SerializerMethodField()
 
     class Meta:
-        model = Tutorial
+        model = Project
         fields = '__all__'
 
     def get_poster(self, obj):

@@ -4,8 +4,8 @@ import base64
 
 from rest_framework import serializers
 
-from ACMWebSite.settings import MEDIA_ROOT
-from WebSite.models import Team
+from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
+from ACMWebSite.WebSite.models import Team
 
 
 class TeamSerializer(serializers.ModelSerializer):

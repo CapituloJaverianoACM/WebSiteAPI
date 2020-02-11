@@ -11,6 +11,16 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ACMWebSite.settings")
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+from .settings.common import SITE_NAME
+
+os.environ.setdefault(
+    'DJANGO_SETTINGS_MODULE',
+    "{}.{}.settings.production".format(SITE_NAME, SITE_NAME)
+)
 
 application = get_wsgi_application()
+

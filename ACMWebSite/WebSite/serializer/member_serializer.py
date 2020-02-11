@@ -2,10 +2,10 @@
 from __future__ import unicode_literals
 import base64
 
-from ACMWebSite.settings import MEDIA_ROOT
+from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
 
 from rest_framework import serializers
-from WebSite.models import Member, POSITION_CHOICES
+from ACMWebSite.WebSite.models import Member, POSITION_CHOICES
 
 
 class MemberSerializer(serializers.ModelSerializer):

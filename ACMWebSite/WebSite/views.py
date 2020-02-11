@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from datetime import date
-from django.http import JsonResponse
 from .models import *
 
 from rest_framework.views import APIView
@@ -12,23 +11,17 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status, viewsets
 
-from WebSite.api import award_service
-from WebSite.api import member_service
-from WebSite.api import email_service
-from WebSite.api import activity_service
-from WebSite.api import tutorial_service
-from WebSite.api import project_service
-from WebSite.api import team_service
+from .api import activity_service, tutorial_service, award_service, email_service, project_service, team_service
 
-from WebSite.serializer.member_serializer import MemberSerializer
-from WebSite.serializer.activity_serializer import ActivitySerializer
-from WebSite.serializer.activity_serializer import ConfirmActivitySerializer
-from WebSite.serializer.tutorial_serializer import TutorialSerializer
-from WebSite.serializer.project_serializer import ProjectSerializer
-from WebSite.serializer.award_serializer import AwardSerializer
-from WebSite.serializer.team_serializer import TeamSerializer
+from ACMWebSite.WebSite.serializer.member_serializer import MemberSerializer
+from ACMWebSite.WebSite.serializer.activity_serializer import ActivitySerializer
+from ACMWebSite.WebSite.serializer.activity_serializer import ConfirmActivitySerializer
+from ACMWebSite.WebSite.serializer.tutorial_serializer import TutorialSerializer
+from ACMWebSite.WebSite.serializer.project_serializer import ProjectSerializer
+from ACMWebSite.WebSite import AwardSerializer
+from ACMWebSite.WebSite import TeamSerializer
 
-from WebSite.models import Member
+from ACMWebSite.WebSite.models import Member
 
 
 def index(request):

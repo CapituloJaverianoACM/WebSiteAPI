@@ -2,21 +2,22 @@
 from __future__ import unicode_literals
 import base64
 
-from ACMWebSite.settings import MEDIA_ROOT
 from rest_framework import serializers
-from WebSite.models import Award
+
+from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
+from ACMWebSite.WebSite.models import Tutorial
 
 
-class AwardSerializer(serializers.ModelSerializer):
-    picture = serializers.SerializerMethodField()
+class TutorialSerializer(serializers.Serializer):
+    poster = serializers.SerializerMethodField()
 
     class Meta:
-        model = Award
+        model = Tutorial
         fields = '__all__'
 
-    def get_picture(self, obj):
+    def get_poster(self, obj):
         prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.picture
+        complete_path = prefix + obj.poster
         with open(complete_path, "rb") as image_file:
             str = base64.b64encode(image_file.read())
         return str

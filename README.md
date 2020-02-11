@@ -123,13 +123,14 @@ $ pyenv local <myvenv>
 Install the python packages described in the `requirements.txt`
 
 ```shell
-$ pip install -r requirements.txt
+$ pip install -r requirements/development.txt
 ```
 
 ### Migrate the database
 
 ```shell
-$ python manage.py migrate
+$ cd ACMWebSite
+$ python manage.py migrate --settings=ACMWebSite.settings.development
 ```
 
 ## Deployment

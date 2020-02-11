@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import base64
 
 from rest_framework import serializers
-from ACMWebSite.settings import MEDIA_ROOT
+from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
 
 
 class GallerySerializer(serializers.Serializer):
