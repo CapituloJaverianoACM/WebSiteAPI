@@ -1,5 +1,5 @@
 # ACMWebSite
-WebSite 2.0 for ACM develop by the Javerian Chapter
+WebSite 2.0 for ACM develop by the Javeriana Chapter
 
 - [Contributors](#contributors)
 - [Prerequisites](#prerequisites)
@@ -130,7 +130,7 @@ $ pip install -r requirements/development.txt
 
 ```shell
 $ cd ACMWebSite
-$ python manage.py migrate --settings=ACMWebSite.settings.development
+$ python manage.py migrate --settings=ACMWebSite.settings.common.development
 ```
 
 ## Deployment

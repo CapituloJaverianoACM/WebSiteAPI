@@ -13,7 +13,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
 
-sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
+# sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'WebSite')))
+sys.path.append(os.path.normpath(PROJECT_ROOT))
 
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
@@ -36,9 +37,8 @@ DEFAULT_APPS = [
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     'markdownx',
-    'django_extensions',
 ]
 
 LOCAL_APPS = [
@@ -62,7 +62,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "templates"),
+            os.path.join(PROJECT_ROOT, "templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,9 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    STATIC_ROOT
-]
+# STATICFILES_DIRS = os.path.join(STATIC_ROOT, "/STATICFILES/")
 
 # Archivos multimedia.
 MEDIA_URL = '/media/'

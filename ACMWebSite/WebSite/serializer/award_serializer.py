@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 import base64
 
-from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
+from django.conf import settings
 from rest_framework import serializers
-from ACMWebSite.WebSite.models import Award
+from WebSite.models import Award
 
+MEDIA_ROOT = getattr(settings, "MEDIA_ROOT", None)
 
 class AwardSerializer(serializers.ModelSerializer):
     picture = serializers.SerializerMethodField()

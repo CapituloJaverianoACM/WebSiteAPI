@@ -1,4 +1,4 @@
-from ACMWebSite.WebSite.models import Team
+from WebSite.models import Team
 
 
 def get_teams():

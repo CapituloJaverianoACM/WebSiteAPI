@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 import base64
 
 from rest_framework import serializers
-from ACMWebSite.WebSite.models import Project
-from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
+from WebSite.models import Project
+from django.conf import settings
+MEDIA_ROOT = getattr(settings, "MEDIA_ROOT", None)
 
 
 class ProjectSerializer(serializers.ModelSerializer):

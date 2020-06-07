@@ -8,9 +8,11 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
 
-from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
-from ACMWebSite.WebSite.models import Member
-from ACMWebSite.WebSite.models import Activity
+from django.conf import settings
+from WebSite.models import Member
+from WebSite.models import Activity
+
+MEDIA_ROOT = getattr(settings, "MEDIA_ROOT", None)
 
 
 class ActivitySerializer(serializers.ModelSerializer):

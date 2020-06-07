@@ -11,10 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-import os
-
-from django.core.wsgi import get_wsgi_application
-
 from .settings.common import SITE_NAME
 
 os.environ.setdefault(

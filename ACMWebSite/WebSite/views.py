@@ -13,15 +13,15 @@ from rest_framework import status, viewsets
 
 from .api import activity_service, tutorial_service, award_service, email_service, project_service, team_service
 
-from ACMWebSite.WebSite.serializer.member_serializer import MemberSerializer
-from ACMWebSite.WebSite.serializer.activity_serializer import ActivitySerializer
-from ACMWebSite.WebSite.serializer.activity_serializer import ConfirmActivitySerializer
-from ACMWebSite.WebSite.serializer.tutorial_serializer import TutorialSerializer
-from ACMWebSite.WebSite.serializer.project_serializer import ProjectSerializer
-from ACMWebSite.WebSite import AwardSerializer
-from ACMWebSite.WebSite import TeamSerializer
+from WebSite.serializer.member_serializer import MemberSerializer
+from WebSite.serializer.activity_serializer import ActivitySerializer
+from WebSite.serializer.activity_serializer import ConfirmActivitySerializer
+from WebSite.serializer.tutorial_serializer import TutorialSerializer
+from WebSite.serializer.project_serializer import ProjectSerializer
+from WebSite.serializer.award_serializer import AwardSerializer
+from WebSite.serializer.team_serializer import TeamSerializer
 
-from ACMWebSite.WebSite.models import Member
+from WebSite.models import Member
 
 
 def index(request):
@@ -179,7 +179,7 @@ class ActivityDetail(APIView):
 
 	def post(self, request, pk):
 		member_serializer = MemberSerializer(data=request.data)
-		print(member_serializer)
+		# print(member_serializer)
 		# TODO: Handle all info received from form
 		# TODO: Save the many to many relationship in serializer
 

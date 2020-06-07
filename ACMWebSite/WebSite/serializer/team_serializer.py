@@ -4,8 +4,9 @@ import base64
 
 from rest_framework import serializers
 
-from ACMWebSite.ACMWebSite.settings import MEDIA_ROOT
-from ACMWebSite.WebSite.models import Team
+from django.conf import settings
+from WebSite.models import Team
+MEDIA_ROOT = getattr(settings, "MEDIA_ROOT", None)
 
 
 class TeamSerializer(serializers.ModelSerializer):

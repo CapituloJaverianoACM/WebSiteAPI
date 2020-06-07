@@ -1,4 +1,4 @@
-from ACMWebSite.WebSite.models import Award
+from WebSite.models import Award
 
 
 def get_awards():
