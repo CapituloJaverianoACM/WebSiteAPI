@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('role', models.CharField(choices=[('ENC', 'Encargado'), ('AYU', 'Ayudante'), ('PAR', 'Participante')], max_length=10)),
                 ('is_confirmed', models.BooleanField(default=False)),
-                ('activity', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebSite.Activity')),
+                ('activity', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='web_site.Activity')),
             ],
         ),
         migrations.CreateModel(
@@ -91,8 +91,8 @@ class Migration(migrations.Migration):
                 ('information', markdownx.models.MarkdownxField()),
                 ('poster', models.CharField(max_length=200)),
                 ('description', models.CharField(max_length=500)),
-                ('gallery', models.ManyToManyField(related_name='projects', to='WebSite.Gallery')),
-                ('members', models.ManyToManyField(related_name='projects', to='WebSite.Member')),
+                ('gallery', models.ManyToManyField(related_name='projects', to='web_site.Gallery')),
+                ('members', models.ManyToManyField(related_name='projects', to='web_site.Member')),
             ],
         ),
         migrations.CreateModel(
@@ -108,8 +108,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('year', models.DateField()),
-                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebSite.Member')),
-                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebSite.Team')),
+                ('member', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='web_site.Member')),
+                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='web_site.Team')),
             ],
         ),
         migrations.CreateModel(
@@ -119,32 +119,32 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=500)),
                 ('information', markdownx.models.MarkdownxField()),
                 ('poster', models.CharField(max_length=200)),
-                ('gallery', models.ManyToManyField(related_name='tutorials', to='WebSite.Gallery')),
+                ('gallery', models.ManyToManyField(related_name='tutorials', to='web_site.Gallery')),
             ],
         ),
         migrations.AddField(
             model_name='team',
             name='members',
-            field=models.ManyToManyField(related_name='teams', through='WebSite.TeamMember', to='WebSite.Member'),
+            field=models.ManyToManyField(related_name='teams', through='web_site.TeamMember', to='web_site.Member'),
         ),
         migrations.AddField(
             model_name='contest',
             name='teams',
-            field=models.ManyToManyField(related_name='contests', to='WebSite.Team'),
+            field=models.ManyToManyField(related_name='contests', to='web_site.Team'),
         ),
         migrations.AddField(
             model_name='activitymember',
             name='member',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='WebSite.Member'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='web_site.Member'),
         ),
         migrations.AddField(
             model_name='activity',
             name='gallery',
-            field=models.ManyToManyField(related_name='activities', to='WebSite.Gallery'),
+            field=models.ManyToManyField(related_name='activities', to='web_site.Gallery'),
         ),
         migrations.AddField(
             model_name='activity',
             name='members',
-            field=models.ManyToManyField(related_name='activities', through='WebSite.ActivityMember', to='WebSite.Member'),
+            field=models.ManyToManyField(related_name='activities', through='web_site.ActivityMember', to='web_site.Member'),
         ),
     ]
