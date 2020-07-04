@@ -15,5 +15,7 @@ jobs:
         with:
           python-version: 3.8.3
           architecture: x64
-      - name: Show path
-        run: ls
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: python manage.py test
