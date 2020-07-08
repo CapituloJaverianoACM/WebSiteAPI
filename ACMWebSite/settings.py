@@ -128,9 +128,8 @@ EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
 CORS_ORIGIN_ALLOW_ALL = True
 
 #for production (only the front end server should be here)
-'''CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
 	environ.get('REACT_JS_SERVER_IP', '200.3.154.201'),
 	'http://localhost:8000',
 	'http://localhost:8080',
-)
-'''
+]
