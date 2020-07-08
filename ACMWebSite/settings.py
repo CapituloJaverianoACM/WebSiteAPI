@@ -129,7 +129,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 #for production (only the front end server should be here)
 CORS_ORIGIN_WHITELIST = [
-	environ.get('REACT_JS_SERVER_IP', '200.3.154.201'),
+	environ.get('REACT_JS_SERVER_IP', 'http://200.3.154.201'),
 	'http://localhost:8000',
 	'http://localhost:8080',
 ]
