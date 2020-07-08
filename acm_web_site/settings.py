@@ -69,7 +69,7 @@ DATABASES = {
 		'USER': environ.get('DATABASE_USER', 'userdb'),
 		'PASSWORD': environ.get('DATABASE_PASSWORD', 'passworddb'),
 		'HOST': environ.get('DATABASE_HOST', '127.0.0.1'),
-		'PORT': environ.get('DATABASE_PORT', 'port')
+		'PORT': environ.get('DATABASE_PORT', '5432')
 	}
 }
 
@@ -124,7 +124,11 @@ EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'email_use_tls')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
 
+
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = (
-	environ.get('REACT_JS_SERVER_IP', '200.3.154.201')
-)
+#for production (only the front end server should be here)
+CORS_ORIGIN_WHITELIST = [
+	environ.get('REACT_JS_SERVER_IP', 'http://200.3.154.201'),
+	'http://localhost:8000',
+	'http://localhost:8080',
+]
