@@ -5,7 +5,7 @@ import base64
 from acm_web_site.settings import MEDIA_ROOT
 
 from rest_framework import serializers
-from web_site.models import Member, POSITION_CHOICES
+from acm_web_site.apps.business.web_site.models import Member, POSITION_CHOICES
 
 
 class MemberSerializer(serializers.ModelSerializer):

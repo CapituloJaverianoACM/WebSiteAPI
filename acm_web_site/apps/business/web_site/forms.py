@@ -1,7 +1,7 @@
 from django import forms
 
 
-from web_site.models import (
+from acm_web_site.apps.business.web_site.models import (
     Activity,
     Award,
     Member,

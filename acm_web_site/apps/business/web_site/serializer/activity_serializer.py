@@ -9,8 +9,8 @@ from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
 
 from acm_web_site.settings import MEDIA_ROOT
-from web_site.models import Member
-from web_site.models import Activity
+from acm_web_site.apps.business.web_site.models import Member
+from acm_web_site.apps.business.web_site.models import Activity
 
 
 class ActivitySerializer(serializers.ModelSerializer):

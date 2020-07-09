@@ -2,16 +2,17 @@
 from __future__ import unicode_literals
 import base64
 
-from acm_web_site.settings import MEDIA_ROOT
 from rest_framework import serializers
-from web_site.models import Award
+
+from acm_web_site.settings import MEDIA_ROOT
+from acm_web_site.apps.business.web_site.models import Team
 
 
-class AwardSerializer(serializers.ModelSerializer):
-    picture = serializers.SerializerMethodField()
+class TeamSerializer(serializers.ModelSerializer):
+    picture = serializers.SerializerMethodField(required=False)
 
     class Meta:
-        model = Award
+        model = Team
         fields = '__all__'
 
     def get_picture(self, obj):

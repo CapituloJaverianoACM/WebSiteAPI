@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from datetime import date
-from django.http import JsonResponse
 from .models import *
 
 from rest_framework.views import APIView
@@ -12,23 +11,17 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status, viewsets
 
-from web_site.api import award_service
-from web_site.api import member_service
-from web_site.api import email_service
-from web_site.api import activity_service
-from web_site.api import tutorial_service
-from web_site.api import project_service
-from web_site.api import team_service
+from .api import activity_service, award_service, tutorial_service, team_service, project_service, email_service
 
-from web_site.serializer.member_serializer import MemberSerializer
-from web_site.serializer.activity_serializer import ActivitySerializer
-from web_site.serializer.activity_serializer import ConfirmActivitySerializer
-from web_site.serializer.tutorial_serializer import TutorialSerializer
-from web_site.serializer.project_serializer import ProjectSerializer
-from web_site.serializer.award_serializer import AwardSerializer
-from web_site.serializer.team_serializer import TeamSerializer
+from acm_web_site.apps.business.web_site.serializer.member_serializer import MemberSerializer
+from acm_web_site.apps.business.web_site.serializer.activity_serializer import ActivitySerializer
+from acm_web_site.apps.business.web_site.serializer.activity_serializer import ConfirmActivitySerializer
+from acm_web_site.apps.business.web_site.serializer.tutorial_serializer import TutorialSerializer
+from acm_web_site.apps.business.web_site.serializer.project_serializer import ProjectSerializer
+from acm_web_site.apps.business.web_site.serializer.award_serializer import AwardSerializer
+from acm_web_site.apps.business.web_site.serializer.team_serializer import TeamSerializer
 
-from web_site.models import Member
+from acm_web_site.apps.business.web_site.models import Member
 
 
 def index(request):

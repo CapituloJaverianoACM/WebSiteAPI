@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import base64
 
 from rest_framework import serializers
-from web_site.models import Project
+from acm_web_site.apps.business.web_site.models import Project
 from acm_web_site.settings import MEDIA_ROOT
 
 

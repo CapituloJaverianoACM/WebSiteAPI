@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class WebsiteConfig(AppConfig):
-    name = 'web_site'
+    name = 'apps.business.web_site'
