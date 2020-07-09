@@ -36,8 +36,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.business.web_site',
-    'apps.business.web_site.models',
+    'apps.business.web_site.apps.WebsiteConfig',
 ]
 
 MIDDLEWARE = [
