@@ -2,12 +2,12 @@ import os
 import sys
 from os import environ
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.join('../', PROJECT_ROOT))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
 SITE_NAME = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
-sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
+sys.path.append(os.path.normpath(os.path.join(BASE_DIR, 'apps')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
@@ -36,7 +36,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.business.web_site.apps.WebsiteConfig',
+    'apps.utils',
+    'apps.business.web_site',
 ]
 
 MIDDLEWARE = [
