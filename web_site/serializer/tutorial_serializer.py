@@ -4,8 +4,8 @@ import base64
 
 from rest_framework import serializers
 
-from ACMWebSite.settings import MEDIA_ROOT
-from WebSite.models import Tutorial
+from acm_web_site.settings import MEDIA_ROOT
+from web_site.models import Tutorial
 
 
 class TutorialSerializer(serializers.Serializer):
