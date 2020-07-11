@@ -2,12 +2,10 @@ import os
 import sys
 from os import environ
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(BASE_DIR)
-SITE_NAME = os.path.dirname(BASE_DIR)
+PROJECT_APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(PROJECT_APP_ROOT)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
-sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
@@ -58,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, "templates"),
+            os.path.join(PROJECT_ROOT, "templates"),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -120,7 +118,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(PROJECT_ROOT, "static")
 ]
 
 # Archivos multimedia.

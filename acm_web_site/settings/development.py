@@ -1,6 +1,6 @@
 from .common import *
 
-TMP_PATH = os.path.abspath(os.path.join(BASE_DIR, 'tmp'))
+TMP_PATH = os.path.abspath(os.path.join(PROJECT_ROOT, 'tmp'))
 
 DEBUG = TEMPLATE_DEBUG = True
 
