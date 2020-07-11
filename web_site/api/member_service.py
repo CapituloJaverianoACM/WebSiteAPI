@@ -1,3 +1,5 @@
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+
 from ..models import Member
 
 
@@ -35,7 +37,9 @@ def get_candidates():
 def get_member_by_id(id):
 	try:
 		member = Member.objects.get(id=id)
-	except:
+	except MultipleObjectsReturned:
+		member = None
+	except ObjectDoesNotExist:
 		member = None
 	return member
 
@@ -47,6 +51,8 @@ def get_member_by_email(email):
 	"""
 	try:
 		member = Member.objects.get(email=email)
-	except:
+	except MultipleObjectsReturned:
+		member = None
+	except ObjectDoesNotExist:
 		member = None
 	return member

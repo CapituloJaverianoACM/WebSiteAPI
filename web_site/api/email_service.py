@@ -1,7 +1,7 @@
 import threading
 from os import environ
 
-from django.template import loader
+from django.template import loader, TemplateDoesNotExist, TemplateSyntaxError
 from django.core.mail import EmailMessage
 
 
@@ -48,6 +48,8 @@ def render_template(template_path, data):
 	try:
 		template = loader.get_template(template_path)
 		rendered = template.render(data)
-	except:
+	except TemplateDoesNotExist:
+		print('The template {0} could not be found'.format(template_path))
+	except TemplateSyntaxError:
 		print('The template {0} could not be found'.format(template_path))
 	return rendered
