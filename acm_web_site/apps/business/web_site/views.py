@@ -90,7 +90,7 @@ def send_question_email(request):
 	return Response(response)
 
 
-def page_not_found(request):
+def page_not_found(request, exception):
 	return render(request=request, template_name='404.html', status=400)
 
 
