@@ -11,7 +11,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status, viewsets
 
-from .api import activity_service, award_service, tutorial_service, team_service, project_service, email_service
+from .api import (
+	activity_service,
+	award_service,
+	tutorial_service,
+	team_service,
+	project_service,
+	email_service
+)
 
 from .serializer.member_serializer import MemberSerializer
 from .serializer.activity_serializer import ActivitySerializer
