@@ -1,8 +1,8 @@
-django==2.2.13
+django==3.0.8
 django-markdownx
-flake8==3.4.1
-django-extensions==1.9.9
-psycopg2==2.7.3.1
-djangorestframework==3.9.1
-markdown==2.6.11
+flake8==3.8.3
+django-extensions==3.0.2
+psycopg2==2.8.5
+djangorestframework==3.11.0
+markdown==3.2.2
 django-cors-headers

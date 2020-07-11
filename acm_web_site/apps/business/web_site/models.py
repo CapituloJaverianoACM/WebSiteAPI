@@ -35,7 +35,6 @@ MAJOR_CHOICES = (
 	('OT', 'Otro')
 )
 
-
 class Gallery(models.Model):
 	picture = models.CharField(max_length=200)
 

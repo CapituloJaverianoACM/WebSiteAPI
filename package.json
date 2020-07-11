@@ -1,5 +1,5 @@
 {
-  "name": "acmwebsite",
+  "name": "acm_web_site",
   "version": "2.0.0",
   "description": "Website API for Javeriana's ACM chapter",
   "scripts": {

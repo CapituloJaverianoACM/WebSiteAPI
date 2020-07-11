@@ -13,15 +13,15 @@ from rest_framework import status, viewsets
 
 from .api import activity_service, award_service, tutorial_service, team_service, project_service, email_service
 
-from acm_web_site.apps.business.web_site.serializer.member_serializer import MemberSerializer
-from acm_web_site.apps.business.web_site.serializer.activity_serializer import ActivitySerializer
-from acm_web_site.apps.business.web_site.serializer.activity_serializer import ConfirmActivitySerializer
-from acm_web_site.apps.business.web_site.serializer.tutorial_serializer import TutorialSerializer
-from acm_web_site.apps.business.web_site.serializer.project_serializer import ProjectSerializer
-from acm_web_site.apps.business.web_site.serializer.award_serializer import AwardSerializer
-from acm_web_site.apps.business.web_site.serializer.team_serializer import TeamSerializer
+from .serializer.member_serializer import MemberSerializer
+from .serializer.activity_serializer import ActivitySerializer
+from .serializer.activity_serializer import ConfirmActivitySerializer
+from .serializer.tutorial_serializer import TutorialSerializer
+from .serializer.project_serializer import ProjectSerializer
+from .serializer.award_serializer import AwardSerializer
+from .serializer.team_serializer import TeamSerializer
 
-from acm_web_site.apps.business.web_site.models import Member
+from .models import Member
 
 
 def index(request):

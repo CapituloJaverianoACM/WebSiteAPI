@@ -7,7 +7,7 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 SITE_NAME = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
-sys.path.append(os.path.normpath(os.path.join(BASE_DIR, 'apps')))
+sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
@@ -36,7 +36,8 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'business.web_site',
+    'apps.utils',
+    'apps.business.web_site',
 ]
 
 MIDDLEWARE = [
@@ -47,11 +48,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'acm_web_site.urls'
-WSGI_APPLICATION = 'acm_web_site.wsgi.application'
+ROOT_URLCONF = 'urls'
+WSGI_APPLICATION = 'wsgi.application'
 
 TEMPLATES = [
     {

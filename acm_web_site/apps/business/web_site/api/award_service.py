@@ -1,4 +1,4 @@
-from acm_web_site.apps.business.web_site.models import Award
+from ..models import Award
 
 
 def get_awards():
