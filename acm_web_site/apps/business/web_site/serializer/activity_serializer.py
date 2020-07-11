@@ -4,13 +4,13 @@ import base64
 import pytz
 from datetime import datetime
 
+from django.conf import settings
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
 
-from acm_web_site.settings import MEDIA_ROOT
-from web_site.models import Member
-from web_site.models import Activity
+from ..models import Member
+from ..models import Activity
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -22,7 +22,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_poster(self, obj):
-        prefix = '/'.join(MEDIA_ROOT.split('/')[:-1])
+        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
         complete_path = prefix + obj.poster
         with open(complete_path, "rb") as image_file:
             str = base64.b64encode(image_file.read())

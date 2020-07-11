@@ -1,4 +1,4 @@
-from web_site.models import Team
+from ..models import Team
 
 
 def get_teams():

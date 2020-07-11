@@ -1,7 +1,7 @@
 from django import forms
 
 
-from web_site.models import (
+from .models import (
     Activity,
     Award,
     Member,
