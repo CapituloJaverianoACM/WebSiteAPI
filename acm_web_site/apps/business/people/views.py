@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.views import APIView
 
 from .api import team_service
@@ -62,6 +63,10 @@ class MemberViewSet(viewsets.ViewSet):
 			member_serializer.errors,
 			status=status.HTTP_400_BAD_REQUEST
 		)
+
+
+def page_not_found(request, exception):
+	return render(request=request, template_name='404.html', status=400)
 
 
 members = MemberViewSet.as_view(dict(get='list'))
