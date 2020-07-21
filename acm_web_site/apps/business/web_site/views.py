@@ -9,26 +9,22 @@ from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework import status, viewsets
+from rest_framework import status
 
 from .api import (
 	activity_service,
 	award_service,
 	tutorial_service,
-	team_service,
 	project_service,
 	email_service
 )
 
-from .serializer.member_serializer import MemberSerializer
+from acm_web_site.apps.business.people.serializer.member_serializer import MemberSerializer
 from .serializer.activity_serializer import ActivitySerializer
 from .serializer.activity_serializer import ConfirmActivitySerializer
 from .serializer.tutorial_serializer import TutorialSerializer
 from .serializer.project_serializer import ProjectSerializer
 from .serializer.award_serializer import AwardSerializer
-from .serializer.team_serializer import TeamSerializer
-
-from .models import Member
 
 
 def index(request):
@@ -111,49 +107,6 @@ class AwardList(APIView):
 		return Response(
 			awards_serializer.data,
 			status=status.HTTP_200_OK
-		)
-
-
-class MemberViewSet(viewsets.ViewSet):
-
-	def get_queryset(self, filter=None, exclude=None, order_by=None):
-		members = Member.objects.all()
-		is_staff = self.request.query_params.get('isStaff', None)
-
-		filter = filter or dict()
-
-		if is_staff is not None:
-			filter.update(dict(is_staff=is_staff))
-
-		if exclude is not None and isinstance(exclude, dict):
-			members = members.exclude(**exclude)
-		if filter is not None and isinstance(filter, dict):
-			members = members.filter(**filter)
-		if order_by is not None and isinstance(order_by, list):
-			members = members.order_by(*order_by)
-		return members
-
-	def list(self, request):
-		member_serializers = MemberSerializer(
-			self.get_queryset(),
-			many=True
-		)
-		return Response(
-			member_serializers.data,
-			status=status.HTTP_200_OK
-		)
-
-	def create(self, request):
-		member_serializer = MemberSerializer(data=self.request.data)
-		if member_serializer.is_valid():
-			member_serializer.create(member_serializer.data)
-			return Response(
-				member_serializer.data,
-				status=status.HTTP_201_CREATED
-			)
-		return Response(
-			member_serializer.errors,
-			status=status.HTTP_400_BAD_REQUEST
 		)
 
 
@@ -262,18 +215,3 @@ class ProjectDetail(APIView):
 		)
 
 
-class TeamList(APIView):
-
-	def get(self, request):
-		teams_serializer = TeamSerializer(
-			team_service.get_teams(),
-			many=True
-		)
-		return Response(
-			teams_serializer.data,
-			status=status.HTTP_200_OK
-		)
-
-
-members = MemberViewSet.as_view(dict(get='list'))
-join_us = MemberViewSet.as_view(dict(post='create'))

@@ -5,7 +5,7 @@ import base64
 from rest_framework import serializers
 
 from django.conf import settings
-from ..models import Team
+from acm_web_site.apps.business.web_site.models import Team
 
 
 class TeamSerializer(serializers.ModelSerializer):
