@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 
-from .api import team_service
-from .serializer.member_serializer import MemberSerializer
-from .serializer.team_serializer import TeamSerializer
+from .services import *
+from .serializers import *
 from .models import Member
 from rest_framework.response import Response
 from rest_framework import status, viewsets
@@ -13,7 +12,7 @@ class TeamList(APIView):
 
 	def get(self, request):
 		teams_serializer = TeamSerializer(
-			team_service.get_teams(),
+			get_teams(),
 			many=True
 		)
 		return Response(
@@ -71,3 +70,4 @@ def page_not_found(request, exception):
 
 members = MemberViewSet.as_view(dict(get='list'))
 join_us = MemberViewSet.as_view(dict(post='create'))
+# TODO - Refactor join_us to standarize views.py file

@@ -3,9 +3,8 @@ import threading
 
 from django.template import loader, TemplateDoesNotExist, TemplateSyntaxError
 from django.core.mail import EmailMessage
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 
-from .models import Award, Member
+from .models import Award
 
 
 def get_awards():
@@ -60,58 +59,3 @@ def render_template(template_path, data):
     except TemplateSyntaxError:
         print('The template {0} could not be found'.format(template_path))
     return rendered
-
-
-def get_staff():
-    # TODO - send the path
-    membersStaff = Member.objects.filter(is_staff=True).order_by('position'). \
-        values(
-        'name',
-        'surname',
-        'email',
-        'major',
-        'id_photo_id',
-        'is_staff',
-        'position',
-        'description',
-    )
-    return membersStaff
-
-
-def check_unique_email(email):
-    """
-    :param email: str
-    :return: boolean
-    """
-    return Member.objects.filter(email=email).count() == 0
-
-
-def get_candidates():
-    """
-    :return: QuerySet<Member>
-    """
-    return Member.objects.filter(date_chapter=None)
-
-
-def get_member_by_id(id):
-    try:
-        member = Member.objects.get(id=id)
-    except MultipleObjectsReturned:
-        member = None
-    except ObjectDoesNotExist:
-        member = None
-    return member
-
-
-def get_member_by_email(email):
-    """
-    :param email: str
-    :return: Member
-    """
-    try:
-        member = Member.objects.get(email=email)
-    except MultipleObjectsReturned:
-        member = None
-    except ObjectDoesNotExist:
-        member = None
-    return member

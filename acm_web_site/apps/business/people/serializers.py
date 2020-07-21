@@ -6,7 +6,7 @@ from django.conf import settings
 
 from rest_framework import serializers
 
-from ..models import Member, POSITION_CHOICES
+from .models import Member, POSITION_CHOICES, Team
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -38,3 +38,18 @@ class MemberSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Member.objects.create(**validated_data)
+
+
+class TeamSerializer(serializers.ModelSerializer):
+    picture = serializers.SerializerMethodField(required=False)
+
+    class Meta:
+        model = Team
+        fields = '__all__'
+
+    def get_picture(self, obj):
+        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
+        complete_path = prefix + obj.picture
+        with open(complete_path, "rb") as image_file:
+            str = base64.b64encode(image_file.read())
+        return str
