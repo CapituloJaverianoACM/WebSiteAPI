@@ -5,9 +5,6 @@ from . import views
 handler404 = 'apps.business.web_site.views.page_not_found'
 
 urlpatterns = [
-	path('contactus/', views.send_question_email),
-	path('joinus/', views.join_us),
-	path('awards/', views.AwardList.as_view()),
 	path('activities/', views.ActivityList.as_view()),
 	path('projects/', views.ProjectList.as_view()),
 	path('members', views.members),
