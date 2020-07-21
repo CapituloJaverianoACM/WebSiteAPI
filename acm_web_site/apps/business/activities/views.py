@@ -128,3 +128,7 @@ class ProjectDetail(APIView):
             project_serializer.data,
             status=status.HTTP_200_OK
         )
+
+
+def page_not_found(request, exception):
+    return render(request=request, template_name='404.html', status=400)
