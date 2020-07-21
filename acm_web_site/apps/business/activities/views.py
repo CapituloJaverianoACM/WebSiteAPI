@@ -5,9 +5,10 @@ from .serializers import (
     ActivitySerializer,
     ConfirmActivitySerializer,
     TutorialSerializer,
-    ProjectSerializer,
-    MemberSerializer
+    ProjectSerializer
 )
+
+from ..people.serializers import MemberSerializer
 from rest_framework.views import APIView
 from .services import (
     get_activity,
@@ -59,6 +60,7 @@ class ActivityDetail(APIView):
     # TODO: Save the many to many relationship in serializer
 
 
+# TODO: find out what this view is for
 class ConfirmActivityView(GenericAPIView):
     serializer_class = ConfirmActivitySerializer
 
