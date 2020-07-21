@@ -3,8 +3,16 @@ from __future__ import unicode_literals
 
 from django.db import models
 from markdownx.models import MarkdownxField
+from ..information.models import Member
 
-from ..people.models import Member, Team
+POSITION_CHOICES = (
+    ('1PRE', 'Presidente'),
+    ('2VIC', 'Vice-Presidente'),
+    ('3SEC', 'Secretario'),
+    ('4TES', 'Tesorero'),
+    ('5CM', 'Comunity Manager'),
+    ('6ME', 'Miembro'),
+)
 
 CATEGORY_CHOICES = (
     ('NAC', 'Maratón Nacional'),
@@ -18,6 +26,15 @@ ROLE_CHOICES = (
     ('PAR', 'Participante'),
 )
 
+MAJOR_CHOICES = (
+    ('IS', 'Ingeniería de Sistemas'),
+    ('IE', 'Ingeniería Electrónica'),
+    ('II', 'Ingeniería Industrial'),
+    ('IC', 'Ingeniería Civil'),
+    ('MT', 'Matemáticas'),
+    ('OT', 'Otro')
+)
+
 
 class Gallery(models.Model):
     picture = models.CharField(max_length=200)
@@ -26,14 +43,17 @@ class Gallery(models.Model):
         return '%s' % self.picture
 
 
-class Award(models.Model):
-    date = models.DateField()
-    picture = models.CharField(max_length=500)
-    description = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
+class Team(models.Model):
+    name = models.CharField(max_length=200)
+    picture = models.CharField(max_length=200)
+    members = models.ManyToManyField(
+        Member,
+        related_name='teams',
+        through='TeamMember'
+    )
 
     def __str__(self):
-        return '%s' % self.picture
+        return '%s' % self.name
 
 
 class Contest(models.Model):
@@ -101,6 +121,12 @@ class Project(models.Model):
 
     def __str__(self):
         return '%s' % self.name
+
+
+class TeamMember(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    year = models.DateField()
 
 
 class ActivityMember(models.Model):

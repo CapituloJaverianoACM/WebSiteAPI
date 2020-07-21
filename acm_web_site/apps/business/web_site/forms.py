@@ -1,10 +1,7 @@
 from django import forms
 
-
 from .models import (
     Activity,
-    Award,
-    Member,
     Project,
     Team,
     Tutorial
@@ -13,14 +10,6 @@ from .models import (
 
 class GalleryAdminForm(forms.ModelForm):
     picture = forms.FileField()
-
-
-class AwardAdminForm(forms.ModelForm):
-    picture = forms.FileField()
-
-    class Meta:
-        model = Award
-        fields = '__all__'
 
 
 class ActivityAdminForm(forms.ModelForm):
