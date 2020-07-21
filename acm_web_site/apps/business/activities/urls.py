@@ -1,0 +1,13 @@
+from django.urls import path
+from . import views
+
+handler404 = 'apps.business.web_site.views.page_not_found'
+
+urlpatterns = [
+    path('activities/', views.ActivityList.as_view()),
+    path('projects/', views.ProjectList.as_view()),
+    path('tutorials/', views.TutorialList.as_view()),
+    path('activities/<int:id>/', views.ActivityDetail.as_view()),
+    path('projects/<int:id>/', views.ProjectDetail.as_view()),
+    path('tutorials/<int:id>/', views.TutorialDetail.as_view()),
+]
