@@ -31,27 +31,11 @@ class ActivityAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-class MemberAdminForm(forms.ModelForm):
-    picture = forms.FileField()
-
-    class Meta:
-        model = Member
-        fields = '__all__'
-
-
 class ProjectAdminForm(forms.ModelForm):
     poster = forms.FileField()
 
     class Meta:
         model = Project
-        fields = '__all__'
-
-
-class TeamAdminForm(forms.ModelForm):
-    picture = forms.FileField()
-
-    class Meta:
-        model = Team
         fields = '__all__'
 
 
