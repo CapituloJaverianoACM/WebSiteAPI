@@ -103,8 +103,6 @@ class Project(models.Model):
         return '%s' % self.name
 
 
-
-
 class ActivityMember(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
