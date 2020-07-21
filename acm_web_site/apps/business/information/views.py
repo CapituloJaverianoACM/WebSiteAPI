@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from datetime import date
+
+from .api import email_service, award_service
 from .models import *
 
 from rest_framework.views import APIView
@@ -12,6 +14,9 @@ from rest_framework.decorators import api_view
 from rest_framework import status, viewsets
 
 # Create your views here.
+from .serializer.award_serializer import AwardSerializer
+from .serializer.member_serializer import MemberSerializer
+
 
 @api_view(['POST'])
 def send_question_email(request):

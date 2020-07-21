@@ -14,14 +14,16 @@ from rest_framework import status, viewsets
 
 from .api import (
     activity_service,
-    award_service,
     tutorial_service,
     team_service,
     project_service,
-    email_service
 )
 
-from .serializer.member_serializer import MemberSerializer
+from ..information.api import (
+    award_service,
+)
+
+from ..information.serializer.member_serializer import MemberSerializer
 from .serializer.activity_serializer import ActivitySerializer
 from .serializer.activity_serializer import ConfirmActivitySerializer
 from .serializer.tutorial_serializer import TutorialSerializer

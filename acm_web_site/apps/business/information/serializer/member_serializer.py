@@ -17,12 +17,11 @@ class MemberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_position(self, obj):
+        display_name = ''
         if isinstance(obj, Member):
             for key in POSITION_CHOICES:
                 if key[0] == obj.position:
                     display_name = key[1]
-        else:
-            display_name = ''
         return display_name
 
     def get_picture(self, obj):
