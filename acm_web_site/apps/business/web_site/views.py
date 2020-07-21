@@ -19,7 +19,7 @@ from .api import (
 	email_service
 )
 
-from acm_web_site.apps.business.people.serializer.member_serializer import MemberSerializer
+from ..people.serializer.member_serializer import MemberSerializer
 from .serializer.activity_serializer import ActivitySerializer
 from .serializer.activity_serializer import ConfirmActivitySerializer
 from .serializer.tutorial_serializer import TutorialSerializer

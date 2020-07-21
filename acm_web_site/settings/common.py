@@ -35,6 +35,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.utils',
+    'apps.business.people',
     'apps.business.web_site',
 ]
 

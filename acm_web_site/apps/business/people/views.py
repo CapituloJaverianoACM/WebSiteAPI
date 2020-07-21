@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.views import APIView
 
-from acm_web_site.apps.business.people.api import team_service
-from acm_web_site.apps.business.people.serializer.member_serializer import MemberSerializer
-from acm_web_site.apps.business.people.serializer.team_serializer import TeamSerializer
-from acm_web_site.apps.business.web_site.models import Member
+from .api import team_service
+from .serializer.member_serializer import MemberSerializer
+from .serializer.team_serializer import TeamSerializer
+from .models import Member
 from rest_framework.response import Response
 from rest_framework import status, viewsets
 

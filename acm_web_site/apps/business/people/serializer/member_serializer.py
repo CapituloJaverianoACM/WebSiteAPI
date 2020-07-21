@@ -5,7 +5,8 @@ import base64
 from django.conf import settings
 
 from rest_framework import serializers
-from acm_web_site.apps.business.web_site.models import Member, POSITION_CHOICES
+
+from ..models import Member, POSITION_CHOICES
 
 
 class MemberSerializer(serializers.ModelSerializer):
