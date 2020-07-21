@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework import status, viewsets
+from rest_framework import status
 
 from .api import (
     activity_service,
@@ -19,22 +19,18 @@ from .api import (
     project_service,
 )
 
-from ..information.api import (
-    award_service,
-)
+from ..information.services import get_awards
 
-from ..information.serializer.member_serializer import MemberSerializer
+from ..information.serializers import MemberSerializer
 from .serializer.activity_serializer import ActivitySerializer
 from .serializer.activity_serializer import ConfirmActivitySerializer
 from .serializer.tutorial_serializer import TutorialSerializer
 from .serializer.project_serializer import ProjectSerializer
 from .serializer.team_serializer import TeamSerializer
 
-from .models import Member
-
 
 def index(request):
-    awards = award_service.get_awards().order_by('-date')
+    awards = get_awards().order_by('-date')
     recent_activities = []
     order_to_future = Activity.objects.exclude(
         date__lt=date.today()

@@ -20,6 +20,7 @@ MAJOR_CHOICES = (
     ('OT', 'Otro')
 )
 
+
 class Award(models.Model):
     date = models.DateField()
     picture = models.CharField(max_length=500)
@@ -50,4 +51,3 @@ class Member(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.name, self.surname)
-

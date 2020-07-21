@@ -9,9 +9,9 @@ from .forms import (
 )
 
 
+# TODO - Put picture path logic in Utils
+
 # Register your models here.
-
-
 class AwardAdmin(admin.ModelAdmin):
     form = AwardAdminForm
 

@@ -2,8 +2,6 @@ from django import forms
 
 from .models import (
     Activity,
-    Award,
-    Member,
     Project,
     Team,
     Tutorial

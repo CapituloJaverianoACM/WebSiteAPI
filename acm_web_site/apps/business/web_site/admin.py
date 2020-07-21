@@ -4,70 +4,72 @@ from django.core.files.storage import FileSystemStorage
 
 from .models import *
 from .forms import (
-	GalleryAdminForm,
-	ActivityAdminForm,
-	ProjectAdminForm,
-	TeamAdminForm,
-	TutorialAdminForm
+    GalleryAdminForm,
+    ActivityAdminForm,
+    ProjectAdminForm,
+    TeamAdminForm,
+    TutorialAdminForm
 )
 
 
 class GalleryAdmin(admin.ModelAdmin):
-	form = GalleryAdminForm
+    form = GalleryAdminForm
 
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['picture']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.picture = uploaded_file_url
-		super().save_model(request, obj, form, change)
+    def save_model(self, request, obj, form, change):
+        file_form = request.FILES['picture']
+        fs = FileSystemStorage()
+        filename = fs.save(file_form.name, file_form)
+        uploaded_file_url = fs.url(filename)
+        obj.picture = uploaded_file_url
+        super().save_model(request, obj, form, change)
+
 
 class ActivityAdmin(admin.ModelAdmin):
-	form = ActivityAdminForm
+    form = ActivityAdminForm
 
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['poster']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.poster = uploaded_file_url
-		super().save_model(request, obj, form, change)
+    def save_model(self, request, obj, form, change):
+        file_form = request.FILES['poster']
+        fs = FileSystemStorage()
+        filename = fs.save(file_form.name, file_form)
+        uploaded_file_url = fs.url(filename)
+        obj.poster = uploaded_file_url
+        super().save_model(request, obj, form, change)
+
 
 class ProjectAdmin(admin.ModelAdmin):
-	form = ProjectAdminForm
+    form = ProjectAdminForm
 
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['poster']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.poster = uploaded_file_url
-		super().save_model(request, obj, form, change)
+    def save_model(self, request, obj, form, change):
+        file_form = request.FILES['poster']
+        fs = FileSystemStorage()
+        filename = fs.save(file_form.name, file_form)
+        uploaded_file_url = fs.url(filename)
+        obj.poster = uploaded_file_url
+        super().save_model(request, obj, form, change)
 
 
 class TeamAdmin(admin.ModelAdmin):
-	form = TeamAdminForm
+    form = TeamAdminForm
 
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['picture']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.picture = uploaded_file_url
-		super().save_model(request, obj, form, change)
+    def save_model(self, request, obj, form, change):
+        file_form = request.FILES['picture']
+        fs = FileSystemStorage()
+        filename = fs.save(file_form.name, file_form)
+        uploaded_file_url = fs.url(filename)
+        obj.picture = uploaded_file_url
+        super().save_model(request, obj, form, change)
 
 
 class TutorialAdmin(admin.ModelAdmin):
-	form = TutorialAdminForm
+    form = TutorialAdminForm
 
-	def save_model(self, request, obj, form, change):
-		file_form = request.FILES['poster']
-		fs = FileSystemStorage()
-		filename = fs.save(file_form.name, file_form)
-		uploaded_file_url = fs.url(filename)
-		obj.poster = uploaded_file_url
-		super().save_model(request, obj, form, change)
+    def save_model(self, request, obj, form, change):
+        file_form = request.FILES['poster']
+        fs = FileSystemStorage()
+        filename = fs.save(file_form.name, file_form)
+        uploaded_file_url = fs.url(filename)
+        obj.poster = uploaded_file_url
+        super().save_model(request, obj, form, change)
 
 
 admin.site.register(Contest)
