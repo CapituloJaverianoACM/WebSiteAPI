@@ -22,6 +22,7 @@ def get_activity(activity_id):
     except Activity.DoesNotExist:
         return None
 
+
 def get_projects():
     return Project.objects.all()
 
@@ -35,6 +36,7 @@ def get_project(id):
         return Project.objects.get(id=id)
     except Project.DoesNotExist:
         return None
+
 
 def get_tutorials():
     return Tutorial.objects.all()

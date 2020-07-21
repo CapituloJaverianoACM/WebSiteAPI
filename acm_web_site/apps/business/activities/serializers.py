@@ -7,6 +7,7 @@ from django.conf import settings
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
+from .models import POSITION_CHOICES
 
 from .models import (
     Activity,
@@ -71,6 +72,7 @@ class ConfirmActivitySerializer(serializers.Serializer):
             )
         return data
 
+
 class ProjectSerializer(serializers.ModelSerializer):
     poster = serializers.SerializerMethodField()
 
@@ -85,6 +87,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             str = base64.b64encode(image_file.read())
         return str
 
+
 class TutorialSerializer(serializers.Serializer):
     poster = serializers.SerializerMethodField()
 
@@ -98,3 +101,34 @@ class TutorialSerializer(serializers.Serializer):
         with open(complete_path, "rb") as image_file:
             str = base64.b64encode(image_file.read())
         return str
+
+
+class MemberSerializer(serializers.ModelSerializer):
+    picture = serializers.SerializerMethodField(required=False)
+    position = serializers.SerializerMethodField(required=False)
+
+    class Meta:
+        model = Member
+        fields = '__all__'
+
+    def get_position(self, obj):
+        if isinstance(obj, Member):
+            for key in POSITION_CHOICES:
+                if key[0] == obj.position:
+                    display_name = key[1]
+        else:
+            display_name = ''
+        return display_name
+
+    def get_picture(self, obj):
+        if isinstance(obj, Member):
+            prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
+            complete_path = prefix + obj.picture
+            with open(complete_path, "rb") as image_file:
+                str = base64.b64encode(image_file.read())
+        else:
+            str = ''
+        return str
+
+    def create(self, validated_data):
+        return Member.objects.create(**validated_data)

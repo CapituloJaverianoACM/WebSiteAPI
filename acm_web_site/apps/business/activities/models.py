@@ -1,6 +1,7 @@
 from django.db import models
 from markdownx.models import MarkdownxField
 
+
 POSITION_CHOICES = (
     ('1PRE', 'Presidente'),
     ('2VIC', 'Vice-Presidente'),
@@ -8,12 +9,6 @@ POSITION_CHOICES = (
     ('4TES', 'Tesorero'),
     ('5CM', 'Comunity Manager'),
     ('6ME', 'Miembro'),
-)
-
-CATEGORY_CHOICES = (
-    ('NAC', 'Maratón Nacional'),
-    ('REG', 'Maratón Regional'),
-    ('MUN', 'Maratón Mundial'),
 )
 
 ROLE_CHOICES = (
@@ -30,6 +25,7 @@ MAJOR_CHOICES = (
     ('MT', 'Matemáticas'),
     ('OT', 'Otro')
 )
+
 
 # TODO: Delete class from here
 class Gallery(models.Model):

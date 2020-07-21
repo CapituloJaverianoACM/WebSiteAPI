@@ -5,8 +5,9 @@ from .serializers import (
     ActivitySerializer,
     ConfirmActivitySerializer,
     TutorialSerializer,
-    ProjectSerializer)
-
+    ProjectSerializer,
+    MemberSerializer
+)
 from rest_framework.views import APIView
 from .services import (
     get_activity,
@@ -20,7 +21,6 @@ from .services import (
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework import status
-
 
 # Create your views here.
 

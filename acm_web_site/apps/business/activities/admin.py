@@ -16,6 +16,7 @@ from .models import (
 
 # Register your models here.
 
+
 class ActivityAdmin(admin.ModelAdmin):
     form = ActivityAdminForm
 
