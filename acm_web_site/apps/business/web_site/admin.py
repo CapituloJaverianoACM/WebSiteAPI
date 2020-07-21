@@ -60,7 +60,6 @@ class ProjectAdmin(admin.ModelAdmin):
 		super().save_model(request, obj, form, change)
 
 
-
 class TutorialAdmin(admin.ModelAdmin):
 	form = TutorialAdminForm
 

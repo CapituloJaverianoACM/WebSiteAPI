@@ -1,6 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
 from django.core.files.storage import FileSystemStorage
 
 from .forms import MemberAdminForm, TeamAdminForm
