@@ -7,6 +7,8 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
 
+sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
     'SECRET_KEY',
@@ -34,10 +36,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.utils',
-    'apps.business.activities',
-    'apps.business.people',
-    'apps.business.information',
+    'utils',
+    'business.activities',
+    'business.people',
+    'business.information',
 ]
 
 MIDDLEWARE = [
