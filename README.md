@@ -138,8 +138,7 @@ $ pyenv local <myvenv>
 Install the python packages described in the `requirements.txt`
 
 ```shell
-$ cd requierements
-$ pip install -r developement.txt
+$ pip install -r requirements/developement.txt
 ```
 
 ### Migrate the database
