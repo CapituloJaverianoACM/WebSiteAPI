@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 import base64
+from abc import ABCMeta
+
 import pytz
 from datetime import datetime
 
@@ -7,6 +9,7 @@ from django.conf import settings
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
+from ...utils.utils import encode_media
 from .models import POSITION_CHOICES
 
 from .models import (
@@ -26,11 +29,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_poster(self, obj):
-        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.poster
-        with open(complete_path, "rb") as image_file:
-            str = base64.b64encode(image_file.read())
-        return str
+        return encode_media(obj.poster)
 
     def get_show_form(self, obj):
         show_form = True
@@ -81,23 +80,15 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_poster(self, obj):
-        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.poster
-        with open(complete_path, "rb") as image_file:
-            str = base64.b64encode(image_file.read())
-        return str
+        return encode_media(obj.poster)
 
 
 class TutorialSerializer(serializers.Serializer):
-    poster = serializers.SerializerMethodField()
+    poster = serializers.SerializerMethodField('get_poster')
 
     class Meta:
         model = Tutorial
         fields = '__all__'
 
     def get_poster(self, obj):
-        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.poster
-        with open(complete_path, "rb") as image_file:
-            str = base64.b64encode(image_file.read())
-        return str
+        return encode_media(obj.poster)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from django.core.files.storage import FileSystemStorage
+from ...utils.utils import upload_file
 
 from .models import *
 from .forms import (
@@ -15,11 +15,7 @@ class AwardAdmin(admin.ModelAdmin):
     form = AwardAdminForm
 
     def save_model(self, request, obj, form, change):
-        file_form = request.FILES['picture']
-        fs = FileSystemStorage()
-        filename = fs.save(file_form.name, file_form)
-        uploaded_file_url = fs.url(filename)
-        obj.picture = uploaded_file_url
+        obj.picture = upload_file(request, 'picture')
         super().save_model(request, obj, form, change)
 
 

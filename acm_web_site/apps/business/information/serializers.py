@@ -1,5 +1,5 @@
 from django.conf import settings
-from ...utils import utils
+from ...utils.utils import encode_media
 from rest_framework import serializers
 from .models import (
     Award,
@@ -17,4 +17,4 @@ class AwardSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_picture(self, obj):
-        return utils.get_picture(self, obj)
+        return encode_media(obj.picture)
