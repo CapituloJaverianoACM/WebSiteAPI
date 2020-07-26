@@ -6,8 +6,6 @@ PROJECT_APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(PROJECT_APP_ROOT)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
-sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
