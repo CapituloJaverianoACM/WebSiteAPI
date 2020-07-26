@@ -8,7 +8,7 @@ from business.people.models import Team, Member
 from business.people.services import get_teams, get_staff
 
 
-class GetTeamsTest(TestCase):
+class GetTeamsStaffTest(TestCase):
     '''def test_all_members_are_staff(self):
         self.staff = mixer.cycle(3).blend(Member, is_staff=True)
         response = get_staff().all()

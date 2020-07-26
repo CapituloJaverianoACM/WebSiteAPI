@@ -8,7 +8,7 @@ from business.people.models import Team, Member
 from business.people.services import get_member_by_email
 
 
-class GetTeamsTest(TestCase):
+class GetMemberByEmail(TestCase):
 
     def setUp(self):
         self.member = mixer.blend(Member, email="camilo@serrano.com")

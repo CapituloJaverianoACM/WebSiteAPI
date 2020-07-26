@@ -9,7 +9,7 @@ from business.people.models import Team, Member
 from business.people.services import get_teams, get_candidates
 
 
-class GetTeamsTest(TestCase):
+class GetCandidatesTest(TestCase):
 
     def setUp(self):
         self.teams = mixer.cycle(4).blend(Member, date_chapter=None)

@@ -8,7 +8,7 @@ from business.people.models import Team, Member
 from business.people.services import get_teams, get_member_by_id
 
 
-class GetTeamsTest(TestCase):
+class GetMEmberByIdTest(TestCase):
 
     def setUp(self):
         self.member = mixer.blend(Member, id=69)
