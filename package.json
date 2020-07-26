@@ -1,10 +1,10 @@
 {
-  "name": "acmwebsite",
+  "name": "acm_web_site",
   "version": "2.0.0",
   "description": "Website API for Javeriana's ACM chapter",
   "scripts": {
-    "requirements": "pip install -U -r ./requirements.txt",
-    "start": "python manage.py runserver"
+    "requirements": "pip install -U -r requirements/development.txt",
+    "start": "python acm_web_site/manage.py runserver"
   },
   "keywords": [
     "pyhton",
