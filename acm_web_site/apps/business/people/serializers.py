@@ -7,6 +7,7 @@ from django.conf import settings
 from rest_framework import serializers
 
 from .models import Member, POSITION_CHOICES, Team
+from utils.utils import encode_media
 
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -28,10 +29,7 @@ class MemberSerializer(serializers.ModelSerializer):
 
     def get_picture(self, obj):
         if isinstance(obj, Member):
-            prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
-            complete_path = prefix + obj.picture
-            with open(complete_path, "rb") as image_file:
-                str = base64.b64encode(image_file.read())
+            str = encode_media(obj.picture)
         else:
             str = ''
         return str
@@ -48,8 +46,4 @@ class TeamSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_picture(self, obj):
-        prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
-        complete_path = prefix + obj.picture
-        with open(complete_path, "rb") as image_file:
-            str = base64.b64encode(image_file.read())
-        return str
+        return encode_media(obj.picture)
