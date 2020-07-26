@@ -21,9 +21,9 @@ WebSite 2.0 for ACM develop by the Javerian Chapter
 | Name                             | GitHub                                             | Rol                |
 | -------------------------------- | -------------------------------------------------  | ------------------ |
 | Johan Sebastian Murillo Castillo | [johan-smc](https://github.com/johan-smc)          | Backend developer  |
-| Juan Pablo Rodriguez Navarro     | [JuanPabloRN30](https://github.com/JuanPabloRN30)  | Backend developer  |
-| Dorian Rene Moreno Vega          | [DorianMoreno](https://github.com/DorianMoreno)    | Backend developer  |
-| Daniel Beltran Huertas           | [DanielBeltran2](https://github.com/DanielBeltran2)| Backend developer  |
+| Juan Pablo Rodríguez Navarro     | [JuanPabloRN30](https://github.com/JuanPabloRN30)  | Backend developer  |
+| Dorian René Moreno Vega          | [DorianMoreno](https://github.com/DorianMoreno)    | Backend developer  |
+| Daniel Beltrán Huertas           | [DanielBeltran2](https://github.com/DanielBeltran2)| Backend developer  |
 | Camilo Serrano Reyes             | [camiloserr](https://github.com/camiloserr)        | Backend developer  |
 
 ## Prerequisites
@@ -99,6 +99,13 @@ export DATABASE_PASSWORD=YourDatabasePassword
 
 > this values should coincide with the credentials for the postgreSQL server in which you are running the database
 
+.envrc file is blocked by default, run this command to enable it.
+
+```shell
+$ direnv allow
+```
+
+
 ## Installation
 ### Clone the repository
 
@@ -144,9 +151,7 @@ $ pip install -r requirements/developement.txt
 ### Migrate the database
 
 ```shell
-$ cd ..
-$ cd  acm_web_site
-$ python manage.py migrate
+$ python manage.py migrate --settings=acm_web_site.settings.development
 ```
 
 ## Deployment
@@ -154,7 +159,7 @@ $ python manage.py migrate
 ### 1. Running django server
 
 ```shell
-$ python manage.py runserver
+$ python manage.py runserver --settings=acm_web_site.settings.development
 ```
 
 > After starting your local server you can test the webpage on [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
