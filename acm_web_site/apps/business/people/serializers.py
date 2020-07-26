@@ -7,7 +7,7 @@ from django.conf import settings
 from rest_framework import serializers
 
 from .models import Member, POSITION_CHOICES, Team
-from ...utils.utils import encode_media
+from utils.utils import encode_media
 
 
 class MemberSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from ...utils.utils import upload_file
+from utils.utils import upload_file
 
 from .models import *
 from .forms import (
