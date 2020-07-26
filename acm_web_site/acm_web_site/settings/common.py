@@ -6,6 +6,8 @@ PROJECT_APP_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(PROJECT_APP_ROOT)
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'run', 'static')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'run', 'media')
+sys.path.append(os.path.normpath(os.path.join(PROJECT_ROOT, 'apps')))
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
@@ -34,10 +36,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.utils',
-    'apps.business.activities',
-    'apps.business.people',
-    'apps.business.information',
+    'business.activities',
+    'business.people',
+    'business.information',
 ]
 
 MIDDLEWARE = [
@@ -51,8 +52,8 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'urls'
-WSGI_APPLICATION = 'wsgi.application'
+ROOT_URLCONF = 'acm_web_site.urls'
+WSGI_APPLICATION = 'acm_web_site.wsgi.application'
 
 TEMPLATES = [
     {

@@ -2,3 +2,4 @@
 django-extensions==3.0.2
 ipython==7.16.1
 flake8==3.8.3
+mixer

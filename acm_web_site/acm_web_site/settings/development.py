@@ -1,7 +1,5 @@
 from .common import *
 
-TMP_PATH = os.path.abspath(os.path.join(PROJECT_ROOT, 'tmp'))
-
 DEBUG = TEMPLATE_DEBUG = True
 
 THIRD_PARTY_APPS = THIRD_PARTY_APPS + [
