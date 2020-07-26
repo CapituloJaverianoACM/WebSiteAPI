@@ -24,4 +24,4 @@ jobs:
       - name: Run tests
         run: |
           cd acm_web_site
-          python manage.py test
+          python manage.py test --settings=acm_web_site.settings.development

@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-handler404 = 'apps.business.activities.views.page_not_found'
+handler404 = 'business.activities.views.page_not_found'
 
 urlpatterns = [
     path('activities/', views.ActivityList.as_view()),
