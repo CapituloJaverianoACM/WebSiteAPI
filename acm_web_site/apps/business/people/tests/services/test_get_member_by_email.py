@@ -12,7 +12,7 @@ class GetMemberByEmail(TestCase):
 
     def setUp(self):
         self.member = mixer.blend(Member, email="camilo@serrano.com")
-        self.member = mixer.blend(Member, email="juan@perez.com")
+        self.member = mixer.blend(Member, email="juan@prez.com")
 
     def test_should_get_member(self):
         response = get_member_by_email("juan@perez.com")
