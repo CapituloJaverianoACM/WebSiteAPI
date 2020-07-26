@@ -8,7 +8,7 @@ from .forms import (
     ProjectAdminForm
 )
 
-from business.activities.models import (
+from .models import (
     Activity,
     Tutorial,
     Project
