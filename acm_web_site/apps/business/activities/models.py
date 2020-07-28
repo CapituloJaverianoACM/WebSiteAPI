@@ -95,3 +95,16 @@ class Tutorial(models.Model):
 
     def __str__(self):
         return '%s' % self.name
+
+
+class Attendee(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.name, self.email)
+
+
+class ActivityAttendee(models.Model):
+    activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
