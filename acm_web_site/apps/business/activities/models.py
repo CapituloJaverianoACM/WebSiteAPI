@@ -107,4 +107,4 @@ class Attendee(models.Model):
 
 class ActivityAttendee(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    attendee = models.ForeignKey(Attendee, on_delete=models.CASCADE)
