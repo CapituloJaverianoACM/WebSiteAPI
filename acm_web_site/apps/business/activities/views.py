@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .serializers import (
     ActivitySerializer,
-    ConfirmActivitySerializer,
+    RegisterActivitySerializer,
     TutorialSerializer,
     ProjectSerializer
 )
@@ -60,8 +60,8 @@ class ActivityDetail(APIView):
     # TODO: Take into account all many-to-many relationships in the serializer
 
 
-class ConfirmActivityView(GenericAPIView):
-    serializer_class = ConfirmActivitySerializer
+class RegisterActivityView(GenericAPIView):
+    serializer_class = RegisterActivitySerializer
 
     def post(self, request, uidb64=None, token=None):
         serializer_data = self.request.data
