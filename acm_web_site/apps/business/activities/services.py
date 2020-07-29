@@ -1,8 +1,10 @@
 from .models import (
     Activity,
     Project,
-    Tutorial
+    Tutorial,
+    ActivityMember
 )
+from business.people.services import get_member_by_id
 
 
 def get_all_activities():
@@ -21,6 +23,24 @@ def get_activity(activity_id):
         return Activity.objects.get(id=activity_id)
     except Activity.DoesNotExist:
         return None
+
+
+def create_activity_member(
+        id_activity,
+        id_member,
+        role) -> Activity:
+
+    activity = get_activity(id_activity)
+    member = get_member_by_id(id_member)
+    activity_member = ActivityMember(
+        member=member,
+        activity=activity,
+        role=role,
+    )
+    activity_member.full_clean()
+    activity_member.save()
+
+    return get_activity(id_activity)
 
 
 def get_projects():
