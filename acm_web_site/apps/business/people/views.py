@@ -66,8 +66,3 @@ class MemberViewSet(viewsets.ViewSet):
 
 def page_not_found(request, exception):
 	return render(request=request, template_name='404.html', status=400)
-
-
-members = MemberViewSet.as_view(dict(get='list'))
-join_us = MemberViewSet.as_view(dict(post='create'))
-# TODO - Refactor join_us to standarize views.py file

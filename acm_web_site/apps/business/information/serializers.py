@@ -8,7 +8,6 @@ from .models import (
 import base64
 
 
-# TODO - Move auxiliary functions in serializers to Utils
 class AwardSerializer(serializers.ModelSerializer):
     picture = serializers.SerializerMethodField('get_picture')
 

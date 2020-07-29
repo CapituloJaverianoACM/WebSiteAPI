@@ -51,7 +51,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         return show_form
 
 
-class ConfirmActivitySerializer(serializers.Serializer):
+class RegisterActivitySerializer(serializers.Serializer):
     uidb64 = serializers.CharField()
     token = serializers.CharField()
 
