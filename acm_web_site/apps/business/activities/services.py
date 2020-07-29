@@ -1,10 +1,12 @@
+from django.http import HttpResponse
+
 from .models import (
     Activity,
     Project,
     Tutorial,
     ActivityMember
 )
-from business.people.services import get_member_by_id
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def get_all_activities():
@@ -25,20 +27,34 @@ def get_activity(activity_id):
         return None
 
 
-def create_activity_member(
+def create_or_update_activity_member(
         *,
         activity,
         member,
-        role) -> Activity:
+        role,
+        is_confirmed) -> Activity:
+    try:
+        """Updates existing relationship"""
+        activity_member = ActivityMember\
+            .objects.get(activity=activity, member=member)
+        activity_member.role = role
+        activity_member.is_confirmed = is_confirmed
+    except ObjectDoesNotExist:
 
-    activity_member = ActivityMember(
-        member=member,
-        activity=activity,
-        role=role,
-    )
+        if activity.members.count() < activity.capacity:
+            """Creates relationship"""
+            activity_member = ActivityMember(
+                member=member,
+                activity=activity,
+                role=role,
+                is_confirmed=is_confirmed
+            )
+        else:
+            # TODO: Handle exception
+            raise Exception("Excede capacidad de la actividad")
+
     activity_member.full_clean()
     activity_member.save()
-
     return activity
 
 

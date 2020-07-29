@@ -13,7 +13,7 @@ from rest_framework.views import APIView
 from .services import (
     get_activity,
     get_all_activities,
-    create_activity_member,
+    create_or_update_activity_member,
     get_project,
     get_projects,
     get_tutorial,
@@ -55,10 +55,14 @@ class ActivityDetail(APIView):
             )
 
     def post(self, request, id):
+
         serializer = ActivityMemberSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        activity = create_activity_member(**serializer.validated_data)
+
+        activity = create_or_update_activity_member(
+            **serializer.validated_data)
         activity_serializer = ActivitySerializer(activity)
+
         if activity_serializer:
             return Response(activity_serializer.data)
         else:
@@ -68,8 +72,6 @@ class ActivityDetail(APIView):
                 errors,
                 status=status.HTTP_404_NOT_FOUND
             )
-    # TODO: Handle all info received from form
-    # TODO: Save the many to many relationship in serializer
 
 
 # TODO: find out what this view is for
