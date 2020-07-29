@@ -16,7 +16,8 @@ from .models import (
     Activity,
     Member,
     Project,
-    Tutorial
+    Tutorial,
+    ActivityMember
 )
 
 
@@ -27,6 +28,7 @@ class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
         fields = '__all__'
+        depth = 1
 
     def get_poster(self, obj):
         return encode_media(obj.poster)
@@ -49,6 +51,13 @@ class ActivitySerializer(serializers.ModelSerializer):
             if obj.members.count() >= obj.capacity:
                 show_form = False
         return show_form
+
+
+class ActivityMemberSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ActivityMember
+        fields = '__all__'
 
 
 class RegisterActivitySerializer(serializers.Serializer):

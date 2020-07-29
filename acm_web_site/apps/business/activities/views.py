@@ -5,14 +5,15 @@ from .serializers import (
     ActivitySerializer,
     RegisterActivitySerializer,
     TutorialSerializer,
-    ProjectSerializer
+    ProjectSerializer,
+    ActivityMemberSerializer
 )
 
-from ..people.serializers import MemberSerializer
 from rest_framework.views import APIView
 from .services import (
     get_activity,
     get_all_activities,
+    create_or_update_activity_member,
     get_project,
     get_projects,
     get_tutorial,
@@ -53,11 +54,24 @@ class ActivityDetail(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-    def post(self, request, pk):
-        member_serializer = MemberSerializer(data=request.data)
-        print(member_serializer)
-    # TODO: Handle all info received from its form instead of printing
-    # TODO: Take into account all many-to-many relationships in the serializer
+    def post(self, request, id):
+
+        serializer = ActivityMemberSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        activity = create_or_update_activity_member(
+            **serializer.validated_data)
+        activity_serializer = ActivitySerializer(activity)
+
+        if activity_serializer:
+            return Response(activity_serializer.data)
+        else:
+            errors = dict(
+                message='No se pudo asociar el miembro a la actividad')
+            return Response(
+                errors,
+                status=status.HTTP_404_NOT_FOUND
+            )
 
 
 class RegisterActivityView(GenericAPIView):
