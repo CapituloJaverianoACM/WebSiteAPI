@@ -26,12 +26,11 @@ def get_activity(activity_id):
 
 
 def create_activity_member(
-        id_activity,
-        id_member,
+        *,
+        activity,
+        member,
         role) -> Activity:
 
-    activity = get_activity(id_activity)
-    member = get_member_by_id(id_member)
     activity_member = ActivityMember(
         member=member,
         activity=activity,
@@ -40,7 +39,7 @@ def create_activity_member(
     activity_member.full_clean()
     activity_member.save()
 
-    return get_activity(id_activity)
+    return activity
 
 
 def get_projects():

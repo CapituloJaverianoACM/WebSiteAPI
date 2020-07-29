@@ -5,10 +5,10 @@ from .serializers import (
     ActivitySerializer,
     ConfirmActivitySerializer,
     TutorialSerializer,
-    ProjectSerializer
+    ProjectSerializer,
+    ActivityMemberSerializer
 )
 
-from ..people.serializers import MemberSerializer
 from rest_framework.views import APIView
 from .services import (
     get_activity,
@@ -55,10 +55,9 @@ class ActivityDetail(APIView):
             )
 
     def post(self, request, id):
-        id_member = request.data.get("id")
-        role = request.data.get("role")
-        activity = create_activity_member(
-            id_activity=id, id_member=id_member, role=role)
+        serializer = ActivityMemberSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        activity = create_activity_member(**serializer.validated_data)
         activity_serializer = ActivitySerializer(activity)
         if activity_serializer:
             return Response(activity_serializer.data)
