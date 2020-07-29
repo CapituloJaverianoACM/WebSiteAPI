@@ -60,7 +60,7 @@ class ActivityMemberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ConfirmActivitySerializer(serializers.Serializer):
+class RegisterActivitySerializer(serializers.Serializer):
     uidb64 = serializers.CharField()
     token = serializers.CharField()
 

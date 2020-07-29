@@ -10,19 +10,8 @@ def get_teams():
 
 
 def get_staff():
-    # TODO - send the path
-    membersStaff = Member.objects.filter(is_staff=True).order_by('position'). \
-        values(
-        'name',
-        'surname',
-        'email',
-        'major',
-        'id_photo_id',
-        'is_staff',
-        'position',
-        'description',
-    )
-    return membersStaff
+    # Take into account value and id_photo_id we removed might be important
+    return Member.objects.filter(is_staff=True).order_by('position')
 
 
 def check_unique_email(email):

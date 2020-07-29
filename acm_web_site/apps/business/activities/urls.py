@@ -10,4 +10,6 @@ urlpatterns = [
     path('activities/<int:id>/', views.ActivityDetail.as_view()),
     path('projects/<int:id>/', views.ProjectDetail.as_view()),
     path('tutorials/<int:id>/', views.TutorialDetail.as_view()),
+    path('register/<int:id>/', views.RegisterActivityView.as_view()),
+    # TODO - This URL might change
 ]

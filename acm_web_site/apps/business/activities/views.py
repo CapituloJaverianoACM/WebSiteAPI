@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from .serializers import (
     ActivitySerializer,
-    ConfirmActivitySerializer,
+    RegisterActivitySerializer,
     TutorialSerializer,
     ProjectSerializer,
     ActivityMemberSerializer
@@ -74,9 +74,8 @@ class ActivityDetail(APIView):
             )
 
 
-# TODO: find out what this view is for
-class ConfirmActivityView(GenericAPIView):
-    serializer_class = ConfirmActivitySerializer
+class RegisterActivityView(GenericAPIView):
+    serializer_class = RegisterActivitySerializer
 
     def post(self, request, uidb64=None, token=None):
         serializer_data = self.request.data
@@ -87,7 +86,7 @@ class ConfirmActivityView(GenericAPIView):
         serializer = self.get_serializer(data=self.request.data)
         serializer.is_valid(raise_exception=True)
 
-        # TODO: Add logic to confirm the assistance
+        # TODO: Append new attendee to activity's attendee list
         """
         uid = urlsafe_base64_decode(uidb64)
         user = User.objects.get(pk=uid)
