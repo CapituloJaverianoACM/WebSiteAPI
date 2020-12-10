@@ -10,7 +10,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from rest_framework import serializers
 from utils.utils import encode_media
-from .models import POSITION_CHOICES
+from .models import POSITION_CHOICES, Attendee
 
 from .models import (
     Activity,
@@ -101,3 +101,8 @@ class TutorialSerializer(serializers.Serializer):
 
     def get_poster(self, obj):
         return encode_media(obj.poster)
+
+class AttendeeSerializer(serializers.Serializer):
+    class Meta:
+        model = Attendee
+        fields = '__all__'
