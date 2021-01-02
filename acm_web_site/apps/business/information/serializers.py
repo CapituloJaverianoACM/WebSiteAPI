@@ -9,7 +9,7 @@ import base64
 
 
 class AwardSerializer(serializers.ModelSerializer):
-    picture = serializers.SerializerMethodField('get_picture')
+    picture = serializers.SerializerMethodField()
 
     class Meta:
         model = Award

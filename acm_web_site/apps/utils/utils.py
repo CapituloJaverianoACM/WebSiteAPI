@@ -12,7 +12,7 @@ def encode_media(file_name):
     Returns:
     string: raw file data encoded in base 64
     """
-    prefix = '/'.join(settings.MEDIA_ROOT.split('/')[:-1])
+    prefix = settings.MEDIA_ROOT + '/'
     complete_path = prefix + file_name
     with open(complete_path, "rb") as image_file:
         image_str = base64.b64encode(image_file.read())
@@ -23,5 +23,6 @@ def upload_file(request, name):
     file_form = request.FILES[name]
     fs = FileSystemStorage()
     filename = fs.save(file_form.name, file_form)
-    uploaded_file_url = fs.url(filename)
-    return uploaded_file_url
+    return filename
+    #uploaded_file_url = fs.url(filename)
+    #return uploaded_file_url
