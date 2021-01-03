@@ -26,3 +26,14 @@ def upload_file(request, name):
     return filename
     #uploaded_file_url = fs.url(filename)
     #return uploaded_file_url
+
+
+class BaseInlineMixin:
+    extra = 0
+    can_delete = False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request, obj=None):
+        return False

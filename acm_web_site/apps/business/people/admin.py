@@ -1,8 +1,12 @@
 from django.contrib import admin
-from utils.utils import upload_file
+from utils.utils import upload_file, BaseInlineMixin
 
 from .forms import MemberAdminForm, TeamAdminForm
-from .models import Member, Team
+from .models import Member, Team, TeamMember
+
+
+class TeamMemberInline(admin.TabularInline):
+	model = TeamMember
 
 
 class MemberAdmin(admin.ModelAdmin):
@@ -14,6 +18,7 @@ class MemberAdmin(admin.ModelAdmin):
 
 
 class TeamAdmin(admin.ModelAdmin):
+	inlines = [TeamMemberInline]
 	form = TeamAdminForm
 
 	def save_model(self, request, obj, form, change):

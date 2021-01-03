@@ -14,7 +14,8 @@ ADD . /code
 WORKDIR /code
 RUN pip install -r requirements/prod.txt
 RUN python acm_web_site/manage.py collectstatic --settings=acm_web_site.settings.production
-USER user
-VOLUME ["/code/acm_web_site/run/static"]
+#TODO: this is running with root because the permissions were denied for user
+#USER user
+VOLUME ["/code/acm_web_site/run"]
 EXPOSE 8000
 CMD ["uwsgi", "--ini", "acm_web_site/acm_web_site/uwsgi.ini"]

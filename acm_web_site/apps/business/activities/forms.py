@@ -3,7 +3,7 @@ from django import forms
 from .models import (
     Activity,
     Project,
-    Tutorial
+    Tutorial, Gallery
 )
 
 
@@ -29,3 +29,13 @@ class TutorialAdminForm(forms.ModelForm):
     class Meta:
         model = Tutorial
         fields = '__all__'
+
+
+
+class GalleryAdminForm(forms.ModelForm):
+    picture = forms.FileField()
+
+    class Meta:
+        model = Gallery
+        fields = '__all__'
+
