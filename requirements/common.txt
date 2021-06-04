@@ -1,4 +1,4 @@
-django==3.0.14
+django==3.1.9
 django-markdownx==3.0.1
 djangorestframework==3.11.2
 markdown==3.2.2
