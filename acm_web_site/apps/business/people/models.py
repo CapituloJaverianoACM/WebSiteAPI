@@ -5,9 +5,12 @@ from django.db import models
 POSITION_CHOICES = (
     ('1PRE', 'Presidente'),
     ('2VIC', 'Vice-Presidente'),
-    ('3SEC', 'Secretario'),
-    ('4TES', 'Tesorero'),
-    ('5CM', 'Comunity Manager'),
+    ('3LCC', 'Lider Curso de Colegios'),
+    ('4LDW', 'Lider Desarrollo Web'),
+    ('5SEC', 'Secretario'),
+    ('6TES', 'Tesorero'),
+    ('7CM', 'Community Manager'),
+    ('8STF', 'Staff'),
     ('6ME', 'Miembro'),
 )
 
