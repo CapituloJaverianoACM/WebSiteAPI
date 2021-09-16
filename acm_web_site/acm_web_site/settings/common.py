@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ]
         },
     },
@@ -132,10 +133,12 @@ EMAIL_USE_TLS = environ.get('EMAIL_USE_TLS', 'email_use_tls')
 EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER', 'email')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD', 'password')
 
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
+
 # for production (only the front end server should be here)
-CORS_ORIGIN_WHITELIST = [
-    environ.get('REACT_JS_SERVER_IP', 'http://200.3.154.201'),
+"""CORS_ORIGIN_WHITELIST = [
+    environ.get('REACT_JS_SERVER_IP', 'http://acmwebsite-service:'),
     'http://localhost:8000',
     'http://localhost:8080',
-]
+]"""
