@@ -1,21 +1,30 @@
-FROM python:3.6-slim
+# Dockerfile
+
+FROM python:alpine
+
 ENV PYTHONUNBUFFERED 1
-RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev \
-    build-essential \
-    default-libmysqlclient-dev \
-    libssl-dev \
-    libffi-dev \
-    libcurl4-openssl-dev \
-&& rm -rf /var/lib/apt/lists/*
-RUN mkdir -p /code && chown user:user /code
-ADD . /code
-WORKDIR /code
-RUN pip install -r requirements/prod.txt
-RUN python acm_web_site/manage.py collectstatic --settings=acm_web_site.settings.production
-#TODO: this is running with root because the permissions were denied for user
-#USER user
-VOLUME ["/code/acm_web_site/run"]
-EXPOSE 8000
-CMD ["uwsgi", "--ini", "acm_web_site/acm_web_site/uwsgi.ini"]
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV DJANGO_SETTINGS_MODULE=acm_web_site.settings.production
+
+# Install Deps on alpine
+RUN apk add postgresql-dev nginx libjpeg-turbo-dev
+RUN apk add --virtual .deps gcc g++ python3-dev build-base zlib-dev 
+
+# Copy requirements
+COPY ./requirements/prod.txt .
+COPY ./requirements/common.txt .
+RUN pip install -r prod.txt
+
+RUN apk del .deps
+
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+# Copy Django files
+COPY ./acm_web_site /app
+
+WORKDIR /app
+
+COPY ./start_server.sh /
+EXPOSE 8080
+ENTRYPOINT ["sh", "/start_server.sh"]
+
